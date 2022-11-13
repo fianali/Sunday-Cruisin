@@ -5,55 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fadd2dd-f7c8-4f5e-aa11-ac55c45215b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Audio.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/AREYOUWITHTHAT.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/AREYOUWITHTHAT.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/DHL.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/DHL.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/Kids Turned Out Fine.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/Kids Turned Out Fine.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/Rigamortis.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/Rigamortis.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/Stay.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/1/Stay.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Future People.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Future People.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/HUSH.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/HUSH.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Is It True.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Is It True.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Magenta Mountain.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Magenta Mountain.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Rhinestone Eyes.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/2/Rhinestone Eyes.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Coffin in the Clouds.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Coffin in the Clouds.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Da Funk.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Da Funk.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Riot!.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Riot!.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Supreme.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/Supreme.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/green tea forest.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/3/green tea forest.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/Hats Off.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/Hats Off.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/Night Ride.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/Night Ride.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/bottomless.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/bottomless.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/bussdown bossa.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/bussdown bossa.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/oopsy.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/4/oopsy.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SoundController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SoundController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Sunday-Cruisin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sunday-Cruisin/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Car.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Car.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
