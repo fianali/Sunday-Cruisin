@@ -254,17 +254,17 @@ Material:
     - Vector2_0b65553d60624b139dec448bc178e727: {r: -1, g: -0.2, b: 0, a: 0}
     - Vector2_e2851918c56a42e886f043f816a05d48: {r: 3, g: 2, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CloudColorDay: {r: 0.21698111, g: 0, b: 0.054596644, a: 0}
+    - _CloudColorDay: {r: 0.4245283, g: 0.01802242, b: 0.12149674, a: 0}
     - _CloudColorNight: {r: 0.07247217, g: 0.06087575, b: 0.09433961, a: 0}
     - _CloudScale: {r: 3, g: 2, b: 0, a: 0}
     - _CloudWindSpeed: {r: -0.5, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 0}
-    - _HorizonColorDay: {r: 0.5754717, g: 0.013572444, b: 0.02492804, a: 1}
+    - _HorizonColorDay: {r: 0.08333202, g: 0.0117647005, b: 0.5764706, a: 1}
     - _HorizonColorNight: {r: 0.08736077, g: 0.07843138, b: 0.1333333, a: 0}
     - _MoonColor: {r: 1.615686, g: 1.74902, b: 1.811765, a: 0}
-    - _SkyColorDay: {r: 0.2830189, g: 0.06112369, b: 0.044054832, a: 0}
+    - _SkyColorDay: {r: 0.38679248, g: 0.032728594, b: 0, a: 0}
     - _SkyColorNight: {r: 0.1037736, g: 0.01507654, b: 0.1037736, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SunColorHorizon: {r: 131.44093, g: 0, b: 26.219091, a: 0}
