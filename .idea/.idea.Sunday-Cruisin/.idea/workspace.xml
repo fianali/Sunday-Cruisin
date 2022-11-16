@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="4fadd2dd-f7c8-4f5e-aa11-ac55c45215b8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Sunday-Cruisin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sunday-Cruisin/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Cars/Classic_car_1955/Car_materials/car_exterior/car_glass/car_glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cars/Classic_car_1955/Car_materials/car_exterior/car_glass/car_glass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Agarkova_CG/Woman_red_hair/Art/Materials/Woman_red_hair_lashes.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Agarkova_CG/Woman_red_hair/Art/Materials/Woman_red_hair_lashes.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing Car.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Testing Car.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FirstPersonPerspectiveController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FirstPersonPerspectiveController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +89,12 @@
       <workItem from="1668361198104" duration="2544000" />
       <workItem from="1668395455157" duration="20000" />
       <workItem from="1668395525107" duration="66000" />
+<<<<<<< Updated upstream
       <workItem from="1668460291102" duration="1790000" />
+=======
+      <workItem from="1668460291102" duration="598000" />
+      <workItem from="1668563545712" duration="692000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

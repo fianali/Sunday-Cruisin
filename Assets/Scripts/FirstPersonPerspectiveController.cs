@@ -9,6 +9,7 @@ public class FirstPersonPerspectiveController : MonoBehaviour
     public Transform player;
     public float mouseSensitivity = 2f;
     float cameraVerticalRotation = 0f;
+    float cameraHorizontalRotation = 0f;
 
     bool lockedCursor = true;
 
@@ -32,13 +33,11 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         // Rotate the Camera around its local X axis
 
         cameraVerticalRotation -= inputY;
-        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
+        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 35f);
+        cameraHorizontalRotation -= inputX;
+        cameraHorizontalRotation = Mathf.Clamp(cameraHorizontalRotation, -160f, 160f);
         transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
+        transform.localEulerAngles -= Vector3.up * cameraHorizontalRotation;
 
-
-        // Rotate the Player Object and the Camera around its Y axis
-
-        player.Rotate(Vector3.up * inputX);
-       
     }
 }
