@@ -51,7 +51,13 @@ public class TerrainGenerator : MonoBehaviour
             {
                 if (x > (256 - 50) && x < (256 + 50))
                 {
-                    heights[x, y] = CompileNoise(256, y);
+                    float roadHeight = 0;
+                    int smoothFactor = 10;
+                    for (int i = -smoothFactor; i <= smoothFactor; i++)
+                    {
+                        roadHeight += CompileNoise(256, y + i);
+                    }
+                    heights[x, y] = roadHeight / (smoothFactor * 2 + 1);
                 }
                 else
                 {

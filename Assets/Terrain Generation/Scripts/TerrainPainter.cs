@@ -23,29 +23,36 @@ public class TerrainPainter : MonoBehaviour
         {
             for (int x = 0; x < terrainData.alphamapWidth; x++)
             {
-                float terrainHeight = terrainData.GetHeight(y,x);
-
                 float[] splat = new float[splatHeights.Length];
-
-                for (int i = 0; i < splatHeights.Length; i++)
+                
+                if (x > (256 - 50) && x < (256 + 50))
                 {
-                    if (i + 1 < splatHeights.Length)
+                    splat[3] = 1f;
+                }
+                else
+                {
+                    float terrainHeight = terrainData.GetHeight(y,x);
+
+                    for (int i = 0; i < splatHeights.Length; i++)
                     {
-                        if (terrainHeight >= splatHeights[i].startingHeight && 
-                            terrainHeight <= splatHeights[i+1].startingHeight)
+                        if (i + 1 < splatHeights.Length)
                         {
-                            splat[i] = 1f;
+                            if (terrainHeight >= splatHeights[i].startingHeight && 
+                                terrainHeight <= splatHeights[i+1].startingHeight)
+                            {
+                                splat[i] = 1f;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (terrainHeight >= splatHeights[i].startingHeight)
+                        else
                         {
-                            splat[i] = 1f;
+                            if (terrainHeight >= splatHeights[i].startingHeight)
+                            {
+                                splat[i] = 1f;
+                            }
                         }
-                    }
                     
 
+                    }
                 }
 
                 for (int i = 0; i < splatHeights.Length; i++)
