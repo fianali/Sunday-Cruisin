@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!146 &131498176 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 1589607295, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &259300837 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 682679423, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &320581699 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 180474535, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &572293836 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 1250897062, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &605428220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 103558, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &605428224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605428220}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45abc545e928f4042afc9ab38b8e2164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontLeftWheelCollider: {fileID: 320581699}
+  frontRightWheelCollider: {fileID: 131498176}
+  backLeftWheelCollider: {fileID: 572293836}
+  backRightWheelCollider: {fileID: 259300837}
+  frontLeftWheelTransform: {fileID: 1890222406}
+  frontRightWheelTransform: {fileID: 1527669460}
+  backLeftWheelTransform: {fileID: 1832408648}
+  backRightWheelTransform: {fileID: 1292358389}
+  driveForce: 10000
+  breakForce: 8000
+  maxSteerAngle: 30
 --- !u!1 &727407915
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,3 +505,23 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &1292358389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9141506093962205872, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1527669460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 685643650650697149, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1832408648 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7781119035676433155, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1890222406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1241942628987359854, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
