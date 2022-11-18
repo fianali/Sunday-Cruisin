@@ -54,19 +54,16 @@ public class TerrainLoader : MonoBehaviour
         var deltaZCell = zPlayerCell - lastZCell;
         if (deltaXCell != 0)
         {
-            new Task(LoadRow(deltaXCell));
+            LoadRow(deltaXCell);
         }
     }
 
-    private IEnumerator LoadRow(int deltaXCell)
+    private void LoadRow(int deltaXCell)
     {
         for (var z = zPlayerCell - loadDistance; z <= zPlayerCell + loadDistance; z++)        
         {
             Instantiate(terrain, new Vector3((xPlayerCell + (loadDistance * deltaXCell)) * 513f, 0, z*513f), new Quaternion(0,0,0,0));
-            yield return null;
         }
-
-        yield return null;
     }
     private void LoadCellsAround(int xCell, int zCell)
     {
