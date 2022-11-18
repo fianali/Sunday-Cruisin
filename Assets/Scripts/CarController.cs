@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    [SerializeField] private WheelCollider frontLeftWheelCollider;
-    [SerializeField] private WheelCollider frontRightWheelCollider;
+    [SerializeField] public WheelCollider frontLeftWheelCollider;
+    [SerializeField] public WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider backLeftWheelCollider;
     [SerializeField] private WheelCollider backRightWheelCollider;
     
@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform backLeftWheelTransform;
     [SerializeField] private Transform backRightWheelTransform;
     
-    [SerializeField] private float driveForce;
+    [SerializeField] public float driveForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
 
@@ -27,7 +27,8 @@ public class CarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // frontLeftWheelCollider.motorTorque = -1 * driveForce;
+        // frontRightWheelCollider.motorTorque = -1 * driveForce;
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class CarController : MonoBehaviour
         isBreaking = Input.GetKey(KeyCode.Space);
     }
 
-    void HandleDriving()
+    public virtual void HandleDriving()
     {
         frontLeftWheelCollider.motorTorque = verticalInput * driveForce;
         frontRightWheelCollider.motorTorque = verticalInput * driveForce;
