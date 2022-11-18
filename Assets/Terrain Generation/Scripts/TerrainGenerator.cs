@@ -1,5 +1,7 @@
 using System;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
@@ -17,17 +19,23 @@ public class TerrainGenerator : MonoBehaviour
     {
         _seed = TerrainLoader.Instance.seed;
 
-        
+        System.Diagnostics.Stopwatch timer = new Stopwatch();
+        timer.Start();
+        long time1, time2, time3, time4;
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = Instantiate(baseTerrainData);
+        time1 = timer.ElapsedMilliseconds;
         terrain.terrainData = GenerateTerrain(terrain.terrainData);
-        
+        time2 = timer.ElapsedMilliseconds;
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
         terrainCollider.terrainData = terrain.terrainData;
 
         terrain.treeBillboardDistance = 1000;
         terrainPainter.PaintTerrain(terrain.terrainData);
+        time3 = timer.ElapsedMilliseconds;
         terrainScatter.ScatterFoliage(terrain);
+        time4 = timer.ElapsedMilliseconds;
+        Debug.Log("Finished");
     }
 
     TerrainData GenerateTerrain(TerrainData terrainData)
