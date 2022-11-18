@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 5000
-  macroScale: 4
-  biomeScale: 2
-  hfScale: 200
-  hfSize: 3000
+  macroScale: 1
+  biomeScale: 0.5
+  hfScale: 50
+  hfSize: 2000
   terrain: {fileID: 8700995294294666482, guid: 15d2f62750e99cc4b8f5ba6776c7fb92, type: 3}
-  loadDistance: 1
+  loadDistance: 4
 --- !u!114 &2733616821781847808
 MonoBehaviour:
   m_ObjectHideFlags: 0
