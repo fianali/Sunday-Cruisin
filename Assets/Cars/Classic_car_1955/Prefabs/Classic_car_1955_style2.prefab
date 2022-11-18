@@ -120,7 +120,7 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 685643650650697149}
   backLeftWheelTransform: {fileID: 7781119035676433155}
   backRightWheelTransform: {fileID: 9141506093962205872}
-  driveForce: 10000
+  driveForce: 35000
   breakForce: 8000
   maxSteerAngle: 30
 --- !u!1 &104764
@@ -4927,7 +4927,7 @@ WheelCollider:
   m_Radius: 6.4
   m_SuspensionSpring:
     spring: 90000
-    damper: 11000
+    damper: 15000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -4989,7 +4989,7 @@ WheelCollider:
   m_Radius: 6.4
   m_SuspensionSpring:
     spring: 90000
-    damper: 11000
+    damper: 15000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -5051,7 +5051,7 @@ WheelCollider:
   m_Radius: 6.4
   m_SuspensionSpring:
     spring: 90000
-    damper: 11000
+    damper: 15000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -5113,7 +5113,7 @@ WheelCollider:
   m_Radius: 6.4
   m_SuspensionSpring:
     spring: 90000
-    damper: 11000
+    damper: 15000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
