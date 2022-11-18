@@ -13,8 +13,8 @@ public class car_light_control : MonoBehaviour
 	{
 	    light = gameObject.GetComponent<Light>();  // We get "light" component from our gameobject
         interior_light = gameObject.GetComponent<Light>();  // We get "light" component from our gameobject
-        light.enabled = false;   // Light always disabled, when scene start
-        interior_light.enabled = false;  // Light always disabled, when scene start
+        light.enabled = true;   // Light always disabled, when scene start
+        interior_light.enabled = true;  // Light always disabled, when scene start
     }
 	
 	// Update is called once per frame
