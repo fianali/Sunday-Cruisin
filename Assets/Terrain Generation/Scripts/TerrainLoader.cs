@@ -12,6 +12,9 @@ public class TerrainLoader : MonoBehaviour
     public float biomeScale;
     public float hfScale;
     public float hfSize;
+
+    private int xPlayerCell;
+    private int zPlayerCell;
     
     // public GameObject[,] loadedChunks;
     [SerializeField] private GameObject terrain;
@@ -24,15 +27,55 @@ public class TerrainLoader : MonoBehaviour
 
     void Start()
     {
-        for (var i = 0; i < loadDistance; i++)
+        // for (var i = 0; i < loadDistance; i++)
+        // {
+        //     for (var j = 0; j < loadDistance; j++)
+        //     {
+        //         Instantiate(terrain, new Vector3(i*513f, 0, j*513f), new Quaternion(0,0,0,0));
+        //     }
+        // }
+        for (var x = 0 - loadDistance; x <= 0 + loadDistance; x++)
         {
-            for (var j = 0; j < loadDistance; j++)
+            for (var z = 0 - loadDistance; z <= 0 + loadDistance; z++)
             {
-                Instantiate(terrain, new Vector3(i*513f, 0, j*513f), new Quaternion(0,0,0,0));
+                Instantiate(terrain, new Vector3(x*513f, 0, z*513f), new Quaternion(0,0,0,0));
             }
         }
     }
-    
+
+    private void Update()
+    {
+        var lastXCell = xPlayerCell;
+        var lastZCell = zPlayerCell;
+        xPlayerCell = (int) MathF.Truncate(transform.position.x / 512);
+        zPlayerCell = (int) MathF.Truncate(transform.position.z / 512);
+        Debug.Log("X cell: " + xPlayerCell + "Z cell: " + zPlayerCell);
+        var deltaXCell = xPlayerCell - lastXCell;
+        var deltaZCell = zPlayerCell - lastZCell;
+        if (deltaXCell != 0)
+        {
+            LoadRow(deltaXCell);
+        }
+    }
+
+    private void LoadRow(int deltaXCell)
+    {
+        for (var z = zPlayerCell - loadDistance; z <= zPlayerCell + loadDistance; z++)        
+        {
+            Instantiate(terrain, new Vector3((xPlayerCell + (loadDistance * deltaXCell)) * 513f, 0, z*513f), new Quaternion(0,0,0,0));
+        }
+    }
+    private void LoadCellsAround(int xCell, int zCell)
+    {
+        for (var x = xCell - loadDistance; x <= xCell + loadDistance; x++)
+        {
+            for (var z = zCell - loadDistance; z <= zCell + loadDistance; z++)
+            {
+                Instantiate(terrain, new Vector3(x*513f, 0, z*513f), new Quaternion(0,0,0,0));
+            }
+        }
+    }
+
     // void GenerateTerrain(int x, int y)
     // {
     //     TerrainData terrainData = new TerrainData();

@@ -49,7 +49,14 @@ public class TerrainGenerator : MonoBehaviour
         {
             for (int y = 0; y < length; y++)
             {
-                heights[x, y] = CompileNoise(x, y);
+                if (x > (256 - 50) && x < (256 + 50))
+                {
+                    heights[x, y] = CompileNoise(256, y);
+                }
+                else
+                {
+                    heights[x, y] = CompileNoise(x, y);
+                }
                 // heights[x, y] = CalculateNoise(x, y, _tempSeed, macroScale);
             }
         }
