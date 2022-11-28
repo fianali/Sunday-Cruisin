@@ -100,7 +100,6 @@ MonoBehaviour:
   - 128
   - 256
   - 512
-  - 1024
   redistributionFactor: 4
 --- !u!114 &8700995294294666487
 MonoBehaviour:
@@ -150,6 +149,8 @@ MonoBehaviour:
   - {fileID: 9124157745091716997, guid: eaacf1de2871fe849bb1068f5c428111, type: 3}
   treeCount: 10
   maxOffset: 0.62
+  grassDensity: 100
+  patchDetail: 100
 --- !u!1 &8738733913152271824
 GameObject:
   m_ObjectHideFlags: 0
