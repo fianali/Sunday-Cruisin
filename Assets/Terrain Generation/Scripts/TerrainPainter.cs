@@ -21,7 +21,6 @@ public class TerrainPainter : MonoBehaviour
 
         var xOffset = transform.position.x;
         var zOffset = transform.position.z;
-        
         var roadwidth = TerrainLoader.Instance.roadwidth;
         
         for (int y = 0; y < terrainData.alphamapHeight; y++)

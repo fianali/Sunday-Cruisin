@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847811, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
 --- !u!1 &1887983089
@@ -302,8 +306,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887983089}
-  m_LocalRotation: {x: -0.12429486, y: -0.8748929, z: 0.31028104, w: -0.35048375}
-  m_LocalPosition: {x: -55.574158, y: 406.84012, z: 588.8729}
+  m_LocalRotation: {x: 0.32045075, y: 0.5245111, z: -0.222074, w: 0.7568901}
+  m_LocalPosition: {x: -22.508362, y: 311.71185, z: 83.17911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
