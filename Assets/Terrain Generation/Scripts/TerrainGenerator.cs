@@ -50,8 +50,8 @@ public class TerrainGenerator : MonoBehaviour
         var xOffset = transform.position.x;
         var zOffset = transform.position.z;
 
-        var roadwidth = 20;
-        int smoothFactor = 50;
+        var roadwidth = TerrainLoader.Instance.roadwidth;
+        int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
 
         for (int z = 0; z < width; z++)
         {

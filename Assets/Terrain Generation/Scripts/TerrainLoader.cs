@@ -20,6 +20,11 @@ public class TerrainLoader : MonoBehaviour
     [SerializeField] private GameObject terrain;
     [SerializeField] private int loadDistance;
     // [SerializeField] private Transform player;
+    
+    // Road information
+    public int roadwidth;
+    public int roadSmoothFactor;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
