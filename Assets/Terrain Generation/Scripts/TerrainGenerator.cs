@@ -13,6 +13,8 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private TerrainScatter terrainScatter;
     private float _seed;
 
+    public float[] octaves;
+    public float redistributionFactor;
     private void Start()
     {
         _seed = TerrainLoader.Instance.seed;
@@ -45,25 +47,29 @@ public class TerrainGenerator : MonoBehaviour
     {
         float[,] heights = new float[width, length];
 
-        for (int x = 0; x < width; x++)
+        var xOffset = transform.position.x;
+        var zOffset = transform.position.z;
+
+        var roadwidth = 20;
+        int smoothFactor = 50;
+
+        for (int z = 0; z < width; z++)
         {
-            for (int y = 0; y < length; y++)
+            for (int x = 0; x < length; x++)
             {
-                if (x > (256 - 50) && x < (256 + 50))
+                if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
                 {
                     float roadHeight = 0;
-                    int smoothFactor = 10;
                     for (int i = -smoothFactor; i <= smoothFactor; i++)
                     {
-                        roadHeight += CompileNoise(256, y + i);
+                        roadHeight += CompileNoise(256, x + i);
                     }
-                    heights[x, y] = roadHeight / (smoothFactor * 2 + 1);
+                    heights[z, x] = roadHeight / (smoothFactor * 2 + 1);
                 }
                 else
                 {
-                    heights[x, y] = CompileNoise(x, y);
+                    heights[z, x] = CompileNoise(z, x);
                 }
-                // heights[x, y] = CalculateNoise(x, y, _tempSeed, macroScale);
             }
         }
 
@@ -71,6 +77,26 @@ public class TerrainGenerator : MonoBehaviour
     }
 
     float CompileNoise(int x, int y)
+    {
+        // Sea level
+        float height = 0;
+        float octaveSum = 0f;
+        
+        for (int i = 0; i < octaves.Length; i++)
+        {
+            float octave = octaves[i];
+            
+            height += (1/octave) * CalculateNoise(x, y, octave);
+            octaveSum += 1/octave;
+        }
+        height /= octaveSum;
+
+        height = Mathf.Pow(height, redistributionFactor);
+        
+        return height;
+    }
+    
+    /*float CompileNoise(int x, int y)
     {
         // Sea level
         float height = 0;
@@ -93,7 +119,7 @@ public class TerrainGenerator : MonoBehaviour
         height += highFrequencyNoise;
         
         return height;
-    }
+    }*/
 
     float CalculateNoise(int x, int y, float scale)
     {
