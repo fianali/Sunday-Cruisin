@@ -20,6 +20,11 @@ public class TerrainLoader : MonoBehaviour
     [SerializeField] private GameObject terrain;
     [SerializeField] private int loadDistance;
     // [SerializeField] private Transform player;
+    
+    // Road information
+    public int roadwidth;
+    public int roadSmoothFactor;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -49,7 +54,7 @@ public class TerrainLoader : MonoBehaviour
         var lastZCell = zPlayerCell;
         xPlayerCell = (int) MathF.Truncate(transform.position.x / 512);
         zPlayerCell = (int) MathF.Truncate(transform.position.z / 512);
-        Debug.Log("X cell: " + xPlayerCell + "Z cell: " + zPlayerCell);
+        // Debug.Log("X cell: " + xPlayerCell + "Z cell: " + zPlayerCell);
         var deltaXCell = xPlayerCell - lastXCell;
         var deltaZCell = zPlayerCell - lastZCell;
         if (deltaXCell != 0)

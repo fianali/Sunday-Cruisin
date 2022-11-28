@@ -19,19 +19,23 @@ public class TerrainPainter : MonoBehaviour
         // TerrainData terrainData = Terrain.activeTerrain.terrainData;
         float[, ,] splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
+        var xOffset = transform.position.x;
+        var zOffset = transform.position.z;
+        var roadwidth = TerrainLoader.Instance.roadwidth;
+        
         for (int y = 0; y < terrainData.alphamapHeight; y++)
         {
-            for (int x = 0; x < terrainData.alphamapWidth; x++)
+            for (int z = 0; z < terrainData.alphamapWidth; z++)
             {
                 float[] splat = new float[splatHeights.Length];
                 
-                if (x > (256 - 50) && x < (256 + 50))
+                if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
                 {
                     splat[3] = 1f;
                 }
                 else
                 {
-                    float terrainHeight = terrainData.GetHeight(y,x);
+                    float terrainHeight = terrainData.GetHeight(y,z);
 
                     for (int i = 0; i < splatHeights.Length; i++)
                     {
@@ -57,7 +61,7 @@ public class TerrainPainter : MonoBehaviour
 
                 for (int i = 0; i < splatHeights.Length; i++)
                 {
-                    splatmapData[x, y, i] = splat[i];
+                    splatmapData[z, y, i] = splat[i];
                 }
             }
         }
