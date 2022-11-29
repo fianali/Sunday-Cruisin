@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Graphics.Tools.Noise;
+using Graphics.Tools.Noise.Primitive;
 using UnityEngine;
 
 public class TerrainLoader : MonoBehaviour
 {
     public static TerrainLoader Instance;
-    public float seed;
+    public int seed;
 
     public float macroScale;
     public float biomeScale;
@@ -25,9 +27,12 @@ public class TerrainLoader : MonoBehaviour
     public int roadwidth;
     public int roadSmoothFactor;
 
+    public SimplexPerlin simplexPerlin;
+    
     private void Awake()
     {
         if (Instance == null) Instance = this;
+        simplexPerlin = new SimplexPerlin(seed, NoiseQuality.Fast);
     }
 
     void Start()
