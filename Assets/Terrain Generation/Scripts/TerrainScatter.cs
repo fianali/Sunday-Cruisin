@@ -7,13 +7,22 @@ public class TerrainScatter : MonoBehaviour
     public GameObject[] scatter;
 
     [SerializeField] private int treeCount;
-    [Range(-1, 1)] [SerializeField] private float maxOffset; 
-    public void ScatterFoliage(Terrain terrain)
+    [Range(-1, 1)] [SerializeField] private float maxOffset;
+
+    [SerializeField] private int grassDensity;
+    [SerializeField] private int patchDetail;
+
+    private Terrain terrain;
+    public void ScatterFoliage(Terrain passedTerrain)
     {
+        terrain = passedTerrain;
         
-        
-        int grassDensity = 100;
-        int patchDetail = 100;
+        ScatterGrass();
+        ScatterTrees();
+    }
+
+    void ScatterGrass()
+    {
         terrain.terrainData.SetDetailResolution(grassDensity, patchDetail);
   
         int[,] newMap = new int[grassDensity, grassDensity];
@@ -35,7 +44,10 @@ public class TerrainScatter : MonoBehaviour
             }
         }
         terrain.terrainData.SetDetailLayer(0, 0, 0, newMap);
-        
+    }
+
+    void ScatterTrees()
+    {
         var xOffset = transform.position.x;
         var zOffset = transform.position.z;
         var roadwidth = TerrainLoader.Instance.roadwidth;
@@ -44,19 +56,24 @@ public class TerrainScatter : MonoBehaviour
         {
             for (int j = 0; j < treeCount; j++)
             {
-                var potentialPosition = new Vector3((i + Random.Range(-maxOffset, maxOffset)) / treeCount, 0, (j + Random.Range(-maxOffset, maxOffset)) / treeCount);
+                Vector3 potentialPosition = new Vector3((i + Random.Range(-maxOffset, maxOffset)) / treeCount, 0, (j + Random.Range(-maxOffset, maxOffset)) / treeCount);
                 
                 if (!(zOffset + (potentialPosition.z * 513) > (256 - roadwidth) && zOffset + (potentialPosition.z * 513) < (256 + roadwidth)))
                 {
-                    TreeInstance treeInstance = new TreeInstance();
-                    treeInstance.prototypeIndex = Random.Range(0, 3);
-                    treeInstance.color = new Color32(255, 255, 255, 255);
-                    treeInstance.heightScale = 1;
-                    treeInstance.position = potentialPosition;
-                    treeInstance.widthScale = 1;
-                    terrain.AddTreeInstance(treeInstance);
+                    PlaceTree(potentialPosition);
                 }
             }
         }
+    }
+
+    void PlaceTree(Vector3 position)
+    {
+        TreeInstance treeInstance = new TreeInstance();
+        treeInstance.prototypeIndex = Random.Range(0, 3);
+        treeInstance.color = new Color32(255, 255, 255, 255);
+        treeInstance.heightScale = 1;
+        treeInstance.position = position;
+        treeInstance.widthScale = 1;
+        terrain.AddTreeInstance(treeInstance);
     }
 }

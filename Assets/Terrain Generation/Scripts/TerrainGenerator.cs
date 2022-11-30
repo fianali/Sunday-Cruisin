@@ -1,4 +1,6 @@
 using System;
+using Graphics.Tools.Noise;
+using Graphics.Tools.Noise.Primitive;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,13 +13,15 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private TerrainPainter terrainPainter;
     [SerializeField] private TerrainData baseTerrainData;
     [SerializeField] private TerrainScatter terrainScatter;
-    private float _seed;
+    private int _seed;
 
     public float[] octaves;
     public float redistributionFactor;
+
     private void Start()
     {
         _seed = TerrainLoader.Instance.seed;
+
 
         
         Terrain terrain = GetComponent<Terrain>();
@@ -124,9 +128,13 @@ public class TerrainGenerator : MonoBehaviour
     float CalculateNoise(int x, int y, float scale)
     {
         var position = transform.position;
-        float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + _seed ;
-        float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + _seed ;
+        /*float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + _seed ;
+        float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + _seed ;*/
         
+        float xNorm = (x + position.z - (position.z / 513)) / width * scale;
+        float yNorm = (y + position.x - (position.x / 513)) / length * scale;
+
+        return TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm);
         return Mathf.PerlinNoise(xNorm, yNorm);
     }
     
@@ -136,6 +144,7 @@ public class TerrainGenerator : MonoBehaviour
         float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + seed ;
         float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + seed ;
         
+        return TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm);
         return Mathf.PerlinNoise(xNorm, yNorm);
     }
     
