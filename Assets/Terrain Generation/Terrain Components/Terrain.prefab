@@ -47,12 +47,12 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 587f7452108b19e45819d2b2999857c2, type: 2}
-  m_TreeDistance: 1000
+  m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 0
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
+  m_DetailObjectDistance: 250
+  m_DetailObjectDensity: 0.548
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   - {fileID: 9124157745091716997, guid: eaacf1de2871fe849bb1068f5c428111, type: 3}
   treeCount: 10
   maxOffset: 0.62
-  grassDensity: 100
-  patchDetail: 100
+  grassDensity: 500
+  patchDetail: 16
 --- !u!1 &8738733913152271824
 GameObject:
   m_ObjectHideFlags: 0

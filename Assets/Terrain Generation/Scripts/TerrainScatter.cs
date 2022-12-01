@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TerrainScatter : MonoBehaviour
 {
+    private TerrainLoader.SplatHeights[] splatHeights;
+    
     public GameObject[] scatter;
 
     [SerializeField] private int treeCount;
@@ -11,12 +13,18 @@ public class TerrainScatter : MonoBehaviour
 
     [SerializeField] private int grassDensity;
     [SerializeField] private int patchDetail;
-
+    private float xOffset;
+    private float zOffset;
+    private float roadWidth;
     private Terrain terrain;
     public void ScatterFoliage(Terrain passedTerrain)
     {
+        splatHeights = TerrainLoader.Instance.biomeHeights;
+
         terrain = passedTerrain;
-        
+        xOffset = transform.position.x;
+        zOffset = transform.position.z;
+        roadWidth = TerrainLoader.Instance.roadwidth;
         ScatterGrass();
         ScatterTrees();
     }
@@ -31,16 +39,17 @@ public class TerrainScatter : MonoBehaviour
         {
             for (int j = 0; j < grassDensity; j++)
             {
-                // Sample the height at this location (note GetHeight expects int coordinates corresponding to locations in the heightmap array)
-                float height = terrain.terrainData.GetHeight( j, i );
-                if (height < 300.0f)
+                Vector3 potentialPosition = new Vector3((i + Random.Range(-maxOffset, maxOffset)) / treeCount, 0, (j + Random.Range(-maxOffset, maxOffset)) / treeCount);
+
+                if (!(zOffset + (potentialPosition.z * 513) > (256 - roadWidth) &&
+                      zOffset + (potentialPosition.z * 513) < (256 + roadWidth)))
                 {
-                    newMap[i, j] = 6;
+                    // Sample the height at this location (note GetHeight expects int coordinates corresponding to locations in the heightmap array)
+                    float height = terrain.terrainData.GetHeight(j, i);
+                    if (height < 300.0f && height>splatHeights[1].startingHeight) newMap[i, j] = 6;
+                    else newMap[i, j] = 0;
                 }
-                else
-                {
-                    newMap[i, j] = 0;
-                }
+                else newMap[i, j] = 0;
             }
         }
         terrain.terrainData.SetDetailLayer(0, 0, 0, newMap);
@@ -48,9 +57,7 @@ public class TerrainScatter : MonoBehaviour
 
     void ScatterTrees()
     {
-        var xOffset = transform.position.x;
-        var zOffset = transform.position.z;
-        var roadwidth = TerrainLoader.Instance.roadwidth;
+
 
         for (int i = 0; i < treeCount; i++)
         {
@@ -58,7 +65,7 @@ public class TerrainScatter : MonoBehaviour
             {
                 Vector3 potentialPosition = new Vector3((i + Random.Range(-maxOffset, maxOffset)) / treeCount, 0, (j + Random.Range(-maxOffset, maxOffset)) / treeCount);
                 
-                if (!(zOffset + (potentialPosition.z * 513) > (256 - roadwidth) && zOffset + (potentialPosition.z * 513) < (256 + roadwidth)))
+                if (!(zOffset + (potentialPosition.z * 513) > (256 - roadWidth) && zOffset + (potentialPosition.z * 513) < (256 + roadWidth)))
                 {
                     PlaceTree(potentialPosition);
                 }

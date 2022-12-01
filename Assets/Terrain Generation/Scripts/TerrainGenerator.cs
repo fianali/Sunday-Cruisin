@@ -30,8 +30,9 @@ public class TerrainGenerator : MonoBehaviour
         
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
         terrainCollider.terrainData = terrain.terrainData;
+        terrain.detailObjectDistance = 1000;
 
-        terrain.treeBillboardDistance = 1000;
+        terrain.treeBillboardDistance = 5000;
         terrainPainter.PaintTerrain(terrain.terrainData);
         terrainScatter.ScatterFoliage(terrain);
     }
@@ -134,7 +135,6 @@ public class TerrainGenerator : MonoBehaviour
         float xNorm = (x + position.z - (position.z / 513)) / width * scale;
         float yNorm = (y + position.x - (position.x / 513)) / length * scale;
 
-        return TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm);
         return Mathf.PerlinNoise(xNorm, yNorm);
     }
     
@@ -144,7 +144,7 @@ public class TerrainGenerator : MonoBehaviour
         float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + seed ;
         float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + seed ;
         
-        return TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm);
+        return (TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm) + 1)/1;
         return Mathf.PerlinNoise(xNorm, yNorm);
     }
     

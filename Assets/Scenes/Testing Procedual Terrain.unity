@@ -123,33 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &100646086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-  m_PrefabInstance: {fileID: 624849784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &624849784
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1863397300}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: splatHeights.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: splatHeights.Array.data[0].startingHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: splatHeights.Array.data[1].startingHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: splatHeights.Array.data[2].startingHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: splatHeights.Array.data[3].startingHeight
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -190,6 +217,34 @@ PrefabInstance:
     - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: roadSmoothFactor
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.data[1].textureIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.data[2].textureIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.data[3].textureIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.data[1].startingHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.data[2].startingHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
+      propertyPath: biomeHeights.Array.data[3].startingHeight
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847811, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_Name
@@ -297,11 +352,9 @@ Transform:
   m_LocalPosition: {x: 256, y: 100, z: 256}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 100646086}
-  - {fileID: 1887983093}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1863397301
 Rigidbody:
@@ -443,12 +496,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887983089}
   m_LocalRotation: {x: 0.18301274, y: 0.6830127, z: -0.18301274, w: 0.6830127}
-  m_LocalPosition: {x: -10.59, y: 6.12, z: 0}
-  m_LocalScale: {x: 0.040000003, y: 0.04, z: 0.039999995}
+  m_LocalPosition: {x: -8.75, y: 100, z: 256}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1863397300}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30, y: 90, z: 0}
 --- !u!1 &2002265772
 GameObject:

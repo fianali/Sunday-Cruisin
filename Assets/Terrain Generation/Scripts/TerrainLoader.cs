@@ -29,6 +29,14 @@ public class TerrainLoader : MonoBehaviour
 
     public SimplexPerlin simplexPerlin;
     
+    [System.Serializable]
+    public class SplatHeights
+    {
+        public int textureIndex;
+        public int startingHeight;
+    }
+
+    public SplatHeights[] biomeHeights;
     private void Awake()
     {
         if (Instance == null) Instance = this;

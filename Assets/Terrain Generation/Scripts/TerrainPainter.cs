@@ -5,17 +5,10 @@ using UnityEngine;
 
 public class TerrainPainter : MonoBehaviour
 {
-    
-    [System.Serializable]
-    public class SplatHeights
-    {
-        public int textureIndex;
-        public int startingHeight;
-    }
-
-    public SplatHeights[] splatHeights;
+    private TerrainLoader.SplatHeights[] splatHeights;
     public void PaintTerrain(TerrainData terrainData)
     {
+        splatHeights = TerrainLoader.Instance.biomeHeights;
         // TerrainData terrainData = Terrain.activeTerrain.terrainData;
         float[, ,] splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
