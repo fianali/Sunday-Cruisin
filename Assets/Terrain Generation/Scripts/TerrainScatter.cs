@@ -34,25 +34,28 @@ public class TerrainScatter : MonoBehaviour
         terrain.terrainData.SetDetailResolution(grassDensity, patchDetail);
   
         int[,] newMap = new int[grassDensity, grassDensity];
-  
-        for (int i = 0; i < grassDensity; i++)
-        {
-            for (int j = 0; j < grassDensity; j++)
+        
+        // for (int s = 0; s < splatHeights.Length; s++)
+        // {
+            for (int i = 0; i < grassDensity; i++)
             {
-                Vector3 potentialPosition = new Vector3((i + Random.Range(-maxOffset, maxOffset)) / treeCount, 0, (j + Random.Range(-maxOffset, maxOffset)) / treeCount);
-
-                if (!(zOffset + (potentialPosition.z * 513) > (256 - roadWidth) &&
-                      zOffset + (potentialPosition.z * 513) < (256 + roadWidth)))
+                for (int j = 0; j < grassDensity; j++)
                 {
-                    // Sample the height at this location (note GetHeight expects int coordinates corresponding to locations in the heightmap array)
-                    float height = terrain.terrainData.GetHeight(j, i);
-                    if (height < 300.0f && height>splatHeights[1].startingHeight) newMap[i, j] = 6;
+                    Vector3 potentialPosition = new Vector3(j, 0, i);
+
+                    if (!(zOffset + (potentialPosition.z) > (256 - roadWidth) &&
+                          zOffset + (potentialPosition.z) < (256 + roadWidth)))
+                    {
+                        // Sample the height at this location (note GetHeight expects int coordinates corresponding to locations in the heightmap array)
+                        float height = terrain.terrainData.GetHeight(j, i);
+                        if (height < splatHeights[3].startingHeight && height>splatHeights[2].startingHeight) newMap[i, j] = 5;
+                        else newMap[i, j] = 0;
+                    }
                     else newMap[i, j] = 0;
                 }
-                else newMap[i, j] = 0;
             }
-        }
-        terrain.terrainData.SetDetailLayer(0, 0, 0, newMap);
+            terrain.terrainData.SetDetailLayer(0, 0, 0, newMap);
+        // }
     }
 
     void ScatterTrees()
@@ -65,9 +68,16 @@ public class TerrainScatter : MonoBehaviour
             {
                 Vector3 potentialPosition = new Vector3((i + Random.Range(-maxOffset, maxOffset)) / treeCount, 0, (j + Random.Range(-maxOffset, maxOffset)) / treeCount);
                 
-                if (!(zOffset + (potentialPosition.z * 513) > (256 - roadWidth) && zOffset + (potentialPosition.z * 513) < (256 + roadWidth)))
+                if (!(zOffset + (potentialPosition.z * 513) > (256 - roadWidth) && 
+                      zOffset + (potentialPosition.z * 513) < (256 + roadWidth)))
                 {
-                    PlaceTree(potentialPosition);
+                    Debug.Log((int) (potentialPosition.z*512));
+                    Debug.Log((int) (potentialPosition.x*512));
+
+                    float height = terrain.terrainData.GetHeight((int) (potentialPosition.x*513),(int) (potentialPosition.z*513));
+                    Debug.Log(height);
+                    if (height < splatHeights[3].startingHeight && height>splatHeights[2].startingHeight) PlaceTree(potentialPosition);
+                    
                 }
             }
         }

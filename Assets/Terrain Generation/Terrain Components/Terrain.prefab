@@ -113,15 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c57eeff68f5b04d839bc6c2b82edc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatHeights:
-  - textureIndex: 0
-    startingHeight: 0
-  - textureIndex: 1
-    startingHeight: 50
-  - textureIndex: 2
-    startingHeight: 100
-  - textureIndex: 3
-    startingHeight: 150
 --- !u!154 &8700995294294666484
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -147,10 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scatter:
   - {fileID: 9124157745091716997, guid: eaacf1de2871fe849bb1068f5c428111, type: 3}
-  treeCount: 10
+  treeCount: 30
   maxOffset: 0.62
-  grassDensity: 500
-  patchDetail: 16
+  grassDensity: 512
+  patchDetail: 32
 --- !u!1 &8738733913152271824
 GameObject:
   m_ObjectHideFlags: 0

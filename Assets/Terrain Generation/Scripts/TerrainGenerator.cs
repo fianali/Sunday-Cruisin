@@ -69,7 +69,9 @@ public class TerrainGenerator : MonoBehaviour
                     {
                         roadHeight += CompileNoise(256, x + i);
                     }
-                    heights[z, x] = roadHeight / (smoothFactor * 2 + 1);
+                    roadHeight = roadHeight / (smoothFactor * 2 + 1);
+                    if (roadHeight <= (12f/513f)) roadHeight = (12f/513f);
+                    heights[z, x] = roadHeight;
                 }
                 else
                 {
