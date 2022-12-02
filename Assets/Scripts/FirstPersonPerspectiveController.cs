@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class FirstPersonPerspectiveController : MonoBehaviour
 {
 
+    public static FirstPersonPerspectiveController Instance { get; private set; }
+    
     // Variables
     public Transform player;
     public float mouseSensitivity = 2f;
@@ -13,6 +16,30 @@ public class FirstPersonPerspectiveController : MonoBehaviour
 
     bool lockedCursor = true;
 
+    public GameObject minusVolume;
+    public GameObject plusVolume;
+    public GameObject minusReverb;
+    public GameObject plusReverb;
+    public GameObject minusPitch;
+    public GameObject plusPitch;
+    public GameObject lastStation;
+    public GameObject nextStation;
+    public GameObject lastSong;
+    public GameObject nextSong;
+    
+    public Vector3 collision = Vector3.zero;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        } 
+    }
 
     void Start()
     {
@@ -20,6 +47,7 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        // minusVolume.name = "volume";
     }
 
     
@@ -38,6 +66,25 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         cameraHorizontalRotation = Mathf.Clamp(cameraHorizontalRotation, -160f, 160f);
         transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
         transform.localEulerAngles -= Vector3.up * cameraHorizontalRotation;
-
+        
+        
+        
+        /////////////////////////////////////////////////////////////////
+        
+        
+        var ray = new Ray(this.transform.position, this.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(collision, .2f);
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5000;
+        Gizmos.DrawRay(this.transform.position, direction);
     }
 }
