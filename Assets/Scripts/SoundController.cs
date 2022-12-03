@@ -1,9 +1,12 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
+    public static SoundController Instance;
+    
     public AudioSource radio;
 
     public AudioClip one;
@@ -43,6 +46,10 @@ public class SoundController : MonoBehaviour
     private int count = 0;
     private bool pow = false;
 
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         first = new AudioClip[5];
