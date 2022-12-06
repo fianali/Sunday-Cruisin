@@ -15,6 +15,9 @@ ModelImporter:
   - first:
       74: 1114655515510522416
     second: welcome 2
+  - first:
+      74: 1379302983440920709
+    second: Welcome
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -74,11 +77,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: welcome 2
+      name: Welcome
       takeName: 2674549371328_TempMotion
       internalID: 0
       firstFrame: 0
-      lastFrame: 88
+      lastFrame: 147
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 467888}
   - component: {fileID: 7331811157299193873}
   - component: {fileID: 7331811157299193872}
+  - component: {fileID: 6472553006873362720}
   - component: {fileID: 7331811157299193875}
   m_Layer: 0
   m_Name: Classic_car_1955_style2
@@ -101,6 +102,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 47.89106, y: 15.611082, z: 89.33722}
   m_Center: {x: -1.0706024, y: 9.744012, z: 3.1014328}
+--- !u!114 &6472553006873362720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba7d7e3976ac124ab4009f76569928d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  Female: {fileID: 0}
+  Male: {fileID: 0}
+  PlayerBackseatPosition: {fileID: 0}
+  PlayerShotgunPosition: {fileID: 0}
+  PlayerDriverPosition: {fileID: 0}
+  MaleBackseatPosition: {fileID: 0}
+  MaleShotgunPosition: {fileID: 0}
+  FemaleDriverPosition: {fileID: 0}
+  FemaleShotgunPosition: {fileID: 0}
 --- !u!114 &7331811157299193875
 MonoBehaviour:
   m_ObjectHideFlags: 0

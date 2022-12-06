@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     private bool timesUp = false;
 
     private bool hungry;
+
     
     void Awake()
     {
