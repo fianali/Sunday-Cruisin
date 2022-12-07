@@ -28,6 +28,8 @@ public class FirstPersonPerspectiveController : MonoBehaviour
     public GameObject nextSong;
     
     public Vector3 collision = Vector3.zero;
+    
+    private bool lookedAtWindow = false;
 
     private void Awake()
     {
@@ -76,7 +78,22 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
+        }
+        
+        
+        ////////////////////// Did they look at the window? /////////////////////////////
+
+        
+        //Debug.Log(lookedAtWindow);
+        if (lookedAtWindow == false)
+        {
+            //Debug.Log(this.transform.rotation.y);
+            if (Math.Abs(this.transform.rotation.y) < 0.9f)
+            {
+                AnimationTesting.Instance.LookedAtWindow();
+                lookedAtWindow = true;
+            }
         }
     }
     

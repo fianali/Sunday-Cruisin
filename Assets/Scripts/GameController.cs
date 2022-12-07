@@ -13,34 +13,47 @@ public class GameController : MonoBehaviour
     public bool promote;
     public bool demote;
 
-    private bool backseat;
-    private bool passenger;
-    private bool driver;
+    public bool backseat;
+    public bool passenger;
+    public bool driver;
 
-    private bool fed = true;
+    public bool fed = true;
     private float timeWaited = 0f;
 
-    private int foodCount;
+    public int foodCount;
     private int songCount;
-    private bool pow;
+    private bool pow = true;
 
     private bool likedSong = true;
     private bool timesUp = false;
 
     private bool hungry;
+
+    public bool introOver = false;
+    private bool startCount = false;
+
     
     void Awake()
     {
         Instance = this;
+        backseat = true;
     }
 
     void Start()
     {
-        StartCoroutine(Food());
+        
     }
     
     void Update()
     {
+        if (introOver)
+        {
+            Debug.Log("Start");
+            StartCoroutine(Food());
+            introOver = false;
+            startCount = true;
+        }
+        
         if (!likedSong)
         {
             // station change
@@ -72,19 +85,31 @@ public class GameController : MonoBehaviour
             
                 // if (give food)
                 //   fed = true
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    fed = true;
+                    Debug.Log("YOU GAVE ME CRACKERS");
+                    AnimationTesting.Instance.GiveMeCrackersRevert();
+                }
             }
-            else if (fed)
+            else if (fed && startCount)
             {
-                if (timeWaited < 3f)
+                if (timeWaited < 3f && pow)
                 {
                     foodCount++;
+                    pow = false;
+                    Debug.Log(foodCount);
                 }
                 timeWaited = 0f;
             }
 
             if (foodCount >= 3)
             {
+                Debug.Log("Promote");
                 promote = true;
+                backseat = false;
+                passenger = true;
             }
         }
 
@@ -156,13 +181,16 @@ public class GameController : MonoBehaviour
 
     IEnumerator Food()
     {
-        while (true)
+        while (!passenger)
         {
-            int rand = Random.Range(5, 10);
+            int rand = Random.Range(20, 30);
 
-            // if (fed)
-            //   ask for food
-        
+            if (fed)
+            {
+                AnimationTesting.Instance.GiveMeCrackers();
+                pow = true;
+            }
+
             fed = false;
             yield return new WaitForSeconds(rand);
         }
