@@ -24,7 +24,7 @@ public class TerrainPainter : MonoBehaviour
                 
                 if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
                 {
-                    splat[3] = 1f;
+                    splat[4] = 1f;
                 }
                 else
                 {
