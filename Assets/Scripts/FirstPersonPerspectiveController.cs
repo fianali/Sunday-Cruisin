@@ -78,17 +78,17 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
         }
         
         
         ////////////////////// Did they look at the window? /////////////////////////////
 
         
-        Debug.Log(lookedAtWindow);
+        //Debug.Log(lookedAtWindow);
         if (lookedAtWindow == false)
         {
-            Debug.Log(this.transform.rotation.y);
+            //Debug.Log(this.transform.rotation.y);
             if (Math.Abs(this.transform.rotation.y) < 0.9f)
             {
                 AnimationTesting.Instance.LookedAtWindow();

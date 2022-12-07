@@ -31,6 +31,8 @@ public class AnimationTesting : MonoBehaviour
         Animator.SetBool("Welcoming", true);
         Animator.SetBool("Twisted", true);
         StartCoroutine(WelcomingRevert());
+
+        GameController.Instance.fed = false;
     }
 
     // Update is called once per frame
@@ -53,6 +55,8 @@ public class AnimationTesting : MonoBehaviour
     {
         Male.clip = GiveMeSomeCrackersDialogue;
         Male.Play();
+        
+        Debug.Log("GIVE ME CRACKERS");
         
         Animator.SetBool("Hungry", true);
     }
@@ -77,5 +81,7 @@ public class AnimationTesting : MonoBehaviour
         Animator.SetBool("Hungry", true);
         yield return new WaitForSeconds(10f);
         Animator.SetBool("Twisted", false);
+        
+        GameController.Instance.introOver = true;
     }
 }
