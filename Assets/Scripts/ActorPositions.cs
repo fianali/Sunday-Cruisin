@@ -17,6 +17,9 @@ public class ActorPositions : MonoBehaviour
     private Vector3 MaleBackseatPosition = new Vector3(7.94f, 5.72f, 17.24f);
     private Vector3 MaleShotgunPosition = new Vector3(-4.51f, 4.49f, 5.04f);
     private Vector3 MaleShotgunScale = new Vector3(15, 15, 15);
+    
+    private Vector3 PlayerShotgunPosition;
+    private Vector3 PlayerShotgunScale;
 
     void Awake()
     {
@@ -25,6 +28,8 @@ public class ActorPositions : MonoBehaviour
 
     private void Start()
     {
+        PlayerShotgunPosition = Player.transform.position;
+        PlayerShotgunScale = Player.transform.localScale;
         PlayerToBackseat();
     }
 
@@ -38,6 +43,9 @@ public class ActorPositions : MonoBehaviour
 
     void PlayerToShotgun()
     {
-        
+        Player.transform.position = PlayerShotgunPosition;
+        Player.transform.localScale = PlayerShotgunScale;
+        Male.transform.position = MaleBackseatPosition;
+        //Male.transform.localScale = 
     }
 }
