@@ -130,41 +130,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: splatHeights.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: splatHeights.Array.data[0].startingHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: splatHeights.Array.data[1].startingHeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: splatHeights.Array.data[2].startingHeight
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847808, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: splatHeights.Array.data[3].startingHeight
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847809, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -206,61 +174,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: roadwidth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: loadDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: roadSmoothFactor
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[1].textureIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[2].textureIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[3].textureIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[4].textureIndex
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[1].startingHeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[2].startingHeight
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[3].startingHeight
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: biomeHeights.Array.data[4].startingHeight
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847811, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_Name
       value: Terrain Loader
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733616821781847811, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
