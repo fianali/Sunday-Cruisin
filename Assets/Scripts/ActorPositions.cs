@@ -35,4 +35,9 @@ public class ActorPositions : MonoBehaviour
         Male.transform.position = MaleShotgunPosition;
         Male.transform.localScale = MaleShotgunScale;
     }
+
+    void PlayerToShotgun()
+    {
+        
+    }
 }

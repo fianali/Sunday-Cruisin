@@ -18,6 +18,15 @@ ModelImporter:
   - first:
       74: 1379302983440920709
     second: Welcome
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: -2404658361093183287
+    second: LookedAtWindow
+  - first:
+      74: -8190304785698767083
+    second: Crackers
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -52,7 +61,7 @@ ModelImporter:
       takeName: 2674549371328_TempMotion
       internalID: 0
       firstFrame: 0
-      lastFrame: 358
+      lastFrame: 357
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -82,6 +91,93 @@ ModelImporter:
       internalID: 0
       firstFrame: 0
       lastFrame: 147
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: 2674549371328_TempMotion
+      internalID: 0
+      firstFrame: 158
+      lastFrame: 191
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: LookedAtWindow
+      takeName: 2674549371328_TempMotion
+      internalID: 0
+      firstFrame: 189
+      lastFrame: 357
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Crackers
+      takeName: 2674549371328_TempMotion
+      internalID: 0
+      firstFrame: 286
+      lastFrame: 357
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

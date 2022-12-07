@@ -91,6 +91,7 @@ public class FirstPersonPerspectiveController : MonoBehaviour
             Debug.Log(this.transform.rotation.y);
             if (Math.Abs(this.transform.rotation.y) < 0.9f)
             {
+                AnimationTesting.Instance.LookedAtWindow();
                 lookedAtWindow = true;
             }
         }
