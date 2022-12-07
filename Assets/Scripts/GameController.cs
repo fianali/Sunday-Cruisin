@@ -13,14 +13,14 @@ public class GameController : MonoBehaviour
     public bool promote;
     public bool demote;
 
-    private bool backseat;
-    private bool passenger;
-    private bool driver;
+    public bool backseat;
+    public bool passenger;
+    public bool driver;
 
     public bool fed = true;
     private float timeWaited = 0f;
 
-    private int foodCount;
+    public int foodCount;
     private int songCount;
     private bool pow = true;
 
