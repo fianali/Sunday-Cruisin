@@ -71,11 +71,11 @@ public class TerrainScatter : MonoBehaviour
                 if (!(zOffset + (potentialPosition.z * 513) > (256 - roadWidth) && 
                       zOffset + (potentialPosition.z * 513) < (256 + roadWidth)))
                 {
-                    Debug.Log((int) (potentialPosition.z*512));
-                    Debug.Log((int) (potentialPosition.x*512));
+                    //Debug.Log((int) (potentialPosition.z*512));
+                    //Debug.Log((int) (potentialPosition.x*512));
 
                     float height = terrain.terrainData.GetHeight((int) (potentialPosition.x*513),(int) (potentialPosition.z*513));
-                    Debug.Log(height);
+                    //Debug.Log(height);
                     if (height < splatHeights[3].startingHeight && height>splatHeights[2].startingHeight) PlaceTree(potentialPosition);
                     
                 }

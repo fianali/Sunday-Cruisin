@@ -10,12 +10,12 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance;
     
-    public bool promote;
+    public bool promote = false;
     public bool demote;
 
-    public bool backseat;
-    public bool passenger;
-    public bool driver;
+    public bool backseat = true;
+    public bool passenger = false;
+    public bool driver = false;
 
     public bool fed = true;
     private float timeWaited = 0f;
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
     {
         if (introOver)
         {
-            Debug.Log("Start");
+            // Debug.Log("Start");
             StartCoroutine(Food());
             introOver = false;
             startCount = true;
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     fed = true;
-                    Debug.Log("YOU GAVE ME CRACKERS");
+                    // Debug.Log("YOU GAVE ME CRACKERS");
                     AnimationTesting.Instance.GiveMeCrackersRevert();
                 }
             }
@@ -99,17 +99,16 @@ public class GameController : MonoBehaviour
                 {
                     foodCount++;
                     pow = false;
-                    Debug.Log(foodCount);
+                    // Debug.Log(foodCount);
                 }
                 timeWaited = 0f;
             }
 
             if (foodCount >= 3)
             {
-                Debug.Log("Promote");
+                //Debug.Log("Promote");
                 promote = true;
-                backseat = false;
-                passenger = true;
+                backseat = true;
             }
         }
 
@@ -165,8 +164,16 @@ public class GameController : MonoBehaviour
         
         if (promote)
         {
-            // if (backseat)
-            //   move to passenger seat (passenger = true)
+            if (backseat)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ActorPositions.Instance.PlayerToShotgun();
+                    backseat = false;
+                    passenger = true;
+                    promote = false;
+                }
+            }
             // if (passenger)
             //   move to driver's seat (driver = true)
         }

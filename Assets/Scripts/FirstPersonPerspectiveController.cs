@@ -85,11 +85,11 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         ////////////////////// Did they look at the window? /////////////////////////////
 
         
-        //Debug.Log(lookedAtWindow);
+        // Debug.Log(Math.Abs(this.transform.rotation.y));
         if (lookedAtWindow == false)
         {
-            //Debug.Log(this.transform.rotation.y);
-            if (Math.Abs(this.transform.rotation.y) < 0.9f)
+            
+            if (Math.Abs(this.transform.rotation.y) < .32f)
             {
                 AnimationTesting.Instance.LookedAtWindow();
                 lookedAtWindow = true;
