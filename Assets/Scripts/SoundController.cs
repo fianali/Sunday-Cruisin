@@ -46,6 +46,8 @@ public class SoundController : MonoBehaviour
     private int count = 0;
     private bool pow = false;
 
+    public bool songChanged = false;
+
     void Awake()
     {
         Instance = this;
@@ -97,6 +99,8 @@ public class SoundController : MonoBehaviour
 
             radio.clip = first[count];
             radio.Play();
+
+            songChanged = true;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -110,6 +114,8 @@ public class SoundController : MonoBehaviour
 
             radio.clip = second[count];
             radio.Play();
+
+            songChanged = true;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -123,6 +129,8 @@ public class SoundController : MonoBehaviour
 
             radio.clip = third[count];
             radio.Play();
+
+            songChanged = true;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -136,11 +144,15 @@ public class SoundController : MonoBehaviour
 
             radio.clip = fourth[count];
             radio.Play();
+
+            songChanged = true;
         }
 
         // change song
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            songChanged = true;
+
             count++;
             if (count == 5)
             {
@@ -168,6 +180,8 @@ public class SoundController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || (!radio.isPlaying && pow))
         {
+            songChanged = true;
+
             count--;
             if (count == -1)
             {

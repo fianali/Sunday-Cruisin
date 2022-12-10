@@ -21,16 +21,18 @@ public class GameController : MonoBehaviour
     private float timeWaited = 0f;
 
     public int foodCount;
-    private int songCount;
+    private int songCount = 0;
     private bool pow = true;
+    private bool pow2 = true;
 
-    private bool likedSong = true;
+    private bool likedSong = false;
     private bool timesUp = false;
 
     private bool hungry;
 
     public bool introOver = false;
     private bool startCount = false;
+    private bool checkRequest = true;
 
     
     void Awake()
@@ -48,7 +50,6 @@ public class GameController : MonoBehaviour
     {
         if (introOver)
         {
-            // Debug.Log("Start");
             StartCoroutine(Food());
             introOver = false;
             startCount = true;
@@ -81,7 +82,8 @@ public class GameController : MonoBehaviour
         {
             if (!fed)
             {
-                timeWaited = Time.time;
+                
+                timeWaited += Time.deltaTime;
             
                 // if (give food)
                 //   fed = true
@@ -89,27 +91,34 @@ public class GameController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     fed = true;
-                    // Debug.Log("YOU GAVE ME CRACKERS");
+                    
                     AnimationTesting.Instance.GiveMeCrackersRevert();
                 }
             }
             else if (fed && startCount)
             {
-                if (timeWaited < 3f && pow)
+                if (timeWaited < 6f && pow)
                 {
                     foodCount++;
                     pow = false;
-                    // Debug.Log(foodCount);
+                    
+                }
+                else if (timeWaited > 7f && pow)
+                {
+                    foodCount--;
+                    pow = false;
                 }
                 timeWaited = 0f;
             }
 
-            if (foodCount >= 3)
+            if (foodCount >= 2)
             {
-                //Debug.Log("Promote");
                 promote = true;
-                backseat = true;
             }
+            // else
+            // {
+            //     promote = false;
+            // }
         }
 
         if (!passenger)
@@ -123,37 +132,70 @@ public class GameController : MonoBehaviour
             //    likedSong = false
             // }
         }
-        // if (passenger)
-        else
-        {
-            // yeahhhh turn it up
 
-            // random feedback?
+      
+        if (passenger)
+        {
+            if (pow2)
+            {
+                SoundController.Instance.songChanged = false;
+                pow2 = false;
+            }
             
+
+            if (checkRequest || SoundController.Instance.songChanged)
+            {
+                SoundController.Instance.songChanged = false;
+
+                int rand = Random.Range(0, 2);
+                if (rand == 1)
+                {
+                    likedSong = false;
+                    Debug.Log("Liked: " + likedSong);
+                    StartCoroutine(Music());
+                }
+                else
+                {
+                    likedSong = true;
+                    songCount++;
+                    Debug.Log("SC: " + songCount);
+                    Debug.Log("Liked: " + likedSong);
+                }
+
+                
+                checkRequest = false;
+            }
+            
+
             // if (!likedSong)
             // {
-            //    StartCoroutine(Music())
-            //    if (click on change song? if play specific radio? do these ppl have specific preferences idk)
-            //    { 
-            //        likedSong = true
-            //        songCount++;
-            //    }
+            //     if (SoundController.Instance.songChanged)
+            //     { 
+            //         likedSong = true;
+            //         songCount++;
+            //         Debug.Log("SC: " + songCount);
+            //     }
             // }
-            // 
+            
+
             if (timesUp && !likedSong)
             {
                 timesUp = false;
                 songCount--;
+                Debug.Log("SC: " + songCount);
             }
-            if (songCount == -1)
+            if (songCount == -3)
             {
                 demote = true;
+                backseat = true;
                 songCount = 0;
+                
             }
             if (songCount == 5)
             {
                 promote = true;
                 songCount = 0;
+                
             }
         }
 
@@ -164,6 +206,15 @@ public class GameController : MonoBehaviour
         
         if (promote)
         {
+            if (passenger && !backseat)
+            {
+                // ActorPositions.Instance.PlayerToDriver();
+                passenger = false;
+                driver = true;
+                promote = false;
+                Debug.Log("Promote To Driver");
+
+            }
             if (backseat)
             {
                 if (Input.GetKeyDown(KeyCode.E))
@@ -174,21 +225,31 @@ public class GameController : MonoBehaviour
                     promote = false;
                 }
             }
-            // if (passenger)
-            //   move to driver's seat (driver = true)
+            
         }
         else if (demote)
         {
             // if (driver)
-            //   move to passenger seat (passenger = true)
-            // if (passenger)
-            //   move to backseat (backseat = true)
+            // {
+            //     ActorPositions.Instance.PlayerToShotgun();
+            //     passenger = true;
+            //     driver = false;
+            //     demote = false;
+            // }
+            if (passenger)
+            {
+                ActorPositions.Instance.PlayerToBackseat();
+                backseat = true;
+                passenger = false;
+                demote = false;
+
+            }
         }
     }
 
     IEnumerator Food()
     {
-        while (!passenger)
+        while (backseat)
         {
             int rand = Random.Range(20, 30);
 
@@ -197,6 +258,7 @@ public class GameController : MonoBehaviour
                 AnimationTesting.Instance.GiveMeCrackers();
                 pow = true;
             }
+            
 
             fed = false;
             yield return new WaitForSeconds(rand);
@@ -206,11 +268,16 @@ public class GameController : MonoBehaviour
     
     IEnumerator Music()
     {
-        // requests???? idfk
-        
-        
-        yield return new WaitForSeconds(5);
+          
+        Debug.Log("CHANGE THIS SHIT");
+        yield return new WaitForSeconds(10);
+        Debug.Log("TIME CHECK: " + timesUp);
+        if (SoundController.Instance.songChanged)
+        {
+            yield break;
+            Debug.Log("Break");
+        }
         timesUp = true;
-    }
-    
+         
+    } 
 }

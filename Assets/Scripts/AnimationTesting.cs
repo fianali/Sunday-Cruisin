@@ -56,8 +56,6 @@ public class AnimationTesting : MonoBehaviour
         Male.clip = GiveMeSomeCrackersDialogue;
         Male.Play();
         
-        Debug.Log("GIVE ME CRACKERS");
-        
         Animator.SetBool("Hungry", true);
     }
 

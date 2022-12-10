@@ -37,7 +37,7 @@ public class ActorPositions : MonoBehaviour
         PlayerToBackseat();
     }
     
-    void PlayerToBackseat()
+    public void PlayerToBackseat()
     {
         Debug.Log("player to backseat");
         Player.transform.localPosition = PlayerBackseatPosition;
