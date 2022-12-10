@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Need Snack
-  m_Speed: 0.35
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6802103675336933}
@@ -263,7 +263,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: idle
-  m_Speed: 0.2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4082480298623531634}
@@ -326,9 +326,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 3.0268307
+  m_TransitionDuration: 2.7130685
   m_TransitionOffset: 0
-  m_ExitTime: 0.94186044
+  m_ExitTime: 0.9418602
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -348,31 +348,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Welcoming
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LookedAtWindow
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Hungry
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Twisted
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Body
@@ -430,7 +430,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Welcome
-  m_Speed: 0.35
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6443668502198914921}
@@ -593,9 +593,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 4.429997
+  m_TransitionDuration: 1.3765671
   m_TransitionOffset: 0
-  m_ExitTime: 0.74999994
+  m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -634,7 +634,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Welcome Body
-  m_Speed: 0.4
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3907804384868186338}
@@ -670,9 +670,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 4.6941013
+  m_TransitionDuration: 0.7886548
   m_TransitionOffset: 0
-  m_ExitTime: 0.94186044
+  m_ExitTime: 0.9418604
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -711,7 +711,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Twisted
-  m_Speed: 0.35
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5076630666788613488}
@@ -738,7 +738,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LookedAtWindow
-  m_Speed: 0.35
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5157735969614535705}
