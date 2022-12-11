@@ -5,6 +5,25 @@ using Graphics.Tools.Noise;
 using Graphics.Tools.Noise.Primitive;
 using UnityEngine;
 
+public static class NoiseManager
+{
+    private static SimplexPerlin simplexPerlin;
+    public static SimplexPerlin SimplexPerlin
+    {
+        get
+        {
+            if (simplexPerlin == null)
+            {
+                simplexPerlin = new SimplexPerlin(Seed, NoiseQuality.Fast);
+            }
+
+            return simplexPerlin;
+        }
+    }
+
+    public static int Seed { get; set; } = 5000;
+}
+
 public class TerrainLoader : MonoBehaviour
 {
     public static TerrainLoader Instance;
@@ -27,8 +46,6 @@ public class TerrainLoader : MonoBehaviour
     public int roadwidth;
     public int roadSmoothFactor;
 
-    public SimplexPerlin simplexPerlin;
-    
     [System.Serializable]
     public class SplatHeights
     {
@@ -40,7 +57,6 @@ public class TerrainLoader : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        simplexPerlin = new SimplexPerlin(seed, NoiseQuality.Fast);
     }
 
     void Start()

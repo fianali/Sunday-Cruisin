@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
+using System.Diagnostics;
 using Graphics.Tools.Noise;
 using Graphics.Tools.Noise.Primitive;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
@@ -18,15 +21,31 @@ public class TerrainGenerator : MonoBehaviour
     public float[] octaves;
     public float redistributionFactor;
 
-    private void Start()
+    void JulienTest()
     {
-        _seed = TerrainLoader.Instance.seed;
-
-
-        
+        NoiseManager.SimplexPerlin.GetValue(0f);
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = Instantiate(baseTerrainData);
-        terrain.terrainData = GenerateTerrain(terrain.terrainData);
+        GenerateTerrain(terrain.terrainData, 1, 1, JulienAfterTesting);
+    }
+
+    void JulienAfterTesting()
+    {
+        Debug.Log("Finished!");
+    }
+
+    private void Start()
+    {
+        JulienTest();
+        return;
+        _seed = TerrainLoader.Instance.seed;
+
+        Terrain terrain = GetComponent<Terrain>();
+        terrain.terrainData = Instantiate(baseTerrainData);
+        var roadwidth = TerrainLoader.Instance.roadwidth;
+        int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
+        //TODO for Martin: Update this
+        //terrain.terrainData = GenerateTerrain(terrain.terrainData, roadwidth, smoothFactor);
         
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
         terrainCollider.terrainData = terrain.terrainData;
@@ -37,26 +56,89 @@ public class TerrainGenerator : MonoBehaviour
         terrainScatter.ScatterFoliage(terrain);
     }
 
-    TerrainData GenerateTerrain(TerrainData terrainData)
+    // TerrainData GenerateTerrain(TerrainData terrainData, int roadwidth, int smoothFactor)
+    // {
+    //     terrainData.heightmapResolution = width;
+    //     
+    //     terrainData.size = new Vector3(width, depth, length);
+    //     
+    //     terrainData.SetHeights(0,0, GenerateHeights(roadwidth, smoothFactor));
+    //
+    //     return terrainData;
+    // }
+    
+    void GenerateTerrain(TerrainData terrainData, int roadwidth, int smoothFactor, GenericDelegate onFinishedCallback)
     {
         terrainData.heightmapResolution = width;
         
         terrainData.size = new Vector3(width, depth, length);
-        
-        terrainData.SetHeights(0,0, GenerateHeights());
 
-        return terrainData;
+        StartCoroutine(GenerateHeightsCoroutine(roadwidth, smoothFactor, (data) =>
+            {
+                terrainData.SetHeights(0, 0, data);
+                onFinishedCallback?.Invoke();
+            }
+        ));
     }
 
-    float[,] GenerateHeights()
+    private delegate void GenericDelegate();
+    private delegate void GenericDelegate<T>(T variable);
+    
+    IEnumerator GenerateHeightsCoroutine(int roadwidth, int smoothFactor, GenericDelegate<float[,]> callback)
     {
+        System.Diagnostics.Stopwatch timer = new Stopwatch();
+        timer.Start();
+        
         float[,] heights = new float[width, length];
 
-        var xOffset = transform.position.x;
-        var zOffset = transform.position.z;
+        Vector3 position = transform.position;
+        var xOffset = position.x;
+        var zOffset = position.z;
 
-        var roadwidth = TerrainLoader.Instance.roadwidth;
-        int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
+        for (int z = 0; z < width; z++)
+        {
+            if (timer.ElapsedMilliseconds > 5)
+            {
+                yield return null;
+                timer.Reset();
+                timer.Start();
+            }
+
+            for (int x = 0; x < length; x++)
+            {
+                if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
+                {
+                    float roadHeight = 0;
+                    for (int i = -smoothFactor; i <= smoothFactor; i++)
+                    {
+                        roadHeight += CompileNoise(256, x + i, position);
+                    }
+                    roadHeight = roadHeight / (smoothFactor * 2 + 1);
+                    if (roadHeight <= (12f/513f)) roadHeight = (12f/513f);
+                    heights[z, x] = roadHeight;
+                }
+                else
+                {
+                    heights[z, x] = CompileNoise(z, x, position);
+                }
+            }
+        }
+        timer.Stop();
+        Debug.Log("Total time: " + timer.ElapsedMilliseconds);
+
+        callback( heights);
+    }
+
+    float[,] GenerateHeights(int roadwidth, int smoothFactor)
+    {
+        System.Diagnostics.Stopwatch timer = new Stopwatch();
+        timer.Start();
+        
+        float[,] heights = new float[width, length];
+
+        Vector3 position = transform.position;
+        var xOffset = position.x;
+        var zOffset = position.z;
 
         for (int z = 0; z < width; z++)
         {
@@ -67,7 +149,7 @@ public class TerrainGenerator : MonoBehaviour
                     float roadHeight = 0;
                     for (int i = -smoothFactor; i <= smoothFactor; i++)
                     {
-                        roadHeight += CompileNoise(256, x + i);
+                        roadHeight += CompileNoise(256, x + i, position);
                     }
                     roadHeight = roadHeight / (smoothFactor * 2 + 1);
                     if (roadHeight <= (12f/513f)) roadHeight = (12f/513f);
@@ -75,19 +157,24 @@ public class TerrainGenerator : MonoBehaviour
                 }
                 else
                 {
-                    heights[z, x] = CompileNoise(z, x);
+                    heights[z, x] = CompileNoise(z, x, position);
                 }
             }
         }
+        timer.Stop();
+        Debug.Log("Total time: " + timer.ElapsedMilliseconds);
 
         return heights;
     }
 
-    float CompileNoise(int x, int y)
+    float CompileNoise(int x, int y, Vector3 position)
     {
         // Sea level
         float height = 0;
         float octaveSum = 0f;
+
+        float xNorm = (x + position.z - (position.z / 513));
+        float yNorm = (y + position.x - (position.x / 513));
         
         for (int i = 0; i < octaves.Length; i++)
         {
@@ -128,26 +215,26 @@ public class TerrainGenerator : MonoBehaviour
         return height;
     }*/
 
-    float CalculateNoise(int x, int y, float scale)
+    float CalculateNoise(float xNorm, float yNorm, float scale)
     {
-        var position = transform.position;
         /*float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + _seed ;
         float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + _seed ;*/
         
-        float xNorm = (x + position.z - (position.z / 513)) / width * scale;
-        float yNorm = (y + position.x - (position.x / 513)) / length * scale;
+        xNorm = xNorm / width * scale;
+        yNorm = yNorm / length * scale;
 
+        // return (NoiseManager.SimplexPerlin.GetValue(xNorm, yNorm) + 1)/1;
         return Mathf.PerlinNoise(xNorm, yNorm);
     }
     
-    float CalculateNoise(int x, int y, float scale, float seed)
-    {
-        var position = transform.position;
-        float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + seed ;
-        float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + seed ;
-        
-        return (TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm) + 1)/1;
-        return Mathf.PerlinNoise(xNorm, yNorm);
-    }
+    // float CalculateNoise(int x, int y, float scale, float seed)
+    // {
+    //     var position = transform.position;
+    //     float xNorm = (float) (x + position.z - (position.z / 513)) / width * scale + seed ;
+    //     float yNorm = (float) (y + position.x - (position.x / 513)) / length * scale + seed ;
+    //     
+    //     return (TerrainLoader.Instance.simplexPerlin.GetValue(xNorm, yNorm) + 1)/1;
+    //     return Mathf.PerlinNoise(xNorm, yNorm);
+    // }
     
 }
