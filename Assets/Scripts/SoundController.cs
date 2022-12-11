@@ -43,6 +43,8 @@ public class SoundController : MonoBehaviour
     private bool threePressed = false;
     private bool fourPressed = false;
 
+   
+
     private int count = 0;
     private bool pow = false;
 
@@ -90,131 +92,180 @@ public class SoundController : MonoBehaviour
 
     void Update()
     {
-
-        // change station
-        if (Input.GetKeyDown(KeyCode.Alpha1) || start)
+        if (GameController.Instance.passenger || start)
         {
-            count = 0;
-            pow = true;
-
-            onePressed = true;
-            twoPressed = false;
-            threePressed = false;
-            fourPressed = false;
-
-            radio.clip = first[count];
-            radio.Play();
-
-            songChanged = true;
-            start = false;
-            
-            
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            count = 0;
-            pow = true;
-
-            onePressed = false;
-            twoPressed = true;
-            threePressed = false;
-            fourPressed = false;
-
-            radio.clip = second[count];
-            radio.Play();
-
-            songChanged = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            count = 0;
-            pow = true;
-
-            onePressed = false;
-            twoPressed = false;
-            threePressed = true;
-            fourPressed = false;
-
-            radio.clip = third[count];
-            radio.Play();
-
-            songChanged = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            count = 0;
-            pow = true;
-
-            onePressed = false;
-            twoPressed = false;
-            threePressed = false;
-            fourPressed = true;
-
-            radio.clip = fourth[count];
-            radio.Play();
-
-            songChanged = true;
-        }
-
-        // change song
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            songChanged = true;
-
-            count++;
-            if (count == 5)
+             // change station
+            if (Input.GetKeyDown(KeyCode.Alpha1) || start)
             {
                 count = 0;
-            }
+                pow = true;
 
-            if (onePressed)
-            {
+                onePressed = true;
+                twoPressed = false;
+                threePressed = false;
+                fourPressed = false;
+
                 radio.clip = first[count];
+                radio.Play();
+
+                songChanged = true;
+                start = false;
+               
             }
-            if (twoPressed)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                count = 0;
+                pow = true;
+
+                onePressed = false;
+                twoPressed = true;
+                threePressed = false;
+                fourPressed = false;
+
                 radio.clip = second[count];
+                radio.Play();
+
+                songChanged = true;
             }
-            if (threePressed)
+            if (Input.GetKeyDown(KeyCode.Alpha3))
             {
+                count = 0;
+                pow = true;
+
+                onePressed = false;
+                twoPressed = false;
+                threePressed = true;
+                fourPressed = false;
+
                 radio.clip = third[count];
+                radio.Play();
+
+                songChanged = true;
             }
-            if (fourPressed)
+            if (Input.GetKeyDown(KeyCode.Alpha4))
             {
+                count = 0;
+                pow = true;
+
+                onePressed = false;
+                twoPressed = false;
+                threePressed = false;
+                fourPressed = true;
+
                 radio.clip = fourth[count];
+                radio.Play();
+
+                songChanged = true;
             }
 
-            radio.Play();
+            // change song
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                songChanged = true;
+
+                count++;
+                if (count == 5)
+                {
+                    count = 0;
+                }
+
+                if (onePressed)
+                {
+                    radio.clip = first[count];
+                }
+                if (twoPressed)
+                {
+                    radio.clip = second[count];
+                }
+                if (threePressed)
+                {
+                    radio.clip = third[count];
+                }
+                if (fourPressed)
+                {
+                    radio.clip = fourth[count];
+                }
+
+                radio.Play();
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || (!radio.isPlaying && pow))
+            {
+                songChanged = true;
+
+                count--;
+                if (count == -1)
+                {
+                    count = 4;
+                }
+
+                if (onePressed)
+                {
+                    radio.clip = first[count];
+                }
+                if (twoPressed)
+                {
+                    radio.clip = second[count];
+                }
+                if (threePressed)
+                {
+                    radio.clip = third[count];
+                }
+                if (fourPressed)
+                {
+                    radio.clip = fourth[count];
+                }
+
+                radio.Play();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || (!radio.isPlaying && pow))
+        else
         {
-            songChanged = true;
+            if (!UIManager.Instance.liked)
+            {
+                UIManager.Instance.liked = true;
+                radio.Stop();
 
-            count--;
-            if (count == -1)
-            {
-                count = 4;
-            }
+                int randStation = Random.Range(0, 4);
+                int randSong = Random.Range(0, 5);
 
-            if (onePressed)
-            {
-                radio.clip = first[count];
-            }
-            if (twoPressed)
-            {
-                radio.clip = second[count];
-            }
-            if (threePressed)
-            {
-                radio.clip = third[count];
-            }
-            if (fourPressed)
-            {
-                radio.clip = fourth[count];
-            }
 
-            radio.Play();
+                count = randSong;
+
+                if (randStation == 0)
+                {
+                    radio.clip = first[randSong];
+                    onePressed = true;
+                    twoPressed = false;
+                    threePressed = false;
+                    fourPressed = false;
+                }
+                if (randStation == 1)
+                {
+                    radio.clip = second[randSong];
+                    onePressed = false;
+                    twoPressed = true;
+                    threePressed = false;
+                    fourPressed = false;
+                }
+                if (randStation == 2)
+                {
+                    radio.clip = third[randSong];
+                    onePressed = false;
+                    twoPressed = false;
+                    threePressed = true;
+                    fourPressed = false;
+                }
+                if (randStation == 3)
+                {
+                    radio.clip = fourth[randSong];
+                    onePressed = false;
+                    twoPressed = false;
+                    threePressed = false;
+                    fourPressed = true;
+                }
+            
+                radio.Play();
+            }
         }
-
     }
 }

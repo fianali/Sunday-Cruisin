@@ -403,6 +403,7 @@ MonoBehaviour:
   crackerInstructions: {fileID: 970687594}
   passenger: {fileID: 221552817}
   driver: {fileID: 187050303}
+  liked: 1
 --- !u!4 &78955185
 Transform:
   m_ObjectHideFlags: 0
@@ -1937,6 +1938,10 @@ PrefabInstance:
     - target: {fileID: 10816108, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
       propertyPath: m_Intensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 727407915, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 727407916, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
       propertyPath: m_RootOrder
