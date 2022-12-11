@@ -9,6 +9,9 @@ using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
 {
+    public static TerrainGenerator Instance;
+    public bool finished = false;
+
     [SerializeField] private int width;
     [SerializeField] private int length;
     [SerializeField] private int depth;
@@ -28,6 +31,11 @@ public class TerrainGenerator : MonoBehaviour
         terrain.terrainData = Instantiate(baseTerrainData);
         GenerateTerrain(terrain.terrainData, 1, 1, DoneLoadingCallback);
     }*/
+
+    void Awake() 
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -52,6 +60,7 @@ public class TerrainGenerator : MonoBehaviour
         terrainPainter.PaintTerrain(terrain.terrainData);
         terrainScatter.ScatterFoliage(terrain);
         Debug.Log("Finished!");
+        finished = true;
     }
 
     // TerrainData GenerateTerrain(TerrainData terrainData, int roadwidth, int smoothFactor)

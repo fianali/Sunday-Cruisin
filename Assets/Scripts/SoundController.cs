@@ -48,6 +48,8 @@ public class SoundController : MonoBehaviour
 
     public bool songChanged = false;
 
+    private bool start = true;
+
     void Awake()
     {
         Instance = this;
@@ -81,13 +83,16 @@ public class SoundController : MonoBehaviour
         fourth[2] = three4;
         fourth[3] = four4;
         fourth[4] = five4;
+
+       
     }
 
 
     void Update()
     {
+
         // change station
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || start)
         {
             count = 0;
             pow = true;
@@ -101,6 +106,9 @@ public class SoundController : MonoBehaviour
             radio.Play();
 
             songChanged = true;
+            start = false;
+            
+            
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {

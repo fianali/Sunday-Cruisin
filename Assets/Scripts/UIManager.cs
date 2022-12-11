@@ -7,13 +7,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     [SerializeField] private GameObject promoteText;
     [SerializeField] private GameObject crackerInstructions;
     [SerializeField] private GameObject passenger;
     [SerializeField] private GameObject driver;
 
+    public bool liked = true;
 
-
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -67,11 +73,13 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Debug.Log("you like this song");
+            liked = true;
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("you dont like this song");
+            liked = false;
         }
     }
 

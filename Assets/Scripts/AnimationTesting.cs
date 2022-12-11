@@ -22,23 +22,32 @@ public class AnimationTesting : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        Male.clip = WelcomeDialogue;
-        Male.Play();
+        // Male.clip = WelcomeDialogue;
+        // Male.Play();
         
-        Animator.SetBool("Welcoming", true);
-        Animator.SetBool("Twisted", true);
-        StartCoroutine(WelcomingRevert());
+        // Animator.SetBool("Welcoming", true);
+        // Animator.SetBool("Twisted", true);
+        // StartCoroutine(WelcomingRevert());
 
-        GameController.Instance.fed = false;
+        // GameController.Instance.fed = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (TerrainGenerator.Instance.finished)
+        {
+            Male.clip = WelcomeDialogue;
+            Male.Play();
         
+            Animator.SetBool("Welcoming", true);
+            Animator.SetBool("Twisted", true);
+            StartCoroutine(WelcomingRevert());
+
+            GameController.Instance.fed = false;
+            TerrainGenerator.Instance.finished = false;
+        }
     }
 
     public void LookedAtWindow()

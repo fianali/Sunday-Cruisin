@@ -242,6 +242,7 @@ public class GameController : MonoBehaviour
                 backseat = true;
                 passenger = false;
                 demote = false;
+                StartCoroutine(Food());
 
             }
         }
