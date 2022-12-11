@@ -37,7 +37,7 @@ public class TerrainGenerator : MonoBehaviour
         // var roadwidth = TerrainLoader.Instance.roadwidth;
         // int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
         
-        GenerateTerrain(terrain.terrainData, 20, 20, DoneLoadingCallback);
+        GenerateTerrain(terrain.terrainData, 20, 70, DoneLoadingCallback);
     }
     
     void DoneLoadingCallback()
@@ -107,13 +107,15 @@ public class TerrainGenerator : MonoBehaviour
             {
                 if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
                 {
-                    float roadHeight = 30;
-                    // for (int i = -smoothFactor; i <= smoothFactor; i++)
-                    // {
-                    //     roadHeight += CompileNoise(256, x + i, position);
-                    // }
-                    // roadHeight = roadHeight / (smoothFactor * 2 + 1);
-                    // if (roadHeight <= (12f/513f)) roadHeight = (12f/513f);
+                    float roadHeight = 0;
+                    for (int i = -smoothFactor; i <= smoothFactor; i++)
+                    {
+                        var potentialHeight = CompileNoise(256, x + i, position);
+                        if (potentialHeight >= (45f / 513f)) potentialHeight = (45f / 513f);
+                        if (potentialHeight <= (12f / 513f)) potentialHeight = (12f/513f);
+                        roadHeight += potentialHeight;
+                    }
+                    roadHeight /= (smoothFactor * 2 + 1);
                     heights[z, x] = roadHeight;
                 }
                 else
