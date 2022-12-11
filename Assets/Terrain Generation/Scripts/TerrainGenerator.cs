@@ -21,39 +21,37 @@ public class TerrainGenerator : MonoBehaviour
     public float[] octaves;
     public float redistributionFactor;
 
-    void JulienTest()
+    /*void JulienTest()
     {
-        NoiseManager.SimplexPerlin.GetValue(0f);
+        // NoiseManager.SimplexPerlin.GetValue(0f);
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = Instantiate(baseTerrainData);
-        GenerateTerrain(terrain.terrainData, 1, 1, JulienAfterTesting);
-    }
-
-    void JulienAfterTesting()
-    {
-        Debug.Log("Finished!");
-    }
+        GenerateTerrain(terrain.terrainData, 1, 1, DoneLoadingCallback);
+    }*/
 
     private void Start()
     {
-        JulienTest();
-        return;
-        _seed = TerrainLoader.Instance.seed;
-
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = Instantiate(baseTerrainData);
-        var roadwidth = TerrainLoader.Instance.roadwidth;
-        int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
-        //TODO for Martin: Update this
-        //terrain.terrainData = GenerateTerrain(terrain.terrainData, roadwidth, smoothFactor);
+
+        // var roadwidth = TerrainLoader.Instance.roadwidth;
+        // int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
         
+        GenerateTerrain(terrain.terrainData, 20, 20, DoneLoadingCallback);
+    }
+    
+    void DoneLoadingCallback()
+    {
+        Terrain terrain = GetComponent<Terrain>();
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
+        
         terrainCollider.terrainData = terrain.terrainData;
         terrain.detailObjectDistance = 1000;
 
         terrain.treeBillboardDistance = 5000;
         terrainPainter.PaintTerrain(terrain.terrainData);
         terrainScatter.ScatterFoliage(terrain);
+        Debug.Log("Finished!");
     }
 
     // TerrainData GenerateTerrain(TerrainData terrainData, int roadwidth, int smoothFactor)
@@ -96,8 +94,9 @@ public class TerrainGenerator : MonoBehaviour
         var zOffset = position.z;
 
         for (int z = 0; z < width; z++)
+            
         {
-            if (timer.ElapsedMilliseconds > 5)
+            if (timer.ElapsedMilliseconds > 3)
             {
                 yield return null;
                 timer.Reset();
@@ -108,13 +107,13 @@ public class TerrainGenerator : MonoBehaviour
             {
                 if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
                 {
-                    float roadHeight = 0;
-                    for (int i = -smoothFactor; i <= smoothFactor; i++)
-                    {
-                        roadHeight += CompileNoise(256, x + i, position);
-                    }
-                    roadHeight = roadHeight / (smoothFactor * 2 + 1);
-                    if (roadHeight <= (12f/513f)) roadHeight = (12f/513f);
+                    float roadHeight = 30;
+                    // for (int i = -smoothFactor; i <= smoothFactor; i++)
+                    // {
+                    //     roadHeight += CompileNoise(256, x + i, position);
+                    // }
+                    // roadHeight = roadHeight / (smoothFactor * 2 + 1);
+                    // if (roadHeight <= (12f/513f)) roadHeight = (12f/513f);
                     heights[z, x] = roadHeight;
                 }
                 else
@@ -129,17 +128,17 @@ public class TerrainGenerator : MonoBehaviour
         callback( heights);
     }
 
-    float[,] GenerateHeights(int roadwidth, int smoothFactor)
+    /*float[,] GenerateHeights(int roadwidth, int smoothFactor)
     {
         System.Diagnostics.Stopwatch timer = new Stopwatch();
         timer.Start();
         
         float[,] heights = new float[width, length];
-
+    
         Vector3 position = transform.position;
         var xOffset = position.x;
         var zOffset = position.z;
-
+    
         for (int z = 0; z < width; z++)
         {
             for (int x = 0; x < length; x++)
@@ -163,9 +162,9 @@ public class TerrainGenerator : MonoBehaviour
         }
         timer.Stop();
         Debug.Log("Total time: " + timer.ElapsedMilliseconds);
-
+    
         return heights;
-    }
+    }*/
 
     float CompileNoise(int x, int y, Vector3 position)
     {
@@ -180,7 +179,7 @@ public class TerrainGenerator : MonoBehaviour
         {
             float octave = octaves[i];
             
-            height += (1/octave) * CalculateNoise(x, y, octave);
+            height += (1/octave) * CalculateNoise(xNorm, yNorm, octave);
             octaveSum += 1/octave;
         }
         height /= octaveSum;
