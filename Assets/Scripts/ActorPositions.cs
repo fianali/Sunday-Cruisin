@@ -71,6 +71,7 @@ public class ActorPositions : MonoBehaviour
         AnimationTesting.Instance.MaleAnimator.SetBool("IsInBackseat", true);
         AnimationTesting.Instance.MaleAnimator.SetBool("Hungry", false);
         AnimationTesting.Instance.FemaleAnimator.SetBool("IsInShotgun", false);
+        AnimationTesting.Instance.PlayerAnimator.SetBool("IsPlayerDriving", false);
     }
 
     public void PlayerToDriver()
@@ -81,5 +82,6 @@ public class ActorPositions : MonoBehaviour
         Female.transform.localScale = FemaleShotgunScale;
         
         AnimationTesting.Instance.FemaleAnimator.SetBool("IsInShotgun", true);
+        AnimationTesting.Instance.PlayerAnimator.SetBool("IsPlayerDriving", true);
     }
 }
