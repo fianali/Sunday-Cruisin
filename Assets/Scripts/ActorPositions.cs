@@ -46,8 +46,7 @@ public class ActorPositions : MonoBehaviour
         MaleBackseatScale = Male.transform.localScale;
         FemaleDriverPosition = Female.transform.localPosition;
         FemaleDriverScale = Female.transform.localScale;
-        //PlayerToBackseat();
-        PlayerToDriver();
+        PlayerToBackseat();
     }
     
     public void PlayerToBackseat()
