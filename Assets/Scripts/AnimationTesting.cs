@@ -20,6 +20,7 @@ public class AnimationTesting : MonoBehaviour
 
     public Animator MaleAnimator;
     public Animator FemaleAnimator;
+    public Animator PlayerAnimator;
 
     private UnityEvent terrainReady;
 
