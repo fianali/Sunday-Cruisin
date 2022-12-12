@@ -27,7 +27,6 @@ public class AnimationTesting : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
     }
 
     void Start()
@@ -43,17 +42,17 @@ public class AnimationTesting : MonoBehaviour
         terrainReady = TerrainLoader.Instance.terrainReady;
         terrainReady.AddListener(OnTerrainReady);
         StartCoroutine(TestingTimer());
-    }
-
-    void OnTerrainReady()
-    {
+        
         Male.clip = WelcomeDialogue;
         Male.Play();
         
         MaleAnimator.SetBool("Welcoming", true);
         MaleAnimator.SetBool("Twisted", true);
         StartCoroutine(WelcomingRevert());
+    }
 
+    void OnTerrainReady()
+    {
         GameController.Instance.fed = false;
     }
 
