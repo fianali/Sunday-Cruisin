@@ -121,6 +121,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NightExponent1: 0
+    - _NightExponent2: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -145,8 +147,11 @@ Material:
     - _Clouds_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _NightSky1: {r: 0.0496618, g: 0.07425655, b: 0.3396226, a: 0}
+    - _NightSky2: {r: 0, g: 0, b: 0, a: 0}
+    - _NightSky3: {r: 0.03613386, g: 0.03694904, b: 0.2641509, a: 0}
     - _SkyColor: {r: 0, g: 0.04290104, b: 1, a: 0}
-    - _SkyColor2: {r: 0.8301887, g: 0.43467426, b: 0.43467426, a: 0}
+    - _SkyColor2: {r: 0.75, g: 0.3, b: 0.17, a: 1}
     - _SkyColor3: {r: 0.22076362, g: 0.30568746, b: 0.38679248, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

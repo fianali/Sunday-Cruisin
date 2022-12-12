@@ -269,7 +269,6 @@ public class GameController : MonoBehaviour
     
     IEnumerator Music()
     {
-          
         Debug.Log("CHANGE THIS SHIT");
         yield return new WaitForSeconds(10);
         Debug.Log("TIME CHECK: " + timesUp);
