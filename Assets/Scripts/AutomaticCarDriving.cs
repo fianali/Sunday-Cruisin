@@ -2,9 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AutomaticCarDriving : CarController
 {
+    private UnityEvent terrainReady;
+    private void Start()
+    {
+        terrainReady = TerrainLoader.Instance.terrainReady;
+        terrainReady.AddListener(DropCar);
+    }
+
+    void DropCar()
+    {
+        carRigidbody.useGravity = true;
+    }
+
     public override void HandleDriving()
     {
         var maxDriveForce = driveForce * (1-(carRigidbody.velocity.magnitude/maxVelocity));

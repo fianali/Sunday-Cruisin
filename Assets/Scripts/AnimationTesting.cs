@@ -55,8 +55,6 @@ public class AnimationTesting : MonoBehaviour
         StartCoroutine(WelcomingRevert());
 
         GameController.Instance.fed = false;
-        
-        Debug.Log("ping recived by animation tester");
     }
 
     void Update()

@@ -70,24 +70,19 @@ public class TerrainLoader : MonoBehaviour
         numChunks = (loadDistance * 2 + 1) * (loadDistance * 2 + 1);
     }
 
+    // Sends out event when the terrain is loaded and ready for action
     private void OnTerrainReady()
     {
         numChunksLoaded++;
         if (numChunksLoaded >= numChunks)
         {
+            Debug.Log("Terrain Ready!");
             terrainReady.Invoke();
         }
     }
 
     void Start()
     {
-        // for (var i = 0; i < loadDistance; i++)
-        // {
-        //     for (var j = 0; j < loadDistance; j++)
-        //     {
-        //         Instantiate(terrain, new Vector3(i*513f, 0, j*513f), new Quaternion(0,0,0,0));
-        //     }
-        // }
         loadedChunks = new GameObject[loadDistance * 2 + 1, loadDistance * 2 + 1];
         for (var x = 0 - loadDistance; x <= 0 + loadDistance; x++)
         {

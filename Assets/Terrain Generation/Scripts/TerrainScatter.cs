@@ -60,8 +60,6 @@ public class TerrainScatter : MonoBehaviour
 
     void ScatterTrees()
     {
-
-
         for (int i = 0; i < treeCount; i++)
         {
             for (int j = 0; j < treeCount; j++)
