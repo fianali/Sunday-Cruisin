@@ -9,7 +9,7 @@ public class IKControl : MonoBehaviour {
 
     protected Animator animator;
 
-    public bool ikActive = false;
+    public bool ikActive = true;
     public Transform rightHandObj = null;
     public Transform leftHandObj = null;
     // public Transform lookObj = null;
@@ -17,6 +17,18 @@ public class IKControl : MonoBehaviour {
     void Start ()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (GameController.Instance.driver)
+        {
+            ikActive = false;
+        }
+        else
+        {
+            ikActive = true;
+        }
     }
 
     //a callback for calculating IK

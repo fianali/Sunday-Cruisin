@@ -53,7 +53,7 @@ public class AnimationTesting : MonoBehaviour
 
     void OnTerrainReady()
     {
-        GameController.Instance.fed = false;
+        // GameController.Instance.fed = false;
     }
 
     void Update()
@@ -125,6 +125,7 @@ public class AnimationTesting : MonoBehaviour
     
     public void HowDoYouLikeTheMusic()
     {
+        FemaleAnimator.SetBool("Twisted", true);
         Female.clip = ThumbsDialogue;
         Female.Play();
         
@@ -134,6 +135,7 @@ public class AnimationTesting : MonoBehaviour
 
     public void ThisMusicSucks()
     {
+        FemaleAnimator.SetBool("Twisted", true);
         Female.clip = SucksDialogue;
         Female.Play();
         
@@ -143,6 +145,7 @@ public class AnimationTesting : MonoBehaviour
     
     public void ThisMusicIsAwesomeness()
     {
+        FemaleAnimator.SetBool("Twisted", true);
         Female.clip = AwesomeDialogue;
         Female.Play();
         
@@ -154,23 +157,29 @@ public class AnimationTesting : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         FemaleAnimator.SetBool("Thumbs", false);
+        yield return new WaitForSeconds(2f);
+        FemaleAnimator.SetBool("Twisted", false);
     }
 
     IEnumerator ThisMusicSucksRevert()
     {
         yield return new WaitForSeconds(.2f);
         FemaleAnimator.SetBool("Sucks", false);
+        yield return new WaitForSeconds(2f);
+        FemaleAnimator.SetBool("Twisted", false);
     }
     
     IEnumerator ThisMusicIsAwesomenessRevert()
     {
         yield return new WaitForSeconds(.2f);
         FemaleAnimator.SetBool("Awesome", false);
+        yield return new WaitForSeconds(2f);
+        FemaleAnimator.SetBool("Twisted", false);
     }
     
     IEnumerator TestingTimer()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(25f);
         HowDoYouLikeTheMusic();
     }
     
