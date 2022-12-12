@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(backseat);
+        //Debug.Log(backseat);
 
         if (introOver)
         {
@@ -254,7 +254,7 @@ public class GameController : MonoBehaviour
     {
         while (backseat)
         {
-            int rand = Random.Range(5, 10);
+            int rand = Random.Range(10, 15);
 
             if (fed)
             {
