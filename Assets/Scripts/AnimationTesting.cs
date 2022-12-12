@@ -9,12 +9,17 @@ public class AnimationTesting : MonoBehaviour
     public static AnimationTesting Instance;
     
     public AudioSource Male;
+    public AudioSource Female;
 
     public AudioClip WelcomeDialogue;
     public AudioClip LookedAtWindowDialogue;
     public AudioClip GiveMeSomeCrackersDialogue;
+    public AudioClip ThumbsDialogue;
+    public AudioClip SucksDialogue;
+    public AudioClip AwesomeDialogue;
 
-    public Animator Animator;
+    public Animator MaleAnimator;
+    public Animator FemaleAnimator;
 
 
     private void Awake()
@@ -32,6 +37,8 @@ public class AnimationTesting : MonoBehaviour
         // StartCoroutine(WelcomingRevert());
 
         // GameController.Instance.fed = false;
+
+        // StartCoroutine(TestingTimer());
     }
 
     void Update()
@@ -41,8 +48,8 @@ public class AnimationTesting : MonoBehaviour
             Male.clip = WelcomeDialogue;
             Male.Play();
         
-            Animator.SetBool("Welcoming", true);
-            Animator.SetBool("Twisted", true);
+            MaleAnimator.SetBool("Welcoming", true);
+            MaleAnimator.SetBool("Twisted", true);
             StartCoroutine(WelcomingRevert());
 
             GameController.Instance.fed = false;
@@ -50,13 +57,16 @@ public class AnimationTesting : MonoBehaviour
         }
     }
 
+    
+    ///////////////////////////////// MALE ////////////////////////////////////
+    
     public void LookedAtWindow()
     {
         Male.clip = LookedAtWindowDialogue;
         Male.Play();
         
-        Animator.SetBool("LookedAtWindow", true);
-        Animator.SetBool("Twisted", true);
+        MaleAnimator.SetBool("LookedAtWindow", true);
+        MaleAnimator.SetBool("Twisted", true);
         StartCoroutine(LookedAtWindowRevert());
     }
 
@@ -65,30 +75,87 @@ public class AnimationTesting : MonoBehaviour
         Male.clip = GiveMeSomeCrackersDialogue;
         Male.Play();
         
-        Animator.SetBool("Hungry", true);
+        MaleAnimator.SetBool("Hungry", true);
     }
 
     public void GiveMeCrackersRevert()
     {
-        Animator.SetBool("Hungry", false);
+        MaleAnimator.SetBool("Hungry", false);
     }
+
+    
 
     IEnumerator WelcomingRevert()
     {
         yield return new WaitForSeconds(2f);
-        Animator.SetBool("Welcoming", false);
+        MaleAnimator.SetBool("Welcoming", false);
         yield return new WaitForSeconds(5f);
-        Animator.SetBool("Twisted", false);
+        MaleAnimator.SetBool("Twisted", false);
     }
 
     IEnumerator LookedAtWindowRevert()
     {
         yield return new WaitForSeconds(2f);
-        Animator.SetBool("LookedAtWindow", false);
-        Animator.SetBool("Hungry", true);
+        MaleAnimator.SetBool("LookedAtWindow", false);
+        MaleAnimator.SetBool("Hungry", true);
         yield return new WaitForSeconds(10f);
-        Animator.SetBool("Twisted", false);
+        MaleAnimator.SetBool("Twisted", false);
         
         GameController.Instance.introOver = true;
+    }
+    
+    
+   /////////////////////// FEMALE //////////////////////////
+    
+    
+    public void HowDoYouLikeTheMusic()
+    {
+        Female.clip = ThumbsDialogue;
+        Female.Play();
+        
+        FemaleAnimator.SetBool("Thumbs", true);
+        StartCoroutine(HowDoYouLikeTheMusicRevert());
+    }
+
+    public void ThisMusicSucks()
+    {
+        Female.clip = SucksDialogue;
+        Female.Play();
+        
+        FemaleAnimator.SetBool("Sucks", true);
+        StartCoroutine(ThisMusicSucksRevert());
+    }
+    
+    public void ThisMusicIsAwesomeness()
+    {
+        Female.clip = AwesomeDialogue;
+        Female.Play();
+        
+        FemaleAnimator.SetBool("Awesome", true);
+        StartCoroutine(ThisMusicIsAwesomenessRevert());
+    }
+
+    IEnumerator HowDoYouLikeTheMusicRevert()
+    {
+        yield return new WaitForSeconds(2f);
+        FemaleAnimator.SetBool("Thumbs", false);
+    }
+
+    IEnumerator ThisMusicSucksRevert()
+    {
+        yield return new WaitForSeconds(.2f);
+        FemaleAnimator.SetBool("Sucks", false);
+    }
+    
+    IEnumerator ThisMusicIsAwesomenessRevert()
+    {
+        yield return new WaitForSeconds(.2f);
+        FemaleAnimator.SetBool("Awesome", false);
+    }
+    
+    IEnumerator TestingTimer()
+    {
+        yield return new WaitForSeconds(13f);
+        ThisMusicIsAwesomeness();
     }
 }

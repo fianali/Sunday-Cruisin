@@ -215,7 +215,7 @@ public class GameController : MonoBehaviour
                 Debug.Log("Promote To Driver");
 
             }
-            if (backseat)
+                if (backseat)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
