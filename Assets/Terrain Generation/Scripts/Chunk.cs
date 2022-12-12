@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = UnityEngine.Debug;
 
 public class Chunk : MonoBehaviour
 {
@@ -60,23 +61,7 @@ public class Chunk : MonoBehaviour
         // var pos = transform.position;
         if (transform.position.z == 0)
         {
-            for (int x = 0; x < 513; x++)
-            {
-                for (int z = 256 - 20; z < 256 + 20; z++)
-                {
-                    float roadHeight = 20f/513f;
-                    /*for (int i = -smoothFactor; i <= smoothFactor; i++)
-                    {
-                        var potentialHeight = CompileNoise(256, x + i, position);
-                        if (potentialHeight >= (24f / 513f)) potentialHeight = (24f / 513f);
-                        if (potentialHeight <= (12f / 513f)) potentialHeight = (12f/513f);
-                        roadHeight += potentialHeight;
-                    }
-                    roadHeight /= (smoothFactor * 2 + 1);*/
-                    heightMap[z, x] = roadHeight;
-                }
-            }
-            
+            BuildRoad();
         }
 
         terrainData.SetHeights(0, 0, heightMap);
@@ -92,7 +77,54 @@ public class Chunk : MonoBehaviour
         
         chunkLoaded.Invoke();
     }
-    
+
+    private void BuildRoad()
+    {
+        var baseRoadHeight = 20f/513f;
+        var roadWidth = 20;
+        var curbLength = 20;
+        var center = 256;
+        for (int x = 0; x < 513; x++)
+        {
+            var leftHeight = heightMap[center + roadWidth + curbLength, x];
+            var rightHeight = heightMap[center - roadWidth - curbLength, x];
+            Debug.Log(leftHeight);
+            
+            for(int z = center - roadWidth - curbLength; z <= center + roadWidth + curbLength; z++)
+            {
+                float roadHeight = 0;
+                // if (z >= center - roadWidth && z <= center + roadWidth)
+                // {
+                //     roadHeight = baseRoadHeight;
+                // }
+                // else 
+                if(z >= center - roadWidth - curbLength && z <= center + roadWidth + curbLength)
+                {
+                    float distanceFromCenter = Math.Abs(z - center);
+                    float distanceFromRoad = distanceFromCenter - roadWidth;
+                    // Debug.Log(distanceFromRoad);
+                    var percentFromRoad = distanceFromRoad / (curbLength);
+                    if (percentFromRoad <= 0)
+                        percentFromRoad = 0;
+
+                    if (z < center)
+                        roadHeight = baseRoadHeight * (1-percentFromRoad) + rightHeight * percentFromRoad;
+                    else
+                        roadHeight = baseRoadHeight * (1-percentFromRoad) + leftHeight * percentFromRoad;
+                }
+                
+                /*for (int i = -smoothFactor; i <= smoothFactor; i++)
+                {
+                    var potentialHeight = CompileNoise(256, x + i, position);
+                    if (potentialHeight >= (24f / 513f)) potentialHeight = (24f / 513f);
+                    if (potentialHeight <= (12f / 513f)) potentialHeight = (12f/513f);
+                    roadHeight += potentialHeight;
+                }
+                roadHeight /= (smoothFactor * 2 + 1);*/
+                heightMap[z,x] = roadHeight;
+            }
+        }
+    }
 
     // Helper functions
     private void MakeNoise(int roadwidth, int smoothFactor, int seed, GenericDelegate onFinishedCallback)

@@ -13,32 +13,36 @@ public class TerrainPainter : MonoBehaviour
         splatInfo = TerrainLoader.Instance.splatInfo;
         float[, ,] splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
+        var zOffset = transform.position.z;
+        var roadwidth = 20;
+        
         for (int y = 0; y < terrainData.alphamapHeight; y++)
         {
             for (int z = 0; z < terrainData.alphamapWidth; z++)
             {
                 float[] splat = new float[splatInfo.Length];
                 
-                // if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
-                // {
-                //     splat[4] = 1f;
-                // }
-                // else
-                // {
-                var height = heightMap[z,y];
-                var moisture = moistureMap[y, z];
-
-                for (int i = 0; i < splatInfo.Length; i++)
+                if (zOffset + z >= (255 - roadwidth) && zOffset + z <= (255 + roadwidth))
                 {
-                    if (height >= splatInfo[i].heightStart &&
-                        height <= splatInfo[i].heightEnd &&
-                        moisture >= splatInfo[i].moistureStart && 
-                        moisture <= splatInfo[i].moistureEnd)
+                    splat[0] = 1f;
+                }
+                else
+                {
+                    var height = heightMap[z,y];
+                    var moisture = moistureMap[y, z];
+
+                    for (int i = 1; i < splatInfo.Length; i++)
                     {
-                        splat[i] = 1f;
+                        if (height >= splatInfo[i].heightStart &&
+                            height <= splatInfo[i].heightEnd &&
+                            moisture >= splatInfo[i].moistureStart && 
+                            moisture <= splatInfo[i].moistureEnd)
+                        {
+                            splat[i] = 1f;
+                        }
                     }
                 }
-
+                
                 for (int i = 0; i < splatInfo.Length; i++)
                 {
                     splatmapData[z, y, i] = splat[i];
