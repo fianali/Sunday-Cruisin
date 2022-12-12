@@ -49,6 +49,7 @@ public class SoundController : MonoBehaviour
     private bool pow = false;
 
     public bool songChanged = false;
+    public bool songChangedInTime = false;
 
     private bool start = true;
 
@@ -109,6 +110,7 @@ public class SoundController : MonoBehaviour
                 radio.Play();
 
                 songChanged = true;
+                songChangedInTime = true;
                 start = false;
                
             }
@@ -126,6 +128,7 @@ public class SoundController : MonoBehaviour
                 radio.Play();
 
                 songChanged = true;
+                songChangedInTime = true;
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
@@ -141,6 +144,7 @@ public class SoundController : MonoBehaviour
                 radio.Play();
 
                 songChanged = true;
+                songChangedInTime = true;
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
@@ -156,12 +160,14 @@ public class SoundController : MonoBehaviour
                 radio.Play();
 
                 songChanged = true;
+                songChangedInTime = true;
             }
 
             // change song
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 songChanged = true;
+                songChangedInTime = true;
 
                 count++;
                 if (count == 5)
@@ -191,6 +197,7 @@ public class SoundController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow) || (!radio.isPlaying && pow))
             {
                 songChanged = true;
+                songChangedInTime = true;
 
                 count--;
                 if (count == -1)
