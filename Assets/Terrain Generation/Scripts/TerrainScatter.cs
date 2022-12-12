@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerrainScatter : MonoBehaviour
 {
-    private TerrainLoader.SplatHeights[] splatHeights;
+    private TerrainLoader.SplatInfo[] splatInfo;
     
     public GameObject[] scatter;
 
@@ -19,7 +19,7 @@ public class TerrainScatter : MonoBehaviour
     private Terrain terrain;
     public void ScatterFoliage(Terrain passedTerrain)
     {
-        splatHeights = TerrainLoader.Instance.biomeHeights;
+        splatInfo = TerrainLoader.Instance.splatInfo;
 
         terrain = passedTerrain;
         xOffset = transform.position.x;
@@ -48,7 +48,7 @@ public class TerrainScatter : MonoBehaviour
                     {
                         // Sample the height at this location (note GetHeight expects int coordinates corresponding to locations in the heightmap array)
                         float height = terrain.terrainData.GetHeight(j, i);
-                        if (height < splatHeights[3].startingHeight && height>splatHeights[2].startingHeight) newMap[i, j] = 5;
+                        if (height < splatInfo[3].heightStart && height>splatInfo[2].heightStart) newMap[i, j] = 5;
                         else newMap[i, j] = 0;
                     }
                     else newMap[i, j] = 0;
@@ -76,7 +76,7 @@ public class TerrainScatter : MonoBehaviour
 
                     float height = terrain.terrainData.GetHeight((int) (potentialPosition.x*513),(int) (potentialPosition.z*513));
                     //Debug.Log(height);
-                    if (height < splatHeights[3].startingHeight && height>splatHeights[2].startingHeight) PlaceTree(potentialPosition);
+                    if (height < splatInfo[3].heightStart && height>splatInfo[2].heightStart) PlaceTree(potentialPosition);
                     
                 }
             }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Graphics.Tools.Noise;
 using Graphics.Tools.Noise.Primitive;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public static class NoiseManager
 {
@@ -36,7 +38,7 @@ public class TerrainLoader : MonoBehaviour
 
     private int xPlayerCell;
     private int zPlayerCell;
-    
+
     // public GameObject[,] loadedChunks;
     [SerializeField] private GameObject terrain;
     [SerializeField] private int loadDistance;
@@ -45,15 +47,17 @@ public class TerrainLoader : MonoBehaviour
     // Road information
     public int roadwidth;
     public int roadSmoothFactor;
-
     [System.Serializable]
-    public class SplatHeights
+    public class SplatInfo
     {
         public int textureIndex;
-        public int startingHeight;
+        public float moistureStart;
+        public float moistureEnd;
+        public float heightStart;
+        public float heightEnd;
     }
-
-    public SplatHeights[] biomeHeights;
+    [SerializeField] public SplatInfo[] splatInfo;
+    
     private void Awake()
     {
         if (Instance == null) Instance = this;

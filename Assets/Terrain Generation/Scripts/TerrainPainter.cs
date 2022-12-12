@@ -5,54 +5,41 @@ using UnityEngine;
 
 public class TerrainPainter : MonoBehaviour
 {
-    private TerrainLoader.SplatHeights[] splatHeights;
-    public void PaintTerrain(TerrainData terrainData)
+
+    private TerrainLoader.SplatInfo[] splatInfo;
+
+    public void PaintTerrain(TerrainData terrainData, float[,] heightMap, float[,] moistureMap)
     {
-        splatHeights = TerrainLoader.Instance.biomeHeights;
-        // TerrainData terrainData = Terrain.activeTerrain.terrainData;
+        splatInfo = TerrainLoader.Instance.splatInfo;
         float[, ,] splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
-        var xOffset = transform.position.x;
-        var zOffset = transform.position.z;
-        var roadwidth = TerrainLoader.Instance.roadwidth;
-        
         for (int y = 0; y < terrainData.alphamapHeight; y++)
         {
             for (int z = 0; z < terrainData.alphamapWidth; z++)
             {
-                float[] splat = new float[splatHeights.Length];
+                float[] splat = new float[splatInfo.Length];
                 
-                if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
-                {
-                    splat[4] = 1f;
-                }
-                else
-                {
-                    float terrainHeight = terrainData.GetHeight(y,z);
+                // if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
+                // {
+                //     splat[4] = 1f;
+                // }
+                // else
+                // {
+                var height = heightMap[z,y];
+                var moisture = moistureMap[y, z];
 
-                    for (int i = 0; i < splatHeights.Length; i++)
+                for (int i = 0; i < splatInfo.Length; i++)
+                {
+                    if (height >= splatInfo[i].heightStart &&
+                        height <= splatInfo[i].heightEnd &&
+                        moisture >= splatInfo[i].moistureStart && 
+                        moisture <= splatInfo[i].moistureEnd)
                     {
-                        if (i + 1 < splatHeights.Length)
-                        {
-                            if (terrainHeight >= splatHeights[i].startingHeight && 
-                                terrainHeight <= splatHeights[i+1].startingHeight)
-                            {
-                                splat[i] = 1f;
-                            }
-                        }
-                        else
-                        {
-                            if (terrainHeight >= splatHeights[i].startingHeight)
-                            {
-                                splat[i] = 1f;
-                            }
-                        }
-                    
-
+                        splat[i] = 1f;
                     }
                 }
 
-                for (int i = 0; i < splatHeights.Length; i++)
+                for (int i = 0; i < splatInfo.Length; i++)
                 {
                     splatmapData[z, y, i] = splat[i];
                 }
