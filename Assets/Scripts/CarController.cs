@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class CarController : MonoBehaviour
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
 
+    public Transform rightWindow;
+    [SerializeField] private Transform leftWindow;
+    
     private float horizontalInput;
     private float verticalInput;
     private float currentBreakForce;
@@ -38,6 +42,11 @@ public class CarController : MonoBehaviour
         HandleDriving();
         HandleSteering();
         UpdateWheels();
+    }
+
+    private void Update()
+    {
+        RollWindows();
     }
 
     void GetInputs()
@@ -84,10 +93,38 @@ public class CarController : MonoBehaviour
 
     void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
-        Vector3 position;
+        Vector3 localPosition;
         Quaternion rotation;
-        wheelCollider.GetWorldPose(out position, out rotation);
-        wheelTransform.position = position;
+        wheelCollider.GetWorldPose(out localPosition, out rotation);
+        wheelTransform.localPosition = localPosition;
         wheelTransform.rotation = rotation;
+    }
+
+    void RollWindows()
+    {
+
+        if (rightWindow.localPosition.y >= -6.10 && leftWindow.localPosition.y >= -6.10)
+        {
+            Debug.Log(rightWindow.localPosition.y);
+            Debug.Log("can roll down window");
+            if (Input.GetKey(KeyCode.L))
+            {
+                rightWindow.localPosition += new Vector3(0f, -.05f);
+                leftWindow.localPosition += new Vector3(0f, -.05f);
+            }
+            
+        }
+
+
+        if (rightWindow.localPosition.y <= 0 && leftWindow.localPosition.y <= 0)
+        {
+            Debug.Log("roll up window");
+            if (Input.GetKey(KeyCode.O))
+            {
+                rightWindow.localPosition += new Vector3(0, .05f);
+                leftWindow.localPosition += new Vector3(0, .05f);
+            }
+            
+        }
     }
 }

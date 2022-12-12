@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103558}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956d91894bf35794c9c3cd9c99593d36, type: 3}
   m_Name: 
@@ -143,6 +143,8 @@ MonoBehaviour:
   driveForce: 10000
   breakForce: 8000
   maxSteerAngle: 30
+  rightWindow: {fileID: 474856}
+  leftWindow: {fileID: 437248}
 --- !u!114 &1854125936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +152,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45abc545e928f4042afc9ab38b8e2164, type: 3}
   m_Name: 
@@ -166,6 +168,8 @@ MonoBehaviour:
   driveForce: 10000
   breakForce: 8000
   maxSteerAngle: 30
+  rightWindow: {fileID: 474856}
+  leftWindow: {fileID: 437248}
 --- !u!1 &104764
 GameObject:
   m_ObjectHideFlags: 0
@@ -5257,6 +5261,7 @@ MonoBehaviour:
   three4: {fileID: 8300000, guid: 240fd07aa9c3b8749a6b302842d0b203, type: 3}
   four4: {fileID: 8300000, guid: 01e83426536b07f4bb351f4c2a200cb5, type: 3}
   five4: {fileID: 8300000, guid: 45e68d87b0a1fa444871f84ab0e1403c, type: 3}
+  songChanged: 0
 --- !u!1 &1180772411
 GameObject:
   m_ObjectHideFlags: 0
