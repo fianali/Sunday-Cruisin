@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     void CheckPromotion()
     {
         //promote to passenger, might need to change cause i changed foodcount back to 0;
-        if (GameController.Instance.promote == true && GameController.Instance.foodCount >= 3)
+        if (GameController.Instance.promote == true && GameController.Instance.backseat == true)
         {
             promoteText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
             promoteText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
+                promoteText.SetActive(false);
                 driver.SetActive(true);
                 Debug.Log("youre now driving! skrrrrrt");
             }
@@ -62,7 +63,7 @@ public class UIManager : MonoBehaviour
             crackerInstructions.SetActive(true);
         }
 
-        if (GameController.Instance.foodCount >= 3)
+        if (!GameController.Instance.backseat)
         {
             crackerInstructions.SetActive(false);
         }
@@ -85,9 +86,13 @@ public class UIManager : MonoBehaviour
 
     void DisplayPassengerUI()
     {
-        if (GameController.Instance.passenger == true && GameController.Instance.foodCount == 0)
+        if (GameController.Instance.passenger == true)
         {
             passenger.SetActive(true);
+        }
+        else
+        {
+            passenger.SetActive(false);
         }
     }
 

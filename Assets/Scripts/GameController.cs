@@ -145,13 +145,12 @@ public class GameController : MonoBehaviour
 
             if (checkRequest || SoundController.Instance.songChanged)
             {
-                //SoundController.Instance.songChanged = false;
+                SoundController.Instance.songChanged = false;
 
                 int rand = Random.Range(0, 2);
                 if (rand == 1)
                 {
                     likedSong = false;
-                    Debug.Log("Liked: " + likedSong);
                     StartCoroutine(Music());
                 }
                 else
@@ -159,8 +158,6 @@ public class GameController : MonoBehaviour
                     likedSong = true;
                     StartCoroutine(GoodMusic());
                     songCount++;
-                    Debug.Log("SC: " + songCount);
-                    Debug.Log("Liked: " + likedSong);
                 }
 
                 
@@ -183,7 +180,6 @@ public class GameController : MonoBehaviour
             {
                 timesUp = false;
                 songCount--;
-                Debug.Log("SC: " + songCount);
             }
             if (songCount == -3)
             {
@@ -209,13 +205,16 @@ public class GameController : MonoBehaviour
         {
             if (passenger && !backseat)
             {
-                ActorPositions.Instance.PlayerToDriver();
-                passenger = false;
-                driver = true;
-                promote = false;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ActorPositions.Instance.PlayerToDriver();
+                    passenger = false;
+                    driver = true;
+                    promote = false;
+                }
 
             }
-                if (backseat)
+            if (backseat)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -273,11 +272,10 @@ public class GameController : MonoBehaviour
         AnimationTesting.Instance.ThisMusicSucks();
 
         yield return new WaitForSeconds(10);
-        Debug.Log("TIME CHECK: " + timesUp);
-
-        if (SoundController.Instance.songChanged)
+        if (SoundController.Instance.songChangedInTime)
         {
-            SoundController.Instance.songChanged = false;
+            SoundController.Instance.songChangedInTime = false;
+            //songCount++;
             yield break;
         }
         timesUp = true;
