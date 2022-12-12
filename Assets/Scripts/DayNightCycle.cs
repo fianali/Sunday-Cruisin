@@ -1,3 +1,6 @@
+// code from this tutorial 
+// https://timcoster.com/2020/02/26/unity-shadergraph-procedural-skybox-tutorial-pt-2-day-night-cycle/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

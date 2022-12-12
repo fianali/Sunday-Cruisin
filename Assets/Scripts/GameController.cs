@@ -145,7 +145,7 @@ public class GameController : MonoBehaviour
 
             if (checkRequest || SoundController.Instance.songChanged)
             {
-                SoundController.Instance.songChanged = false;
+                //SoundController.Instance.songChanged = false;
 
                 int rand = Random.Range(0, 2);
                 if (rand == 1)
@@ -157,6 +157,7 @@ public class GameController : MonoBehaviour
                 else
                 {
                     likedSong = true;
+                    StartCoroutine(GoodMusic());
                     songCount++;
                     Debug.Log("SC: " + songCount);
                     Debug.Log("Liked: " + likedSong);
@@ -191,7 +192,7 @@ public class GameController : MonoBehaviour
                 songCount = 0;
                 
             }
-            if (songCount == 5)
+            if (songCount == 4)
             {
                 promote = true;
                 songCount = 0;
@@ -208,11 +209,10 @@ public class GameController : MonoBehaviour
         {
             if (passenger && !backseat)
             {
-                // ActorPositions.Instance.PlayerToDriver();
+                ActorPositions.Instance.PlayerToDriver();
                 passenger = false;
                 driver = true;
                 promote = false;
-                Debug.Log("Promote To Driver");
 
             }
                 if (backseat)
@@ -269,15 +269,24 @@ public class GameController : MonoBehaviour
     
     IEnumerator Music()
     {
-        Debug.Log("CHANGE THIS SHIT");
+        yield return new WaitForSeconds(5);
+        AnimationTesting.Instance.ThisMusicSucks();
+
         yield return new WaitForSeconds(10);
         Debug.Log("TIME CHECK: " + timesUp);
+
         if (SoundController.Instance.songChanged)
         {
+            SoundController.Instance.songChanged = false;
             yield break;
-            Debug.Log("Break");
         }
         timesUp = true;
          
     } 
+
+    IEnumerator GoodMusic() 
+    {
+        yield return new WaitForSeconds(5);
+        AnimationTesting.Instance.ThisMusicIsAwesomeness();
+    }
 }
