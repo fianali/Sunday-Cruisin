@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixer mixer
+    public AudioMixer mixer;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +20,6 @@ public class AudioManager : MonoBehaviour
 
     void AdjustMixer()
     {
-        mixer().outputAudioMixerGroup.
+        //mixer().outputAudioMixerGroup.
     }
 }
