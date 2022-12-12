@@ -38,7 +38,7 @@ public class AnimationTesting : MonoBehaviour
 
         // GameController.Instance.fed = false;
 
-        // StartCoroutine(TestingTimer());
+        StartCoroutine(TestingTimer());
     }
 
     void Update()
@@ -155,7 +155,9 @@ public class AnimationTesting : MonoBehaviour
     
     IEnumerator TestingTimer()
     {
-        yield return new WaitForSeconds(13f);
-        ThisMusicIsAwesomeness();
+        yield return new WaitForSeconds(20f);
+        HowDoYouLikeTheMusic();
     }
+    
+    
 }

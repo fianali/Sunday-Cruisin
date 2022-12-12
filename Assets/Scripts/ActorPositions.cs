@@ -11,7 +11,7 @@ public class ActorPositions : MonoBehaviour
     public GameObject Player;
     public GameObject Female;
     public GameObject Male;
-    
+
     private Vector3 PlayerBackseatPosition = new Vector3(9.67f, -2.1f, 17.63f);
     private Vector3 PlayerBackseatScale = new Vector3(12.4f,12.4f,12.4f);
     
@@ -21,8 +21,8 @@ public class ActorPositions : MonoBehaviour
     private Vector3 PlayerDriverPosition = new Vector3(9.4f, -7.49f, 2.09f);
     private Vector3 PlayerDriverScale = new Vector3(17.83f, 17.83f, 17.83f);
     
-    private Vector3 FemaleShotgunPosition = new Vector3(-6.55f, 5.51f, -2.24f);
-    private Vector3 FemaleShotgunScale = new Vector3(15.47f, 15.47f, 15.47f);
+    private Vector3 FemaleShotgunPosition = new Vector3(-6.679f, 4.729f, 5.22f);
+    private Vector3 FemaleShotgunScale = new Vector3(17.1f, 17.1f, 17.1f);
 
     private Vector3 FemaleDriverPosition;
     private Vector3 FemaleDriverScale;
@@ -55,6 +55,8 @@ public class ActorPositions : MonoBehaviour
         Player.transform.localScale = PlayerBackseatScale;
         Male.transform.localPosition = MaleShotgunPosition;
         Male.transform.localScale = MaleShotgunScale;
+        
+        AnimationTesting.Instance.MaleAnimator.SetBool("IsInBackseat", false);
     }
     
     public void PlayerToShotgun()
@@ -65,6 +67,10 @@ public class ActorPositions : MonoBehaviour
         Male.transform.localScale = MaleBackseatScale;
         Female.transform.localPosition = FemaleDriverPosition;
         Female.transform.localScale = FemaleDriverScale;
+        
+        AnimationTesting.Instance.MaleAnimator.SetBool("IsInBackseat", true);
+        AnimationTesting.Instance.MaleAnimator.SetBool("Hungry", false);
+        AnimationTesting.Instance.FemaleAnimator.SetBool("IsInShotgun", false);
     }
 
     public void PlayerToDriver()
@@ -73,5 +79,7 @@ public class ActorPositions : MonoBehaviour
         Player.transform.localScale = PlayerDriverScale;
         Female.transform.localPosition = FemaleShotgunPosition;
         Female.transform.localScale = FemaleShotgunScale;
+        
+        AnimationTesting.Instance.FemaleAnimator.SetBool("IsInShotgun", true);
     }
 }
