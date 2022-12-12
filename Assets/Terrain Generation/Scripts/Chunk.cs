@@ -82,32 +82,39 @@ public class Chunk : MonoBehaviour
     private void BuildRoad()
     {
         var baseRoadHeight = 20f/513f;
+        var curbFactor = 256;
+        var baseCurbLength = 15;
         var roadWidth = 20;
-        var curbLength = 20;
         var center = 256;
         for (int x = 0; x < 513; x++)
         {
-            // var leftHeight = heightMap[center + roadWidth + curbLength, x];
-            // var rightHeight = heightMap[center - roadWidth - curbLength, x];
+            var leftHeight = heightMap[center + roadWidth + baseCurbLength, x];
+            var rightHeight = heightMap[center - roadWidth - baseCurbLength, x];
+            var leftCurbLength = (int) (leftHeight * curbFactor) + baseCurbLength;
+            var rightCurbLength = (int) (rightHeight * curbFactor) + baseCurbLength;
             
-            for(int z = center - roadWidth - curbLength; z <= center + roadWidth + curbLength; z++)
+            for(int z = center - roadWidth - rightCurbLength; z <= center + roadWidth + leftCurbLength; z++)
             {
-                float roadHeight = 0;
-                if(z >= center - roadWidth - curbLength && z <= center + roadWidth + curbLength)
-                {
-                    float distanceFromCenter = Math.Abs(z - center);
-                    float distanceFromRoad = distanceFromCenter - roadWidth;
-                    
-                    var percentFromRoad = distanceFromRoad / (curbLength);
-                    if (percentFromRoad <= 0)
-                        percentFromRoad = 0;
+                float roadHeight;
+                float distanceFromCenter = Math.Abs(z - center);
+                float distanceFromRoad = distanceFromCenter - roadWidth;
+                if (distanceFromRoad <= 0)
+                    distanceFromRoad = 0;
+                float percentFromRoad;
 
-                    if (z < center)
-                        roadHeight = baseRoadHeight * (1-percentFromRoad) + heightMap[z,x] * percentFromRoad;
-                    else
-                        roadHeight = baseRoadHeight * (1-percentFromRoad) + heightMap[z,x] * percentFromRoad;
+                if (z > center)
+                {
+                    percentFromRoad = distanceFromRoad / (leftCurbLength);
+                    // roadHeight = percentFromRoad;
+                    roadHeight = baseRoadHeight * (1-percentFromRoad) + heightMap[z,x] * percentFromRoad;
                 }
-                
+                else
+                {
+                    percentFromRoad = distanceFromRoad / (rightCurbLength);
+                    // roadHeight = percentFromRoad;
+                    roadHeight = baseRoadHeight * (1-percentFromRoad) + heightMap[z,x] * percentFromRoad;
+                }
+
                 /*for (int i = -smoothFactor; i <= smoothFactor; i++)
                 {
                     var potentialHeight = CompileNoise(256, x + i, position);
