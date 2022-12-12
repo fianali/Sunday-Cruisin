@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public static TerrainGenerator Instance;
     public bool finished = false;
 
     [SerializeField] private int width;
@@ -32,11 +31,6 @@ public class TerrainGenerator : MonoBehaviour
         GenerateTerrain(terrain.terrainData, 1, 1, DoneLoadingCallback);
     }*/
 
-    void Awake() 
-    {
-        Instance = this;
-    }
-
     private void Start()
     {
         Terrain terrain = GetComponent<Terrain>();
@@ -45,7 +39,7 @@ public class TerrainGenerator : MonoBehaviour
         // var roadwidth = TerrainLoader.Instance.roadwidth;
         // int smoothFactor = TerrainLoader.Instance.roadSmoothFactor;
         
-        GenerateTerrain(terrain.terrainData, 20, 70, DoneLoadingCallback);
+        GenerateTerrain(terrain.terrainData, 20, 50, DoneLoadingCallback);
     }
     
     void DoneLoadingCallback()
@@ -57,7 +51,7 @@ public class TerrainGenerator : MonoBehaviour
         terrain.detailObjectDistance = 1000;
 
         terrain.treeBillboardDistance = 5000;
-        terrainPainter.PaintTerrain(terrain.terrainData);
+        // terrainPainter.PaintTerrain(terrain.terrainData);
         terrainScatter.ScatterFoliage(terrain);
         Debug.Log("Finished!");
         finished = true;
@@ -116,15 +110,15 @@ public class TerrainGenerator : MonoBehaviour
             {
                 if (zOffset + z > (256 - roadwidth) && zOffset + z < (256 + roadwidth))
                 {
-                    float roadHeight = 0;
-                    for (int i = -smoothFactor; i <= smoothFactor; i++)
+                    float roadHeight = 20f/513f;
+                    /*for (int i = -smoothFactor; i <= smoothFactor; i++)
                     {
                         var potentialHeight = CompileNoise(256, x + i, position);
-                        if (potentialHeight >= (45f / 513f)) potentialHeight = (45f / 513f);
+                        if (potentialHeight >= (24f / 513f)) potentialHeight = (24f / 513f);
                         if (potentialHeight <= (12f / 513f)) potentialHeight = (12f/513f);
                         roadHeight += potentialHeight;
                     }
-                    roadHeight /= (smoothFactor * 2 + 1);
+                    roadHeight /= (smoothFactor * 2 + 1);*/
                     heights[z, x] = roadHeight;
                 }
                 else

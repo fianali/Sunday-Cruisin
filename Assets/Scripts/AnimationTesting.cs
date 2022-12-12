@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationTesting : MonoBehaviour
 {
-
     public static AnimationTesting Instance;
     
     public AudioSource Male;
@@ -20,7 +20,9 @@ public class AnimationTesting : MonoBehaviour
 
     public Animator MaleAnimator;
     public Animator FemaleAnimator;
+    public Animator PlayerAnimator;
 
+    private UnityEvent terrainReady;
 
     private void Awake()
     {
@@ -37,13 +39,26 @@ public class AnimationTesting : MonoBehaviour
         // StartCoroutine(WelcomingRevert());
 
         // GameController.Instance.fed = false;
+        terrainReady = TerrainLoader.Instance.terrainReady;
+        terrainReady.AddListener(OnTerrainReady);
+        StartCoroutine(TestingTimer());
+        
+        Male.clip = WelcomeDialogue;
+        Male.Play();
+        
+        MaleAnimator.SetBool("Welcoming", true);
+        MaleAnimator.SetBool("Twisted", true);
+        StartCoroutine(WelcomingRevert());
+    }
 
-        // StartCoroutine(TestingTimer());
+    void OnTerrainReady()
+    {
+        GameController.Instance.fed = false;
     }
 
     void Update()
     {
-        if (TerrainGenerator.Instance.finished)
+        /*if (TerrainGenerator.Instance.finished)
         {
             Male.clip = WelcomeDialogue;
             Male.Play();
@@ -54,7 +69,7 @@ public class AnimationTesting : MonoBehaviour
 
             GameController.Instance.fed = false;
             TerrainGenerator.Instance.finished = false;
-        }
+        }*/
     }
 
     
@@ -155,7 +170,9 @@ public class AnimationTesting : MonoBehaviour
     
     IEnumerator TestingTimer()
     {
-        yield return new WaitForSeconds(13f);
-        ThisMusicIsAwesomeness();
+        yield return new WaitForSeconds(20f);
+        HowDoYouLikeTheMusic();
     }
+    
+    
 }

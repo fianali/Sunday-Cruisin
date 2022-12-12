@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8700995294294666486}
   - component: {fileID: 8700995294294666485}
-  - component: {fileID: 8700995294294666483}
-  - component: {fileID: 8700995294294666487}
   - component: {fileID: 8700995294294666484}
-  - component: {fileID: 2726080781050656292}
+  - component: {fileID: 2634251397706972404}
+  - component: {fileID: 7827047538427826260}
+  - component: {fileID: 1909386825974346712}
   m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
@@ -71,48 +71,6 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
---- !u!114 &8700995294294666483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8700995294294666482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5d1502396eed240adc255f3d44d3fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 513
-  length: 513
-  depth: 513
-  terrainPainter: {fileID: 8700995294294666487}
-  baseTerrainData: {fileID: 15600000, guid: 587f7452108b19e45819d2b2999857c2, type: 2}
-  terrainScatter: {fileID: 2726080781050656292}
-  octaves:
-  - 1
-  - 2
-  - 4
-  - 8
-  - 16
-  - 32
-  - 64
-  - 128
-  - 256
-  - 512
-  redistributionFactor: 4
---- !u!114 &8700995294294666487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8700995294294666482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48c57eeff68f5b04d839bc6c2b82edc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!154 &8700995294294666484
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +82,40 @@ TerrainCollider:
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 587f7452108b19e45819d2b2999857c2, type: 2}
   m_EnableTreeColliders: 1
---- !u!114 &2726080781050656292
+--- !u!114 &2634251397706972404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700995294294666482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde29b57ed70507419792e805357fa62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTerrainData: {fileID: 15600000, guid: 587f7452108b19e45819d2b2999857c2, type: 2}
+  octaves:
+  - 2
+  - 16
+  - 64
+  - 128
+  redistributionFactor: 4
+  terrainPainter: {fileID: 7827047538427826260}
+  terrainScatter: {fileID: 1909386825974346712}
+--- !u!114 &7827047538427826260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700995294294666482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c57eeff68f5b04d839bc6c2b82edc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1909386825974346712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,12 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc3c9855f9d2234abe1b37c00a759ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scatter:
-  - {fileID: 9124157745091716997, guid: eaacf1de2871fe849bb1068f5c428111, type: 3}
+  scatter: []
   treeCount: 30
-  maxOffset: 0.62
-  grassDensity: 512
-  patchDetail: 32
+  maxOffset: 0.89
+  grassDensity: 100
+  patchDetail: 16
 --- !u!1 &8738733913152271824
 GameObject:
   m_ObjectHideFlags: 0
