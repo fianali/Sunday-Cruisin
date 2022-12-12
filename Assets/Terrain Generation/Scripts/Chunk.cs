@@ -74,7 +74,7 @@ public class Chunk : MonoBehaviour
         terrain.treeBillboardDistance = 5000;
         
         terrainPainter.PaintTerrain(terrain.terrainData, heightMap, moistureMap);
-        terrainScatter.ScatterFoliage(terrain);
+        terrainScatter.ScatterFoliage(terrain, heightMap, moistureMap);
         
         chunkLoaded.Invoke();
     }
