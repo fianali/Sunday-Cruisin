@@ -7,13 +7,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     [SerializeField] private GameObject promoteText;
     [SerializeField] private GameObject crackerInstructions;
     [SerializeField] private GameObject passenger;
     [SerializeField] private GameObject driver;
 
+    public bool liked = true;
 
-
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -26,7 +32,7 @@ public class UIManager : MonoBehaviour
     void CheckPromotion()
     {
         //promote to passenger, might need to change cause i changed foodcount back to 0;
-        if (GameController.Instance.promote == true && GameController.Instance.foodCount >= 3)
+        if (GameController.Instance.promote == true && GameController.Instance.backseat == true)
         {
             promoteText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
@@ -43,6 +49,7 @@ public class UIManager : MonoBehaviour
             promoteText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
+                promoteText.SetActive(false);
                 driver.SetActive(true);
                 Debug.Log("youre now driving! skrrrrrt");
             }
@@ -56,7 +63,7 @@ public class UIManager : MonoBehaviour
             crackerInstructions.SetActive(true);
         }
 
-        if (GameController.Instance.foodCount >= 3)
+        if (!GameController.Instance.backseat)
         {
             crackerInstructions.SetActive(false);
         }
@@ -67,19 +74,25 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Debug.Log("you like this song");
+            liked = true;
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("you dont like this song");
+            liked = false;
         }
     }
 
     void DisplayPassengerUI()
     {
-        if (GameController.Instance.passenger == true && GameController.Instance.foodCount == 0)
+        if (GameController.Instance.passenger == true)
         {
             passenger.SetActive(true);
+        }
+        else
+        {
+            passenger.SetActive(false);
         }
     }
 

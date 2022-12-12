@@ -151,15 +151,13 @@ public class GameController : MonoBehaviour
                 if (rand == 1)
                 {
                     likedSong = false;
-                    Debug.Log("Liked: " + likedSong);
                     StartCoroutine(Music());
                 }
                 else
                 {
                     likedSong = true;
+                    StartCoroutine(GoodMusic());
                     songCount++;
-                    Debug.Log("SC: " + songCount);
-                    Debug.Log("Liked: " + likedSong);
                 }
 
                 
@@ -182,7 +180,6 @@ public class GameController : MonoBehaviour
             {
                 timesUp = false;
                 songCount--;
-                Debug.Log("SC: " + songCount);
             }
             if (songCount == -3)
             {
@@ -191,7 +188,7 @@ public class GameController : MonoBehaviour
                 songCount = 0;
                 
             }
-            if (songCount == 5)
+            if (songCount == 4)
             {
                 promote = true;
                 songCount = 0;
@@ -208,11 +205,13 @@ public class GameController : MonoBehaviour
         {
             if (passenger && !backseat)
             {
-                // ActorPositions.Instance.PlayerToDriver();
-                passenger = false;
-                driver = true;
-                promote = false;
-                Debug.Log("Promote To Driver");
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ActorPositions.Instance.PlayerToDriver();
+                    passenger = false;
+                    driver = true;
+                    promote = false;
+                }
 
             }
             if (backseat)
@@ -242,6 +241,7 @@ public class GameController : MonoBehaviour
                 backseat = true;
                 passenger = false;
                 demote = false;
+                StartCoroutine(Food());
 
             }
         }
@@ -268,16 +268,23 @@ public class GameController : MonoBehaviour
     
     IEnumerator Music()
     {
-          
-        Debug.Log("CHANGE THIS SHIT");
+        yield return new WaitForSeconds(5);
+        AnimationTesting.Instance.ThisMusicSucks();
+
         yield return new WaitForSeconds(10);
-        Debug.Log("TIME CHECK: " + timesUp);
-        if (SoundController.Instance.songChanged)
+        if (SoundController.Instance.songChangedInTime)
         {
+            SoundController.Instance.songChangedInTime = false;
+            //songCount++;
             yield break;
-            Debug.Log("Break");
         }
         timesUp = true;
          
     } 
+
+    IEnumerator GoodMusic() 
+    {
+        yield return new WaitForSeconds(5);
+        AnimationTesting.Instance.ThisMusicIsAwesomeness();
+    }
 }
