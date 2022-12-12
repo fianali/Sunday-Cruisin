@@ -18,7 +18,7 @@ public class ActorPositions : MonoBehaviour
     private Vector3 MaleShotgunPosition = new Vector3(-5.43f, 3.35f, 1.41f);
     private Vector3 MaleShotgunScale = new Vector3(15.8f, 15.8f, 15.8f);
     
-    private Vector3 PlayerDriverPosition = new Vector3(9.4f, -7.49f, 2.09f);
+    private Vector3 PlayerDriverPosition = new Vector3(8.93f, -7.49f, -2.819f);
     private Vector3 PlayerDriverScale = new Vector3(17.83f, 17.83f, 17.83f);
     
     private Vector3 FemaleShotgunPosition = new Vector3(-6.679f, 4.729f, 5.22f);
