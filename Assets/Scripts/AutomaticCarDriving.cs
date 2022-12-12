@@ -29,6 +29,7 @@ public class AutomaticCarDriving : CarController
     private void Update()
     {
         CheckIfDrive();
+        RollWindows();
     }
     
     //fix later
@@ -41,4 +42,5 @@ public class AutomaticCarDriving : CarController
 
         }
     }
+    
 }
