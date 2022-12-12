@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7331811157299193872}
   - component: {fileID: 6472553006873362720}
   - component: {fileID: 7331811157299193875}
-  - component: {fileID: 1854125936}
+  - component: {fileID: 2473613571656044458}
   m_Layer: 0
   m_Name: Classic_car_1955_style2
   m_TagString: Untagged
@@ -145,14 +145,14 @@ MonoBehaviour:
   maxSteerAngle: 30
   rightWindow: {fileID: 474856}
   leftWindow: {fileID: 437248}
---- !u!114 &1854125936
+--- !u!114 &2473613571656044458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103558}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45abc545e928f4042afc9ab38b8e2164, type: 3}
   m_Name: 
@@ -165,11 +165,11 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 685643650650697149}
   backLeftWheelTransform: {fileID: 7781119035676433155}
   backRightWheelTransform: {fileID: 9141506093962205872}
-  driveForce: 10000
-  breakForce: 8000
+  driveForce: 250
+  breakForce: 750
   maxSteerAngle: 30
-  rightWindow: {fileID: 474856}
-  leftWindow: {fileID: 437248}
+  rightWindow: {fileID: 0}
+  leftWindow: {fileID: 0}
 --- !u!1 &104764
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,6 +5262,7 @@ MonoBehaviour:
   four4: {fileID: 8300000, guid: 01e83426536b07f4bb351f4c2a200cb5, type: 3}
   five4: {fileID: 8300000, guid: 45e68d87b0a1fa444871f84ab0e1403c, type: 3}
   songChanged: 0
+  songChangedInTime: 0
 --- !u!1 &1180772411
 GameObject:
   m_ObjectHideFlags: 0
@@ -8572,15 +8573,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Male: {fileID: 2124736593}
+  Female: {fileID: 0}
   WelcomeDialogue: {fileID: 8300000, guid: 7c80e773c28440c44a0cad997c667589, type: 3}
   LookedAtWindowDialogue: {fileID: 8300000, guid: c53614c267573f74ba38a64979649b96, type: 3}
   GiveMeSomeCrackersDialogue: {fileID: 8300000, guid: e5a9b83050e78504aaeffc3f4cfacbf4, type: 3}
-  Animator: {fileID: 8411891258529440017}
---- !u!95 &8411891258529440017 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8411891260235210858, guid: 0d7c0a5e9ade0604a8740bd8ebc49e5b, type: 3}
-  m_PrefabInstance: {fileID: 1716781435}
-  m_PrefabAsset: {fileID: 0}
+  ThumbsDialogue: {fileID: 0}
+  SucksDialogue: {fileID: 0}
+  AwesomeDialogue: {fileID: 0}
+  MaleAnimator: {fileID: 0}
+  FemaleAnimator: {fileID: 0}
 --- !u!1001 &1948520497
 PrefabInstance:
   m_ObjectHideFlags: 0

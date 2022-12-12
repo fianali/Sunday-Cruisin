@@ -18,6 +18,8 @@ public class CarController : MonoBehaviour
     [SerializeField] public float driveForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
+    [SerializeField] protected float maxVelocity;
+    [SerializeField] protected Rigidbody carRigidbody;
 
     public Transform rightWindow;
     [SerializeField] private Transform leftWindow;
@@ -27,6 +29,7 @@ public class CarController : MonoBehaviour
     private float currentBreakForce;
     private bool isBreaking;
     private float currentSteerAngle;
+
     
     // Start is called before the first frame update
     void Start()
@@ -58,12 +61,14 @@ public class CarController : MonoBehaviour
 
     public virtual void HandleDriving()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * driveForce;
-        frontRightWheelCollider.motorTorque = verticalInput * driveForce;
+        var maxDriveForce = driveForce * (1-(carRigidbody.velocity.magnitude/maxVelocity));
+        frontLeftWheelCollider.motorTorque = verticalInput * maxDriveForce;
+        frontRightWheelCollider.motorTorque = verticalInput * maxDriveForce;
         currentBreakForce = isBreaking ? breakForce : 0f;
         if (isBreaking)
         {
             ApplyBrakes();
+            return;
         }
     }
 

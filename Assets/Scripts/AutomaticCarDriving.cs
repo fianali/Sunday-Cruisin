@@ -7,8 +7,10 @@ public class AutomaticCarDriving : CarController
 {
     public override void HandleDriving()
     {
-        frontLeftWheelCollider.motorTorque = -1 * driveForce;
-        frontRightWheelCollider.motorTorque = -1 * driveForce;
+        var maxDriveForce = driveForce * (1-(carRigidbody.velocity.magnitude/maxVelocity));
+
+        frontLeftWheelCollider.motorTorque = -1 * maxDriveForce;
+        frontRightWheelCollider.motorTorque = -1 * maxDriveForce;
     }
 
     private void Update()
