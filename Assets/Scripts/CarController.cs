@@ -21,8 +21,10 @@ public class CarController : MonoBehaviour
     [SerializeField] protected float maxVelocity;
     [SerializeField] protected Rigidbody carRigidbody;
 
-    public Transform rightWindow;
-    [SerializeField] private Transform leftWindow;
+    [SerializeField] private Transform frontRightWindow;
+    [SerializeField] private Transform frontLeftWindow;
+    [SerializeField] private Transform backRightWindow;
+    [SerializeField] private Transform backLeftWindow;
     
     private float horizontalInput;
     private float verticalInput;
@@ -105,29 +107,28 @@ public class CarController : MonoBehaviour
         wheelTransform.rotation = rotation;
     }
 
-    void RollWindows()
+    public virtual void RollWindows()
     {
-
-        if (rightWindow.localPosition.y >= -6.10 && leftWindow.localPosition.y >= -6.10)
+        if (backRightWindow.localPosition.y >= -6.10 && backLeftWindow.localPosition.y >= -6.10)
         {
-            Debug.Log(rightWindow.localPosition.y);
-            Debug.Log("can roll down window");
             if (Input.GetKey(KeyCode.L))
             {
-                rightWindow.localPosition += new Vector3(0f, -.05f);
-                leftWindow.localPosition += new Vector3(0f, -.05f);
+                backRightWindow.localPosition += new Vector3(0f, -.05f);
+                backLeftWindow.localPosition += new Vector3(0f, -.05f);
+                frontRightWindow.localPosition += new Vector3(0f, -.05f);
+                frontLeftWindow.localPosition += new Vector3(0f, -.05f);
             }
             
         }
-
-
-        if (rightWindow.localPosition.y <= 0 && leftWindow.localPosition.y <= 0)
+        
+        if (backRightWindow.localPosition.y <= 0 && backLeftWindow.localPosition.y <= 0)
         {
-            Debug.Log("roll up window");
             if (Input.GetKey(KeyCode.O))
             {
-                rightWindow.localPosition += new Vector3(0, .05f);
-                leftWindow.localPosition += new Vector3(0, .05f);
+                backRightWindow.localPosition += new Vector3(0, .05f);
+                backLeftWindow.localPosition += new Vector3(0, .05f);
+                frontRightWindow.localPosition += new Vector3(0f, .05f);
+                frontLeftWindow.localPosition += new Vector3(0f, .05f);
             }
             
         }

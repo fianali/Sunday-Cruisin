@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
         GetSongPreference();
         GiveCrackerInstruction();
         DisplayPassengerUI();
+        DisplayDriverUI();
     }
     
     void CheckPromotion()
@@ -98,6 +99,13 @@ public class UIManager : MonoBehaviour
 
     void DisplayDriverUI()
     {
-        
+        if (GameController.Instance.driver == true)
+        {
+            driver.SetActive(true);
+        }
+        else
+        {
+            driver.SetActive(false);
+        }
     }
 }
