@@ -110,23 +110,27 @@ public class TerrainLoader : MonoBehaviour
     
     private void LoadRow(int deltaXCell)
     {
+        var length = loadDistance * 2 + 1;
         // Delete last row
-        for (int j = 0; j < loadDistance; j++)
+        for (int j = 0; j < length; j++)
         {
+            Debug.Log("j: " + j);
             Destroy(loadedChunks[0, j]);
         }
         
-        for (int i = 0; i < loadDistance-1; i++)
+        // Move rows
+        for (int i = 0; i < length-1; i++)
         {
-            for (int j = 0; j < loadDistance; j++)
+            for (int j = 0; j < length; j++)
             {
                 loadedChunks[i, j] = loadedChunks[i + 1, j];
             }
-            
         }
+        
+        // Add row
         for (var z = zPlayerCell - loadDistance; z <= zPlayerCell + loadDistance; z++)        
         {
-            loadedChunks[loadDistance - 1, (z - zPlayerCell + loadDistance)] = Instantiate(terrain, new Vector3((xPlayerCell + (loadDistance * deltaXCell)) * 513f, 0, z*513f), new Quaternion(0,0,0,0));
+            loadedChunks[length - 1, (z - zPlayerCell + loadDistance)] = Instantiate(terrain, new Vector3((xPlayerCell + (loadDistance * deltaXCell)) * 513f, 0, z*513f), new Quaternion(0,0,0,0));
         }
     }
     private void LoadCellsAround(int xCell, int zCell)
