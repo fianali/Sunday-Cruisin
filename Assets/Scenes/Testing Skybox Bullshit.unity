@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2047046069}
-  m_IndirectSpecularColor: {r: 0.5012866, g: 0.4169554, b: 0.60812336, a: 1}
+  m_IndirectSpecularColor: {r: 0.39706314, g: 0.28513488, b: 0.49554133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -336,7 +336,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 38.958, y: -1078.793, z: -145.922}
+  m_LocalEulerAnglesHint: {x: 114.39, y: -808.222, z: 37.117004}
 --- !u!114 &2047046071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   starsSpeed: 8
-  cloudsSpeed: {x: 1, y: -1}
+  cloudsSpeed: {x: 0.2, y: -0.2}
   fogColor:
     serializedVersion: 2
     key0: {r: 0.66, g: 1, b: 1, a: 1}
