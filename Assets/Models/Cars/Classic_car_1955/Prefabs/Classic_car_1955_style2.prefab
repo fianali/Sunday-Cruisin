@@ -146,7 +146,7 @@ MonoBehaviour:
   backRightWheelTransform: {fileID: 9141506093962205872}
   driveForce: 1000
   breakForce: 750
-  maxSteerAngle: 30
+  maxSteerAngle: 10
   maxVelocity: 30
   carRigidbody: {fileID: 7331811157299193873}
   frontRightWindow: {fileID: 450932}
@@ -175,7 +175,7 @@ MonoBehaviour:
   backRightWheelTransform: {fileID: 9141506093962205872}
   driveForce: 1000
   breakForce: 750
-  maxSteerAngle: 30
+  maxSteerAngle: 10
   maxVelocity: 30
   carRigidbody: {fileID: 7331811157299193873}
   frontRightWindow: {fileID: 450932}
@@ -3855,6 +3855,8 @@ Transform:
   m_Children:
   - {fileID: 414486}
   - {fileID: 447252}
+  - {fileID: 1159950952}
+  - {fileID: 2118484651}
   m_Father: {fileID: 497778}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5275,6 +5277,37 @@ MonoBehaviour:
   five4: {fileID: 8300000, guid: 45e68d87b0a1fa444871f84ab0e1403c, type: 3}
   songChanged: 0
   songChangedInTime: 0
+--- !u!1 &1159950951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159950952}
+  m_Layer: 0
+  m_Name: Right Hand Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1159950952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159950951}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.6231036, y: 15.185972, z: -1.7742882}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 475536}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180772411
 GameObject:
   m_ObjectHideFlags: 0
@@ -5828,6 +5861,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &2118484650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118484651}
+  m_Layer: 0
+  m_Name: Left Hand Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118484651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118484650}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.883175, y: 15.915972, z: -2.074286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 475536}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633929183942110984
 GameObject:
   m_ObjectHideFlags: 0
@@ -6315,7 +6379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572546264047976967, guid: b6ef6169cb130064b99e01bb22ce6814, type: 3}
       propertyPath: m_Name
-      value: Woman_red_hair
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 694715429997564733, guid: b6ef6169cb130064b99e01bb22ce6814, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7769,6 +7833,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 916983247374571709, guid: b6ef6169cb130064b99e01bb22ce6814, type: 3}
   m_PrefabInstance: {fileID: 75013969}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6510493891273923990 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6510493891207299783, guid: b6ef6169cb130064b99e01bb22ce6814, type: 3}
+  m_PrefabInstance: {fileID: 75013969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8124397839084761647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8124397839022402942, guid: b6ef6169cb130064b99e01bb22ce6814, type: 3}
@@ -8061,6 +8130,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1111511933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149395467987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c532a4e1bf2754ca8c16c1e8b3fc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ikActive: 0
+  rightHandObj: {fileID: 1159950952}
+  leftHandObj: {fileID: 2118484651}
 --- !u!95 &5866666021671546387 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: e94fe2ccece16124f9881b30c0f8c357, type: 3}
@@ -9173,7 +9257,7 @@ MonoBehaviour:
   AwesomeDialogue: {fileID: 8300000, guid: 919ba5b733b0fa14c809c315a4677753, type: 3}
   MaleAnimator: {fileID: 8411891258529440017}
   FemaleAnimator: {fileID: 5866666021671546387}
-  PlayerAnimator: {fileID: 0}
+  PlayerAnimator: {fileID: 6510493891273923990}
 --- !u!95 &8411891258529440017 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8411891260235210858, guid: 0d7c0a5e9ade0604a8740bd8ebc49e5b, type: 3}
