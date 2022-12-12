@@ -52,7 +52,7 @@ public class TerrainGenerator : MonoBehaviour
 
         terrain.treeBillboardDistance = 5000;
         // terrainPainter.PaintTerrain(terrain.terrainData);
-        terrainScatter.ScatterFoliage(terrain);
+        // terrainScatter.ScatterFoliage(terrain);
         Debug.Log("Finished!");
         finished = true;
     }

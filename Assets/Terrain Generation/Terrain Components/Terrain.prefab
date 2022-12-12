@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scatter: []
   treeCount: 30
-  maxOffset: 0.89
-  grassDensity: 100
+  maxOffset: 0.96
+  grassDensity: 513
   patchDetail: 16
 --- !u!1 &8738733913152271824
 GameObject:
