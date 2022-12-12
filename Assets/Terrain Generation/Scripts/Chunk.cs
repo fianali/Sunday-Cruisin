@@ -5,6 +5,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
 
 public class Chunk : MonoBehaviour
 {
@@ -86,31 +87,25 @@ public class Chunk : MonoBehaviour
         var center = 256;
         for (int x = 0; x < 513; x++)
         {
-            var leftHeight = heightMap[center + roadWidth + curbLength, x];
-            var rightHeight = heightMap[center - roadWidth - curbLength, x];
-            Debug.Log(leftHeight);
+            // var leftHeight = heightMap[center + roadWidth + curbLength, x];
+            // var rightHeight = heightMap[center - roadWidth - curbLength, x];
             
             for(int z = center - roadWidth - curbLength; z <= center + roadWidth + curbLength; z++)
             {
                 float roadHeight = 0;
-                // if (z >= center - roadWidth && z <= center + roadWidth)
-                // {
-                //     roadHeight = baseRoadHeight;
-                // }
-                // else 
                 if(z >= center - roadWidth - curbLength && z <= center + roadWidth + curbLength)
                 {
                     float distanceFromCenter = Math.Abs(z - center);
                     float distanceFromRoad = distanceFromCenter - roadWidth;
-                    // Debug.Log(distanceFromRoad);
+                    
                     var percentFromRoad = distanceFromRoad / (curbLength);
                     if (percentFromRoad <= 0)
                         percentFromRoad = 0;
 
                     if (z < center)
-                        roadHeight = baseRoadHeight * (1-percentFromRoad) + rightHeight * percentFromRoad;
+                        roadHeight = baseRoadHeight * (1-percentFromRoad) + heightMap[z,x] * percentFromRoad;
                     else
-                        roadHeight = baseRoadHeight * (1-percentFromRoad) + leftHeight * percentFromRoad;
+                        roadHeight = baseRoadHeight * (1-percentFromRoad) + heightMap[z,x] * percentFromRoad;
                 }
                 
                 /*for (int i = -smoothFactor; i <= smoothFactor; i++)
