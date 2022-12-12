@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Graphics.Tools.Noise;
 using Graphics.Tools.Noise.Primitive;
 using UnityEngine;
+using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 
 public static class NoiseManager
@@ -29,28 +30,28 @@ public static class NoiseManager
 public class TerrainLoader : MonoBehaviour
 {
     public static TerrainLoader Instance;
-    public int seed;
-
-    public float macroScale;
-    public float biomeScale;
-    public float hfScale;
-    public float hfSize;
-
+    // public int seed;
+    public UnityEvent chunkLoaded;
+    public UnityEvent terrainReady;
+    
     private int xPlayerCell;
     private int zPlayerCell;
 
-    // public GameObject[,] loadedChunks;
+
+    public GameObject[,] loadedChunks;
     [SerializeField] private GameObject terrain;
     [SerializeField] private int loadDistance;
     // [SerializeField] private Transform player;
-    
+    private int numChunks;
+    private int numChunksLoaded = 0;
+
     // Road information
     public int roadwidth;
-    public int roadSmoothFactor;
+    // public int roadSmoothFactor;
     [System.Serializable]
     public class SplatInfo
     {
-        public int textureIndex;
+        // public int textureIndex;
         public float moistureStart;
         public float moistureEnd;
         public float heightStart;
@@ -61,6 +62,21 @@ public class TerrainLoader : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
+        
+        // Dealing with events
+        if (chunkLoaded == null) chunkLoaded = new UnityEvent();
+        if (terrainReady == null) terrainReady = new UnityEvent();
+        chunkLoaded.AddListener(OnTerrainReady);
+        numChunks = (loadDistance * 2 + 1) * (loadDistance * 2 + 1);
+    }
+
+    private void OnTerrainReady()
+    {
+        numChunksLoaded++;
+        if (numChunksLoaded >= numChunks)
+        {
+            terrainReady.Invoke();
+        }
     }
 
     void Start()
@@ -72,11 +88,12 @@ public class TerrainLoader : MonoBehaviour
         //         Instantiate(terrain, new Vector3(i*513f, 0, j*513f), new Quaternion(0,0,0,0));
         //     }
         // }
+        loadedChunks = new GameObject[loadDistance * 2 + 1, loadDistance * 2 + 1];
         for (var x = 0 - loadDistance; x <= 0 + loadDistance; x++)
         {
             for (var z = 0 - loadDistance; z <= 0 + loadDistance; z++)
             {
-                Instantiate(terrain, new Vector3(x*513f, 0, z*513f), new Quaternion(0,0,0,0));
+                loadedChunks[x + loadDistance, z + loadDistance] = Instantiate(terrain, new Vector3(x*513f, 0, z*513f), new Quaternion(0,0,0,0));
             }
         }
     }
@@ -95,12 +112,26 @@ public class TerrainLoader : MonoBehaviour
             LoadRow(deltaXCell);
         }
     }
-
+    
     private void LoadRow(int deltaXCell)
     {
+        // Delete last row
+        for (int j = 0; j < loadDistance; j++)
+        {
+            Destroy(loadedChunks[0, j]);
+        }
+        
+        for (int i = 0; i < loadDistance-1; i++)
+        {
+            for (int j = 0; j < loadDistance; j++)
+            {
+                loadedChunks[i, j] = loadedChunks[i + 1, j];
+            }
+            
+        }
         for (var z = zPlayerCell - loadDistance; z <= zPlayerCell + loadDistance; z++)        
         {
-            Instantiate(terrain, new Vector3((xPlayerCell + (loadDistance * deltaXCell)) * 513f, 0, z*513f), new Quaternion(0,0,0,0));
+            loadedChunks[loadDistance - 1, (z - zPlayerCell + loadDistance)] = Instantiate(terrain, new Vector3((xPlayerCell + (loadDistance * deltaXCell)) * 513f, 0, z*513f), new Quaternion(0,0,0,0));
         }
     }
     private void LoadCellsAround(int xCell, int zCell)

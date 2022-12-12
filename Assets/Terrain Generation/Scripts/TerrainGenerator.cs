@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public static TerrainGenerator Instance;
     public bool finished = false;
 
     [SerializeField] private int width;
@@ -31,11 +30,6 @@ public class TerrainGenerator : MonoBehaviour
         terrain.terrainData = Instantiate(baseTerrainData);
         GenerateTerrain(terrain.terrainData, 1, 1, DoneLoadingCallback);
     }*/
-
-    void Awake() 
-    {
-        Instance = this;
-    }
 
     private void Start()
     {

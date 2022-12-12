@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Chunk : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class Chunk : MonoBehaviour
     private const int width = 513;
     private const int depth = 513;
 
+    private UnityEvent chunkLoaded;
+    
     private float[,] tempMap;
     private float[,] heightMap;
     private float[,] moistureMap;
@@ -26,6 +30,11 @@ public class Chunk : MonoBehaviour
 
     private delegate void GenericDelegate();
     private delegate void GenericDelegate<T>(T variable);
+
+    private void Awake()
+    {
+        chunkLoaded = TerrainLoader.Instance.chunkLoaded;
+    }
 
     private void Start()
     {
@@ -69,7 +78,6 @@ public class Chunk : MonoBehaviour
             }
             
         }
-            
 
         terrainData.SetHeights(0, 0, heightMap);
         
@@ -81,6 +89,8 @@ public class Chunk : MonoBehaviour
         
         terrainPainter.PaintTerrain(terrain.terrainData, heightMap, moistureMap);
         terrainScatter.ScatterFoliage(terrain);
+        
+        chunkLoaded.Invoke();
     }
     
 

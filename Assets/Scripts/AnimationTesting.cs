@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationTesting : MonoBehaviour
 {
-
     public static AnimationTesting Instance;
     
     public AudioSource Male;
@@ -21,10 +21,12 @@ public class AnimationTesting : MonoBehaviour
     public Animator MaleAnimator;
     public Animator FemaleAnimator;
 
+    private UnityEvent terrainReady;
 
     private void Awake()
     {
         Instance = this;
+
     }
 
     void Start()
@@ -37,13 +39,28 @@ public class AnimationTesting : MonoBehaviour
         // StartCoroutine(WelcomingRevert());
 
         // GameController.Instance.fed = false;
-
+        terrainReady = TerrainLoader.Instance.terrainReady;
+        terrainReady.AddListener(OnTerrainReady);
         StartCoroutine(TestingTimer());
+    }
+
+    void OnTerrainReady()
+    {
+        Male.clip = WelcomeDialogue;
+        Male.Play();
+        
+        MaleAnimator.SetBool("Welcoming", true);
+        MaleAnimator.SetBool("Twisted", true);
+        StartCoroutine(WelcomingRevert());
+
+        GameController.Instance.fed = false;
+        
+        Debug.Log("ping recived by animation tester");
     }
 
     void Update()
     {
-        if (TerrainGenerator.Instance.finished)
+        /*if (TerrainGenerator.Instance.finished)
         {
             Male.clip = WelcomeDialogue;
             Male.Play();
@@ -54,7 +71,7 @@ public class AnimationTesting : MonoBehaviour
 
             GameController.Instance.fed = false;
             TerrainGenerator.Instance.finished = false;
-        }
+        }*/
     }
 
     
