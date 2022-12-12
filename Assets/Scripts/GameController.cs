@@ -48,8 +48,11 @@ public class GameController : MonoBehaviour
     
     void Update()
     {
+        Debug.Log(backseat);
+
         if (introOver)
         {
+            Debug.Log("INTRO OVER");
             StartCoroutine(Food());
             introOver = false;
             startCount = true;
@@ -111,7 +114,7 @@ public class GameController : MonoBehaviour
                 timeWaited = 0f;
             }
 
-            if (foodCount >= 2)
+            if (foodCount >= 3)
             {
                 promote = true;
             }
@@ -251,7 +254,7 @@ public class GameController : MonoBehaviour
     {
         while (backseat)
         {
-            int rand = Random.Range(20, 30);
+            int rand = Random.Range(5, 10);
 
             if (fed)
             {
