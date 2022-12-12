@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
     
     void Update()
     {
-        //Debug.Log(backseat);
 
         if (introOver)
         {
@@ -58,38 +57,11 @@ public class GameController : MonoBehaviour
             startCount = true;
         }
         
-        if (!likedSong)
-        {
-            // station change
-        }
-
-        if (!backseat)
-        {
-            // if (click ask for snack?)
-            // {
-            //    hungry = true;
-            // }
-            // if (hungry)
-            // {
-            //    if (passenger)
-            //    {
-            //       food given to passenger
-            //    }
-            //    if (driver)
-            //    {
-            //       food given to driver
-            //    }
-            // }
-        }
         if (backseat)
         {
             if (!fed)
-            {
-                
+            {    
                 timeWaited += Time.deltaTime;
-            
-                // if (give food)
-                //   fed = true
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -103,12 +75,14 @@ public class GameController : MonoBehaviour
                 if (timeWaited < 6f && pow)
                 {
                     foodCount++;
+                    Debug.Log(foodCount);
                     pow = false;
                     
                 }
                 else if (timeWaited > 7f && pow)
                 {
                     foodCount--;
+                    Debug.Log(foodCount);
                     pow = false;
                 }
                 timeWaited = 0f;
@@ -118,24 +92,7 @@ public class GameController : MonoBehaviour
             {
                 promote = true;
             }
-            // else
-            // {
-            //     promote = false;
-            // }
         }
-
-        if (!passenger)
-        {
-            //if (click up)
-            // {
-            //    likedSong = true
-            // } 
-            //if (click down)
-            // {
-            //    likedSong = false
-            // }
-        }
-
       
         if (passenger)
         {
@@ -167,16 +124,6 @@ public class GameController : MonoBehaviour
                 checkRequest = false;
             }
             
-
-            // if (!likedSong)
-            // {
-            //     if (SoundController.Instance.songChanged)
-            //     { 
-            //         likedSong = true;
-            //         songCount++;
-            //         Debug.Log("SC: " + songCount);
-            //     }
-            // }
             
 
             if (timesUp && !likedSong)
@@ -231,13 +178,13 @@ public class GameController : MonoBehaviour
         }
         else if (demote)
         {
-            // if (driver)
-            // {
-            //     ActorPositions.Instance.PlayerToShotgun();
-            //     passenger = true;
-            //     driver = false;
-            //     demote = false;
-            // }
+            if (driver)
+            {
+                ActorPositions.Instance.PlayerToShotgun();
+                passenger = true;
+                driver = false;
+                demote = false;
+            }
             if (passenger)
             {
                 ActorPositions.Instance.PlayerToBackseat();
@@ -245,7 +192,6 @@ public class GameController : MonoBehaviour
                 passenger = false;
                 demote = false;
                 StartCoroutine(Food());
-
             }
         }
     }
@@ -278,7 +224,6 @@ public class GameController : MonoBehaviour
         if (SoundController.Instance.songChangedInTime)
         {
             SoundController.Instance.songChangedInTime = false;
-            //songCount++;
             yield break;
         }
         timesUp = true;
