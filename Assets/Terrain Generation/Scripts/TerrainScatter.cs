@@ -17,7 +17,7 @@ public class TerrainScatter : MonoBehaviour
     private float zOffset;
     private float roadWidth;
     private Terrain terrain;
-    public void ScatterFoliage(Terrain passedTerrain, float[,] heightMap, float[,] moistureMap)
+    public void ScatterFoliage(Terrain passedTerrain, int[,] biomeMap)
     {
         splatInfo = TerrainLoader.Instance.splatInfo;
 
@@ -25,8 +25,8 @@ public class TerrainScatter : MonoBehaviour
         xOffset = transform.position.x;
         zOffset = transform.position.z;
         roadWidth = TerrainLoader.Instance.roadwidth;
-        ScatterGrass(heightMap, moistureMap);
-        ScatterTrees(heightMap, moistureMap);
+        // ScatterGrass(biomeMap);
+        // ScatterTrees(biomeMap);
     }
 
     void ScatterGrass(float[,] heightMap, float[,] moistureMap)

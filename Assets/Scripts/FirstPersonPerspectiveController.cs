@@ -136,7 +136,41 @@ public class FirstPersonPerspectiveController : MonoBehaviour
                 {
                     SoundController.Instance.songUp = true;
                 }
-            }                
+            }
+            if (hit.collider.gameObject.name == "+station")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (SoundController.Instance.index == 3)
+                    {
+                        SoundController.Instance.index = 0;
+                        Debug.Log(SoundController.Instance.index);
+                    }
+                    else
+                    {
+                        SoundController.Instance.index += 1;
+                        Debug.Log(SoundController.Instance.index);
+                    }
+                    SoundController.Instance.stations[SoundController.Instance.index] = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "-station")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (SoundController.Instance.index == 0)
+                    {
+                        SoundController.Instance.index = 3;
+                        Debug.Log(SoundController.Instance.index);
+                    }
+                    else
+                    {
+                        SoundController.Instance.index -= 1;
+                        Debug.Log(SoundController.Instance.index);
+                    }
+                    SoundController.Instance.stations[SoundController.Instance.index] = true;
+                }
+            }                                    
             //change pitch
             var pitch = SoundController.Instance.radio.pitch;
             if (hit.collider.gameObject.name == "+pitch")

@@ -145,8 +145,8 @@ public class GameController : MonoBehaviour
 
         if (driver)
         {
-            Debug.Log("X: " + rb.velocity.x);
-            Debug.Log("Y: " + rb.velocity.z);
+            // Debug.Log("X: " + rb.velocity.x);
+            // Debug.Log("Y: " + rb.velocity.z);
 
             if (rb.velocity.x <= 1 && rb.velocity.z <= 1)
             {
@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour
         }
         if (demote)
         {
-            if (passenger)
+            if (passenger && promote == false)
             {
                 ActorPositions.Instance.PlayerToBackseat();
                 backseat = true;
