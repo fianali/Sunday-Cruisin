@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject crackerInstructions;
     [SerializeField] private GameObject passenger;
     [SerializeField] private GameObject driver;
+    [SerializeField] private GameObject likeDislike;
+
 
     public bool liked = true;
 
@@ -28,6 +30,7 @@ public class UIManager : MonoBehaviour
         GiveCrackerInstruction();
         DisplayPassengerUI();
         DisplayDriverUI();
+        HideLikeDislike();
     }
     
     void CheckPromotion()
@@ -40,7 +43,6 @@ public class UIManager : MonoBehaviour
             {
                 promoteText.SetActive(false);
                 GameController.Instance.foodCount = 0;
-                Debug.Log("you have promoted to passenger!");
             }
         }
         
@@ -52,7 +54,6 @@ public class UIManager : MonoBehaviour
             {
                 promoteText.SetActive(false);
                 driver.SetActive(true);
-                Debug.Log("youre now driving! skrrrrrt");
             }
         }
     }
@@ -106,6 +107,18 @@ public class UIManager : MonoBehaviour
         else
         {
             driver.SetActive(false);
+        }
+    }
+
+    void HideLikeDislike()
+    {
+        if (GameController.Instance.passenger == true)
+        {
+            likeDislike.SetActive(false);
+        }
+        else
+        {
+            likeDislike.SetActive(true);
         }
     }
 }
