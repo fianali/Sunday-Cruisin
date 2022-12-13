@@ -15,17 +15,17 @@ public class Chunk : MonoBehaviour
     
     [SerializeField] private TerrainPainter terrainPainter;
     [SerializeField] private TerrainScatter terrainScatter;
-    
+    [SerializeField] private BiomeGenerator biomeGenerator;
+
     private const int length = 513;
     private const int width = 513;
     private const int depth = 513;
 
     private UnityEvent chunkLoaded;
     
-    private float[,] tempMap;
     private float[,] heightMap;
     private float[,] moistureMap;
-    // TODO: Make splatMap
+    private int[,] biomeMap;
     
     private Terrain terrain;
     private TerrainData terrainData;
@@ -51,18 +51,25 @@ public class Chunk : MonoBehaviour
 
     private void MapStepTwo()
     {
-        heightMap = tempMap;
+        heightMap = moistureMap;
         MakeNoise(20, 0, 10000, SetTerrain);
     }
 
     private void SetTerrain()
     {
-        moistureMap = tempMap;
-
         // var pos = transform.position;
         if (transform.position.z == 0)
         {
             BuildRoad();
+        }
+        
+        biomeMap = biomeGenerator.GenerateBiomes(heightMap, moistureMap);
+        for (int i = 0; i < 513; i++)
+        {
+            for (int j = 0; j < 513; j++)
+            {
+                heightMap[i,j] = biomeMap[i,j] / 50f;
+            }
         }
 
         terrainData.SetHeights(0, 0, heightMap);
@@ -70,11 +77,13 @@ public class Chunk : MonoBehaviour
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
         terrainCollider.terrainData = terrain.terrainData;
         
+        /*
         terrain.detailObjectDistance = 1000;
-        terrain.treeBillboardDistance = 5000;
+        terrain.treeBillboardDistance = 5000;*/
+
         
-        terrainPainter.PaintTerrain(terrain.terrainData, heightMap, moistureMap);
-        terrainScatter.ScatterFoliage(terrain, heightMap, moistureMap);
+        /*terrainPainter.PaintTerrain(terrain.terrainData, heightMap, moistureMap);
+        terrainScatter.ScatterFoliage(terrain, heightMap, moistureMap);*/
         
         chunkLoaded.Invoke();
     }
@@ -133,7 +142,7 @@ public class Chunk : MonoBehaviour
     {
         StartCoroutine(GenerateHeightsCoroutine(roadwidth, smoothFactor, seed, data =>
             {
-                tempMap = data;
+                moistureMap = data;
                 onFinishedCallback?.Invoke();
             }
         ));

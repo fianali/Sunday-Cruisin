@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2634251397706972404}
   - component: {fileID: 7827047538427826260}
   - component: {fileID: 1909386825974346712}
+  - component: {fileID: 311811538059476027}
   m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
@@ -96,13 +97,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTerrainData: {fileID: 15600000, guid: 587f7452108b19e45819d2b2999857c2, type: 2}
   octaves:
-  - 2
-  - 16
+  - 1.38
+  - 8
+  - 32
   - 64
-  - 128
   redistributionFactor: 4
   terrainPainter: {fileID: 7827047538427826260}
   terrainScatter: {fileID: 1909386825974346712}
+  biomeGenerator: {fileID: 311811538059476027}
 --- !u!114 &7827047538427826260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +134,51 @@ MonoBehaviour:
   maxOffset: 0.96
   grassDensity: 513
   patchDetail: 16
+--- !u!114 &311811538059476027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700995294294666482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab087e229f576554a96c1430c4af1aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  biomeInfo:
+  - maxHeight: 0
+    moistureLevels:
+    - 0
+    - 0
+  - maxHeight: 20
+    moistureLevels:
+    - 0
+    - 1
+  - maxHeight: 40
+    moistureLevels:
+    - 0
+    - 0.3
+    - 0.6
+    - 1
+  - maxHeight: 60
+    moistureLevels:
+    - 0
+    - 0.3
+    - 0.6
+    - 1
+  - maxHeight: 80
+    moistureLevels:
+    - 0
+    - 0.3
+    - 0.6
+    - 1
+  - maxHeight: 100
+    moistureLevels:
+    - 0
+    - 0.3
+    - 0.6
+    - 1
 --- !u!1 &8738733913152271824
 GameObject:
   m_ObjectHideFlags: 0
