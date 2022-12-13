@@ -41,8 +41,7 @@ public class AnimationTesting : MonoBehaviour
         // GameController.Instance.fed = false;
         terrainReady = TerrainLoader.Instance.terrainReady;
         terrainReady.AddListener(OnTerrainReady);
-        StartCoroutine(TestingTimer());
-        
+
         Male.clip = WelcomeDialogue;
         Male.Play();
         
@@ -113,6 +112,9 @@ public class AnimationTesting : MonoBehaviour
         yield return new WaitForSeconds(2f);
         MaleAnimator.SetBool("LookedAtWindow", false);
         MaleAnimator.SetBool("Hungry", true);
+        yield return new WaitForSeconds(2f);
+        GameController.Instance.fed = false;
+        GameController.Instance.startCount = true;
         yield return new WaitForSeconds(10f);
         MaleAnimator.SetBool("Twisted", false);
         
@@ -179,9 +181,7 @@ public class AnimationTesting : MonoBehaviour
     
     IEnumerator TestingTimer()
     {
-        yield return new WaitForSeconds(25f);
+        yield return new WaitForSeconds(2f);
         HowDoYouLikeTheMusic();
     }
-    
-    
 }
