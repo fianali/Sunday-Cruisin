@@ -56,6 +56,8 @@ public class GameController : MonoBehaviour
     
     void Update()
     {
+        // testing testing
+        
         Debug.Log(startCount);
 
         if (introOver)
