@@ -35,7 +35,8 @@ public class AutomaticCarDriving : CarController
     //fix later
     void CheckIfDrive()
     {
-        if (GameController.Instance.promote == true && GameController.Instance.passenger == true)
+        //if (GameController.Instance.promote == true && GameController.Instance.passenger == true)
+        if (GameController.Instance.driver)
         {
             gameObject.GetComponent<AutomaticCarDriving>().enabled = false;
             gameObject.GetComponent<CarController>().enabled = true;

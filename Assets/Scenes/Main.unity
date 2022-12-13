@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26344964, g: 0.12681946, b: 0.26812974, a: 1}
+  m_IndirectSpecularColor: {r: 0.26335776, g: 0.12677714, b: 0.27242652, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -170,7 +170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &309767265
 GameObject:
@@ -481,6 +481,11 @@ MonoBehaviour:
   fed: 1
   foodCount: 0
   introOver: 0
+  startCount: 0
+  backseatPromo: 2
+  passengerPromo: 2
+  car: {fileID: 2012876097}
+  rb: {fileID: 2012876102}
 --- !u!4 &457882282
 Transform:
   m_ObjectHideFlags: 0
@@ -642,7 +647,7 @@ RectTransform:
   - {fileID: 1793560661}
   - {fileID: 309767266}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1012,10 +1017,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2473613571656044458, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
-      propertyPath: maxVelocity
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
 --- !u!1 &1047765979
@@ -1376,37 +1377,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  starsSpeed: 8
   cloudsSpeed: {x: 0.2, y: -0.2}
-  fogColor:
-    serializedVersion: 2
-    key0: {r: 0.66, g: 1, b: 1, a: 1}
-    key1: {r: 0.88, g: 0.62, b: 0.43, a: 1}
-    key2: {r: 0.88, g: 0.88, b: 1, a: 0}
-    key3: {r: 0.88, g: 0.62, b: 0.43, a: 0}
-    key4: {r: 0.66, g: 1, b: 1, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 16384
-    ctime2: 32768
-    ctime3: 49151
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 5
-    m_NumAlphaKeys: 2
   onMidnight:
     m_PersistentCalls:
       m_Calls: []
@@ -1581,6 +1552,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216146752}
   m_CullTransparentMesh: 1
+--- !u!1 &1431590562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1431590564}
+  - component: {fileID: 1431590563}
+  m_Layer: 0
+  m_Name: AudioMixer Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1431590563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431590562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62abc42c81bcf2940990ec6507ecd7f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 6f5ea8a88cda1584ba8f55ba979f02d0, type: 2}
+  drivingVolume: DrivingVolume
+  drivingLowPass: DrivingLowPass
+  musicVolume: MusicVolume
+  musicReverb: MusicReverb
+  dialogueVolume: DialogueVolume
+  dialogueHighpass: DialogueHighpass
+  musicReverbValue: 0
+  lerpValue: 0.075
+--- !u!4 &1431590564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431590562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.21412039, y: 1.9488024, z: -0.62028694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435665248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +2003,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867400586}
   m_CullTransparentMesh: 1
+--- !u!1 &2012876097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 103558, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2012876102 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7331811157299193873, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2032765159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,7 +2079,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041684081
 GameObject:

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CarController : MonoBehaviour
 {
@@ -49,9 +50,11 @@ public class CarController : MonoBehaviour
         UpdateWheels();
     }
 
+    
     private void Update()
     {
         RollWindows();
+        CheckIfDrive();
     }
 
     void GetInputs()
@@ -131,6 +134,16 @@ public class CarController : MonoBehaviour
                 frontLeftWindow.localPosition += new Vector3(0f, .05f);
             }
             
+        }
+    }
+
+    void CheckIfDrive()
+    {
+        if (!GameController.Instance.driver)
+        {
+            gameObject.GetComponent<AutomaticCarDriving>().enabled = true;
+            gameObject.GetComponent<CarController>().enabled = false;
+
         }
     }
 }

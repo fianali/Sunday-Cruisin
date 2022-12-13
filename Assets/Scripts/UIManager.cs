@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
 
     void GiveCrackerInstruction()
     {
-        if (GameController.Instance.introOver == true)
+        if (GameController.Instance.startCount && GameController.Instance.backseat)
         {
             crackerInstructions.SetActive(true);
         }
