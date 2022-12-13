@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     public bool introOver = false;
     public bool startCount = false;
     private bool checkRequest = true;
+    private bool hasFedOnce = false;
 
     private int badSongCount = 0;
     private int goodSongCount = 0;
@@ -55,12 +56,12 @@ public class GameController : MonoBehaviour
     
     void Update()
     {
+        Debug.Log(startCount);
 
         if (introOver)
         {
             StartCoroutine(Food());
             introOver = false;
-            startCount = true;
         }
         
         if (backseat)
@@ -74,6 +75,11 @@ public class GameController : MonoBehaviour
                     fed = true;
                     
                     AnimationTesting.Instance.GiveMeCrackersRevert();
+                    if (hasFedOnce == false)
+                    {
+                        hasFedOnce = true;
+                        AnimationTesting.Instance.HowDoYouLikeTheMusic();
+                    }
                 }
             }
             else if (fed && startCount)
@@ -121,12 +127,7 @@ public class GameController : MonoBehaviour
 
             if (checkRequest || SoundController.Instance.songChanged)
             {
-                Debug.Log("croutines Stopped");
-                
                 StopAllCoroutines();
-                
-                // StopCoroutine(Music());
-                // StopCoroutine(GoodMusic());
                 
                 SoundController.Instance.songChanged = false;
 
@@ -149,9 +150,6 @@ public class GameController : MonoBehaviour
 
         if (driver)
         {
-            // Debug.Log("X: " + rb.velocity.x);
-            // Debug.Log("Y: " + rb.velocity.z);
-
             if (rb.velocity.x <= 1 && rb.velocity.z <= 1)
             {
                 demote = true;
