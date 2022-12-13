@@ -6,22 +6,30 @@ using UnityEngine.Audio;
 
 public class AudioMixerController : MonoBehaviour
 {
-    [SerializeField] AudioMixer mixer;
+
+    public static AudioMixerController Instance;
+    [SerializeField] public AudioMixer mixer;
     [SerializeField] private string drivingVolume;
     [SerializeField] private string drivingLowPass;
     [SerializeField] private string musicVolume;
+    [SerializeField] public string musicReverb;
     [SerializeField] private string dialogueVolume;
     [SerializeField] private string dialogueHighpass;
 
     private float drivingVolumeValue;
     private float drivingLowpassValue;
     private float musicVolumeValue;
+    public float musicReverbValue;
     private float dialogueVolumeValue;
     private float dialogueHighpassValue;
 
     [SerializeField] private float lerpValue = .075f;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Update()
     {
         GetValues();
@@ -36,7 +44,8 @@ public class AudioMixerController : MonoBehaviour
         bool drivingLowpassResult =  mixer.GetFloat(drivingLowPass, out drivingLowpassValue);
         
         bool musicVolumeResult =  mixer.GetFloat(musicVolume, out musicVolumeValue);
-        
+        bool musicReverbResult =  mixer.GetFloat(musicReverb, out musicReverbValue);
+
         bool dialogueVolumeResult =  mixer.GetFloat(dialogueVolume, out dialogueVolumeValue);
         bool dialogueHighpassResult =  mixer.GetFloat(dialogueHighpass, out dialogueHighpassValue);
         

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FirstPersonPerspectiveController : MonoBehaviour
 {
@@ -78,7 +80,70 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            //Debug.Log(hit.collider.gameObject.name);
+            //change volume
+            var volume = SoundController.Instance.radio.volume;
+            if (hit.collider.gameObject.name == "+volume")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    volume += .10f;
+                    SoundController.Instance.radio.volume = volume;
+                }
+            }
+            
+            if (hit.collider.gameObject.name == "-volume")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    volume += -.10f;
+                    SoundController.Instance.radio.volume = volume;
+                }
+            }
+            
+            //change reverb
+            var reverbString = AudioMixerController.Instance.musicReverb;
+            var reverbValue = AudioMixerController.Instance.musicReverbValue;
+            var reverbResult = AudioMixerController.Instance.mixer.GetFloat(reverbString, out reverbValue);
+            if (hit.collider.gameObject.name == "+reverb")
+            {
+                
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AudioMixerController.Instance.mixer.SetFloat(reverbString, reverbValue + 1000f);
+                }
+            }
+            
+            if (hit.collider.gameObject.name == "-reverb")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (reverbValue >= -5000f)
+                    {
+                        AudioMixerController.Instance.mixer.SetFloat(reverbString, reverbValue + -1000f);
+                    }
+                }
+            }
+            
+            //change pitch
+            var pitch = SoundController.Instance.radio.pitch;
+            if (hit.collider.gameObject.name == "+pitch")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    pitch += .10f;
+                    SoundController.Instance.radio.pitch = pitch;
+                }
+            }
+            
+            if (hit.collider.gameObject.name == "-pitch")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    pitch += -.10f;
+                    SoundController.Instance.radio.pitch = pitch;
+                }
+            }
+            
         }
         
         
@@ -103,5 +168,10 @@ public class FirstPersonPerspectiveController : MonoBehaviour
         Gizmos.DrawWireSphere(collision, .2f);
         Vector3 direction = transform.TransformDirection(Vector3.forward) * 5000;
         Gizmos.DrawRay(this.transform.position, direction);
+    }
+
+    void ChangeVolume()
+    {
+        
     }
 }
