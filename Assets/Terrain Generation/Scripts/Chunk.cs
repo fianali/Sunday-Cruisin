@@ -63,27 +63,25 @@ public class Chunk : MonoBehaviour
             BuildRoad();
         }
         
-        biomeMap = biomeGenerator.GenerateBiomes(heightMap, moistureMap);
-        for (int i = 0; i < 513; i++)
-        {
-            for (int j = 0; j < 513; j++)
-            {
-                heightMap[i,j] = biomeMap[i,j] / 50f;
-            }
-        }
+        // for (int i = 0; i < 513; i++)
+        // {
+        //     for (int j = 0; j < 513; j++)
+        //     {
+        //         heightMap[i,j] = biomeMap[i,j] / 100f;
+        //     }
+        // }
 
         terrainData.SetHeights(0, 0, heightMap);
         
         TerrainCollider terrainCollider = GetComponent<TerrainCollider>();
         terrainCollider.terrainData = terrain.terrainData;
         
-        /*
         terrain.detailObjectDistance = 1000;
-        terrain.treeBillboardDistance = 5000;*/
+        terrain.treeBillboardDistance = 5000;
 
-        
-        /*terrainPainter.PaintTerrain(terrain.terrainData, heightMap, moistureMap);
-        terrainScatter.ScatterFoliage(terrain, heightMap, moistureMap);*/
+        // biomeMap = biomeGenerator.GenerateBiomes(heightMap, moistureMap);
+        // terrainPainter.PaintTerrain(terrain.terrainData, biomeMap);
+        // terrainScatter.ScatterFoliage(terrain, biomeMap);
         
         chunkLoaded.Invoke();
     }
