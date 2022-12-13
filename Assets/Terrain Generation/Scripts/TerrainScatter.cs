@@ -5,21 +5,14 @@ using UnityEngine;
 
 public class TerrainScatter : MonoBehaviour
 {
-    private TerrainLoader.SplatInfo[] splatInfo;
-    
-    public GameObject[] scatter;
+    // private TerrainLoader.SplatInfo[] splatInfo;
+    private TerrainLoader.BiomeInfo[] biomeInfo;
+
+    // public GameObject[] scatter;
 
     [SerializeField] private int treeCount;
     [Range(-1, 1)] [SerializeField] private float maxOffset;
 
-    [System.Serializable]
-    public class TreeSplat
-    {
-        public int[] trees;
-    }
-    [SerializeField] public TreeSplat[] treeSplats;
-    [SerializeField] private int[] grassBiomes;
-    
     [SerializeField] private int grassDensity;
     [SerializeField] private int patchDetail;
     private float xOffset;
@@ -28,7 +21,8 @@ public class TerrainScatter : MonoBehaviour
     private Terrain terrain;
     public void ScatterFoliage(Terrain passedTerrain, int[,] biomeMap)
     {
-        splatInfo = TerrainLoader.Instance.splatInfo;
+        biomeInfo = TerrainLoader.Instance.biomeInfo;
+        // splatInfo = TerrainLoader.Instance.splatInfo;
 
         terrain = passedTerrain;
         xOffset = transform.position.x;
@@ -44,16 +38,27 @@ public class TerrainScatter : MonoBehaviour
   
         int[,] newMap = new int[grassDensity, grassDensity];
 
-        for (int i = 0; i < grassDensity; i++)
+        for (int x = 0; x < grassDensity; x++)
         {
-            for (int j = 0; j < grassDensity; j++)
+            for (int z = 0; z < grassDensity; z++)
             {
-                var biome = biomeMap[i, j];
-                for (int k = 0; k < grassBiomes.Length; k++)
+                var biome = biomeMap[x, z];
+                for (int i = 1; i < biomeInfo.Length; i++)
                 {
-                    if (biome == grassBiomes[k])
+                    for (int j = 1; j < 4; j++)
                     {
-                        newMap[i, j] = k;
+                        if (biome == 0)
+                        {
+                            newMap[x, z] = 0;
+                        }
+                        else if (biome == biomeInfo[i].moistureInfo[j].biomeIndex)
+                        {
+                            // Debug.Log("x: " + x + " z: " + z + " i: " + i + " j: " + j + " Grasses: " + biomeInfo[i].moistureInfo[j].grasses.Length);
+                            if (biomeInfo[i].moistureInfo[j].grasses.Length > 0)
+                            {
+                                newMap[x, z] = biomeInfo[i].moistureInfo[j].grasses[0];
+                            }
+                        }
                     }
                 }
             }
@@ -82,15 +87,22 @@ public class TerrainScatter : MonoBehaviour
         if (potentialPositionInt.x < 0 || potentialPositionInt.z < 0 ||
             potentialPositionInt.x > 513 || potentialPositionInt.z > 513)
             return;
+        
+        int biome = biomeMap[potentialPositionInt.z, potentialPositionInt.x];
 
-        float biome = biomeMap[potentialPositionInt.z, potentialPositionInt.x];
-
-        for (int i = 0; i < treeSplats.Length; i++)
+        for (int i = 1; i < biomeInfo.Length; i++)
         {
-            if (i == biome && treeSplats[i].trees.Length > 0)
+            for (int j = 1; j < 4; j++)
             {
-                PlaceTree(potentialPosition, treeSplats[i].trees);
-                return;
+                if (biome == 0)
+                {
+                    return;
+                }
+                else if (biome == biomeInfo[i].moistureInfo[j].biomeIndex && biomeInfo[i].moistureInfo[j].trees.Length > 0)
+                {
+                    PlaceTree(potentialPosition, biomeInfo[i].moistureInfo[j].trees);
+                    return;
+                }
             }
         }
     }

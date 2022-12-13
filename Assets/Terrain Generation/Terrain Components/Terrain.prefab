@@ -117,7 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c57eeff68f5b04d839bc6c2b82edc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatBiomes: 000000000d0000000400000005000000060000000700000008000000090000000a0000000b0000000c000000
 --- !u!114 &1909386825974346712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,16 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc3c9855f9d2234abe1b37c00a759ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scatter: []
-  treeCount: 30
+  treeCount: 75
   maxOffset: 0.96
-  treeSplats:
-  - trees: 
-  - trees: 
-  - trees: 
-  - trees: 000000000100000002000000
-  - trees: 0300000004000000050000000600000007000000
-  grassBiomes: 070000000a0000000d000000
   grassDensity: 513
   patchDetail: 16
 --- !u!114 &311811538059476027
@@ -154,39 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab087e229f576554a96c1430c4af1aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biomeInfo:
-  - maxHeight: 0
-    moistureLevels:
-    - 0
-    - 0
-  - maxHeight: 20
-    moistureLevels:
-    - 0
-    - 1
-  - maxHeight: 40
-    moistureLevels:
-    - 0
-    - 0.3
-    - 0.6
-    - 1
-  - maxHeight: 60
-    moistureLevels:
-    - 0
-    - 0.3
-    - 0.6
-    - 1
-  - maxHeight: 80
-    moistureLevels:
-    - 0
-    - 0.3
-    - 0.6
-    - 1
-  - maxHeight: 100
-    moistureLevels:
-    - 0
-    - 0.3
-    - 0.6
-    - 1
 --- !u!1 &8738733913152271824
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738733913152271824}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 256.5, y: 10, z: 256.5}
+  m_LocalPosition: {x: 256.5, y: 6, z: 256.5}
   m_LocalScale: {x: 513, y: 513, z: 513}
   m_ConstrainProportionsScale: 1
   m_Children: []

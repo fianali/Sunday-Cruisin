@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 
-public static class NoiseManager
+/*public static class NoiseManager
 {
     private static SimplexPerlin simplexPerlin;
     public static SimplexPerlin SimplexPerlin
@@ -22,11 +22,33 @@ public static class NoiseManager
     }
 
     public static int Seed { get; set; } = 5000;
-}
+}*/
 
 public class TerrainLoader : MonoBehaviour
 {
     public static TerrainLoader Instance;
+    
+    [System.Serializable]
+    public class MoistureInfo
+    {
+        public float moistureLevel;
+        public int splat;
+        public int[] trees;
+        public int[] grasses;
+        public int biomeIndex;
+    }
+    
+    [System.Serializable]
+    public class BiomeInfo
+    {
+        // public int textureIndex;
+        public float maxHeight;
+        
+        public MoistureInfo[] moistureInfo;
+    }
+
+    [SerializeField] public BiomeInfo[] biomeInfo;
+    
     // public int seed;
     public UnityEvent chunkLoaded;
     public UnityEvent terrainReady;
@@ -45,7 +67,7 @@ public class TerrainLoader : MonoBehaviour
     // Road information
     public int roadwidth;
     // public int roadSmoothFactor;
-    [System.Serializable]
+    /*[System.Serializable]
     public class SplatInfo
     {
         // public int textureIndex;
@@ -54,7 +76,7 @@ public class TerrainLoader : MonoBehaviour
         public float heightStart;
         public float heightEnd;
     }
-    [SerializeField] public SplatInfo[] splatInfo;
+    [SerializeField] public SplatInfo[] splatInfo;*/
     
     private void Awake()
     {

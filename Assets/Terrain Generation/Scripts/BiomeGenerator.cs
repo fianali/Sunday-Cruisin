@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class BiomeGenerator : MonoBehaviour
 {
-    [System.Serializable]
-    public class BiomeInfo
-    {
-        // public int textureIndex;
-        public float maxHeight;
-        public float[] moistureLevels;
-    }
+    private TerrainLoader.BiomeInfo[] biomeInfo;
     
-    [SerializeField] public BiomeInfo[] biomeInfo;
     private float[,] heightMap;
     private float[,] moistureMap;
     private Vector3 position;
     
     public int[,] GenerateBiomes(float[,] heightMap, float[,] moistureMap)
     {
+        biomeInfo = TerrainLoader.Instance.biomeInfo;
+        
         this.heightMap = heightMap;
         this.moistureMap = moistureMap;
         position = transform.position;
@@ -46,8 +41,8 @@ public class BiomeGenerator : MonoBehaviour
 
         if (position.z / 512 == 0)
         {
-            if (position.z + z > center - roadWidth &&
-                position.z + z < center + roadWidth)
+            if (x > center - roadWidth &&
+                x < center + roadWidth)
                 return 0;
         }
 
@@ -55,15 +50,18 @@ public class BiomeGenerator : MonoBehaviour
         {
             if (height < biomeInfo[i].maxHeight && height > biomeInfo[i-1].maxHeight)
             {
-                for (int j = 1; j < biomeInfo[i].moistureLevels.Length; j++)
+                for (int j = 1; j < biomeInfo[i].moistureInfo.Length; j++)
                 {
-                    if (moisture < biomeInfo[i].moistureLevels[j] && moisture > biomeInfo[i].moistureLevels[j-1])
-                        return i * 3 + j - 3;
+                    if (moisture < biomeInfo[i].moistureInfo[j].moistureLevel && moisture > biomeInfo[i].moistureInfo[j-1].moistureLevel)
+                    {
+                        biomeInfo[i].moistureInfo[j].biomeIndex = i * 3 + j - 3;
+                        return biomeInfo[i].moistureInfo[j].biomeIndex;
+                    }
                 }
             }
                 
         }
 
-        return 0;
+        return -1;
     }
 }

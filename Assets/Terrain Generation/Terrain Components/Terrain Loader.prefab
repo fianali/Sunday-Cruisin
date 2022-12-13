@@ -45,61 +45,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04aac9349d244c448ced74b464c2454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 5000
-  macroScale: 1
-  biomeScale: 0.5
-  hfScale: 50
-  hfSize: 2000
+  biomeInfo:
+  - maxHeight: 0
+    moistureInfo:
+    - moistureLevel: 0
+      splat: 0
+      trees: 
+      grasses: 
+      biomeIndex: 0
+  - maxHeight: 6
+    moistureInfo:
+    - moistureLevel: 0
+      splat: 9
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 9
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 9
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 9
+      trees: 
+      grasses: 
+      biomeIndex: 0
+  - maxHeight: 12
+    moistureInfo:
+    - moistureLevel: 0
+      splat: 8
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 8
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 8
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 8
+      trees: 
+      grasses: 
+      biomeIndex: 0
+  - maxHeight: 75
+    moistureInfo:
+    - moistureLevel: 0
+      splat: 5
+      trees: 
+      grasses: 01000000
+      biomeIndex: 0
+    - moistureLevel: 0.1
+      splat: 5
+      trees: 
+      grasses: 01000000
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 7
+      trees: 000000000100000002000000
+      grasses: 01000000
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 7
+      trees: 000000000100000002000000
+      grasses: 01000000
+      biomeIndex: 0
+  - maxHeight: 150
+    moistureInfo:
+    - moistureLevel: 0
+      splat: 2
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 0.05
+      splat: 2
+      trees: 
+      grasses: 
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 5
+      trees: 0300000004000000050000000600000007000000
+      grasses: 01000000
+      biomeIndex: 0
+    - moistureLevel: 1
+      splat: 5
+      trees: 0300000004000000050000000600000007000000
+      grasses: 01000000
+      biomeIndex: 0
+  chunkLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  terrainReady:
+    m_PersistentCalls:
+      m_Calls: []
   terrain: {fileID: 8700995294294666482, guid: 15d2f62750e99cc4b8f5ba6776c7fb92, type: 3}
-  loadDistance: 1
+  loadDistance: 2
   roadwidth: 20
-  roadSmoothFactor: 20
-  splatInfo:
-  - textureIndex: 1
-    moistureStart: 0
-    moistureEnd: 0
-    heightStart: 0
-    heightEnd: 0
-  - textureIndex: 10
-    moistureStart: 0
-    moistureEnd: 1
-    heightStart: 0
-    heightEnd: 0.01953125
-  - textureIndex: 9
-    moistureStart: 0
-    moistureEnd: 1
-    heightStart: 0.01953125
-    heightEnd: 0.05859375
-  - textureIndex: 3
-    moistureStart: 0.2
-    moistureEnd: 1
-    heightStart: 0.05859375
-    heightEnd: 0.1171875
-  - textureIndex: 8
-    moistureStart: 0.2
-    moistureEnd: 1
-    heightStart: 0.1171875
-    heightEnd: 0.3515625
-  - textureIndex: 6
-    moistureStart: 0
-    moistureEnd: 0.2
-    heightStart: 0.05859375
-    heightEnd: 0.3515625
-  - textureIndex: 10
-    moistureStart: 0
-    moistureEnd: 0.2
-    heightStart: 0.3515625
-    heightEnd: 0.5
-  - textureIndex: 11
-    moistureStart: 0
-    moistureEnd: 0.2
-    heightStart: 0.5
-    heightEnd: 1
-  - textureIndex: 2
-    moistureStart: 0.2
-    moistureEnd: 1
-    heightStart: 0.3515625
-    heightEnd: 1
 --- !u!114 &2733616821781847808
 MonoBehaviour:
   m_ObjectHideFlags: 0
