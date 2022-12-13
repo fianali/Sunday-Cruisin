@@ -121,6 +121,10 @@ public class GameController : MonoBehaviour
 
             if (checkRequest || SoundController.Instance.songChanged)
             {
+                Debug.Log("croutines Stopped");
+                
+                StopAllCoroutines();
+                
                 // StopCoroutine(Music());
                 // StopCoroutine(GoodMusic());
                 
@@ -233,20 +237,16 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(5);
         AnimationTesting.Instance.ThisMusicSucks();
         yield return new WaitForSeconds(10);
-        if (!SoundController.Instance.songChangedInTime)
-        {
-            badSongCount += 1;
-        }  
-    } 
+        Debug.Log("badSongCount added");
+        badSongCount += 1;
+        } 
 
     IEnumerator GoodMusic() 
     {
         yield return new WaitForSeconds(5);
         AnimationTesting.Instance.ThisMusicIsAwesomeness();
         yield return new WaitForSeconds(10);
-        if (!SoundController.Instance.songChangedInTime)
-        {
-            goodSongCount += 1;
+        Debug.Log("goodSongCount added");
+        goodSongCount += 1;
         }
-    }
 }
