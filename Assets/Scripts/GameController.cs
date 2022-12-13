@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     private bool startCount = false;
     private bool checkRequest = true;
 
+    private int badSongCount = 0;
+
     
     void Awake()
     {
@@ -88,7 +90,7 @@ public class GameController : MonoBehaviour
                 timeWaited = 0f;
             }
 
-            if (foodCount >= 3)
+            if (foodCount >= 1)
             {
                 promote = true;
             }
@@ -96,6 +98,11 @@ public class GameController : MonoBehaviour
       
         if (passenger)
         {
+            if (badSongCount >= 1)
+            {
+                demote = true;
+            }
+            
             if (pow2)
             {
                 SoundController.Instance.songChanged = false;
@@ -105,6 +112,9 @@ public class GameController : MonoBehaviour
 
             if (checkRequest || SoundController.Instance.songChanged)
             {
+                StopCoroutine(Music());
+                StopCoroutine(GoodMusic());
+                
                 SoundController.Instance.songChanged = false;
 
                 int rand = Random.Range(0, 2);
@@ -117,32 +127,8 @@ public class GameController : MonoBehaviour
                 {
                     likedSong = true;
                     StartCoroutine(GoodMusic());
-                    songCount++;
                 }
-
-                
                 checkRequest = false;
-            }
-            
-            
-
-            if (timesUp && !likedSong)
-            {
-                timesUp = false;
-                songCount--;
-            }
-            if (songCount == -3)
-            {
-                demote = true;
-                backseat = true;
-                songCount = 0;
-                
-            }
-            if (songCount == 4)
-            {
-                promote = true;
-                songCount = 0;
-                
             }
         }
 
@@ -160,7 +146,10 @@ public class GameController : MonoBehaviour
                     ActorPositions.Instance.PlayerToDriver();
                     passenger = false;
                     driver = true;
+                    foodCount = 0;
+                    badSongCount = 0;
                     promote = false;
+                    demote = false;
                 }
 
             }
@@ -171,12 +160,14 @@ public class GameController : MonoBehaviour
                     ActorPositions.Instance.PlayerToShotgun();
                     backseat = false;
                     passenger = true;
+                    badSongCount = 0;
                     promote = false;
+                    demote = false;
                 }
             }
             
         }
-        else if (demote)
+        if (demote)
         {
             if (driver)
             {
@@ -184,13 +175,16 @@ public class GameController : MonoBehaviour
                 passenger = true;
                 driver = false;
                 demote = false;
+                promote = false;
             }
             if (passenger)
             {
                 ActorPositions.Instance.PlayerToBackseat();
                 backseat = true;
                 passenger = false;
+                badSongCount = 0;
                 demote = false;
+                promote = false;
                 StartCoroutine(Food());
             }
         }
@@ -219,20 +213,16 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         AnimationTesting.Instance.ThisMusicSucks();
-
         yield return new WaitForSeconds(10);
-        if (SoundController.Instance.songChangedInTime)
-        {
-            SoundController.Instance.songChangedInTime = false;
-            yield break;
-        }
-        timesUp = true;
-         
+        badSongCount += 1;
     } 
 
     IEnumerator GoodMusic() 
     {
         yield return new WaitForSeconds(5);
         AnimationTesting.Instance.ThisMusicIsAwesomeness();
+        yield return new WaitForSeconds(10);
+        promote = true;
+
     }
 }
