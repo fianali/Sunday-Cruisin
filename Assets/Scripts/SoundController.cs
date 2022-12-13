@@ -103,10 +103,10 @@ public class SoundController : MonoBehaviour
 
     void Update()
     {
-        if (GameController.Instance.passenger || start)
+        if (GameController.Instance.passenger)
         {
              // change station
-            if (Input.GetKeyDown(KeyCode.Alpha1) || start || stations[0])
+            if (Input.GetKeyDown(KeyCode.Alpha1) || stations[0])
             {
                 count = 0;
                 pow = true;
@@ -243,10 +243,11 @@ public class SoundController : MonoBehaviour
         }
         else
         {
-            if (!UIManager.Instance.liked)
+            if (!UIManager.Instance.liked || start)
             {
                 UIManager.Instance.liked = true;
                 radio.Stop();
+                start = false;
 
                 int randStation = Random.Range(0, 4);
                 int randSong = Random.Range(0, 5);

@@ -55,7 +55,7 @@ public class AudioMixerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.L))
         {
-            mixer.SetFloat(drivingVolume, Mathf.Lerp(drivingVolumeValue, 8f, lerpValue * Time.deltaTime));
+            mixer.SetFloat(drivingVolume, Mathf.Lerp(drivingVolumeValue, 10f, lerpValue * Time.deltaTime));
             mixer.SetFloat(drivingLowPass,  Mathf.Lerp(drivingLowpassValue,22000f, lerpValue * Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.O))
