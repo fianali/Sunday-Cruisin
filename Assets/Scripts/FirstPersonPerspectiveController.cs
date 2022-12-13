@@ -123,7 +123,20 @@ public class FirstPersonPerspectiveController : MonoBehaviour
                     }
                 }
             }
-            
+            if (hit.collider.gameObject.name == "-song")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SoundController.Instance.songDown = true;
+                }
+            }
+            if (hit.collider.gameObject.name == "+song")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SoundController.Instance.songUp = true;
+                }
+            }                
             //change pitch
             var pitch = SoundController.Instance.radio.pitch;
             if (hit.collider.gameObject.name == "+pitch")

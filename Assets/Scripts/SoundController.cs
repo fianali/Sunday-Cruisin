@@ -43,7 +43,8 @@ public class SoundController : MonoBehaviour
     private bool threePressed = false;
     private bool fourPressed = false;
 
-   
+    public bool songUp = false;
+    public bool songDown = false;
 
     private int count = 0;
     private bool pow = false;
@@ -164,10 +165,11 @@ public class SoundController : MonoBehaviour
             }
 
             // change song
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || songUp)
             {
                 songChanged = true;
                 songChangedInTime = true;
+                songUp = false;
 
                 count++;
                 if (count == 5)
@@ -194,10 +196,11 @@ public class SoundController : MonoBehaviour
 
                 radio.Play();
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || (!radio.isPlaying && pow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || (!radio.isPlaying && pow) || songDown)
             {
                 songChanged = true;
                 songChangedInTime = true;
+                songDown = false;
 
                 count--;
                 if (count == -1)
