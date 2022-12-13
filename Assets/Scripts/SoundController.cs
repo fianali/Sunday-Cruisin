@@ -54,12 +54,21 @@ public class SoundController : MonoBehaviour
 
     private bool start = true;
 
+    public bool[] stations;
+    public int index = 0;
+    
     void Awake()
     {
         Instance = this;
     }
     void Start()
     {
+        stations = new bool[4];
+        stations[0] = false;
+        stations[1] = false;
+        stations[2] = false;
+        stations[3] = false;
+
         first = new AudioClip[5];
         first[0] = one;
         first[1] = two;
@@ -97,10 +106,11 @@ public class SoundController : MonoBehaviour
         if (GameController.Instance.passenger || start)
         {
              // change station
-            if (Input.GetKeyDown(KeyCode.Alpha1) || start)
+            if (Input.GetKeyDown(KeyCode.Alpha1) || start || stations[0])
             {
                 count = 0;
                 pow = true;
+                stations[0] = false;
 
                 onePressed = true;
                 twoPressed = false;
@@ -115,10 +125,11 @@ public class SoundController : MonoBehaviour
                 start = false;
                
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.Alpha2) || stations[1])
             {
                 count = 0;
                 pow = true;
+                stations[1] = false;
 
                 onePressed = false;
                 twoPressed = true;
@@ -131,10 +142,11 @@ public class SoundController : MonoBehaviour
                 songChanged = true;
                 songChangedInTime = true;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.Alpha3) || stations[2])
             {
                 count = 0;
                 pow = true;
+                stations[2] = false;
 
                 onePressed = false;
                 twoPressed = false;
@@ -147,10 +159,11 @@ public class SoundController : MonoBehaviour
                 songChanged = true;
                 songChangedInTime = true;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            if (Input.GetKeyDown(KeyCode.Alpha4) || stations[3])
             {
                 count = 0;
                 pow = true;
+                stations[3] = false;
 
                 onePressed = false;
                 twoPressed = false;
