@@ -1872,6 +1872,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 431662}
+  - {fileID: 1159950952}
+  - {fileID: 2118484651}
   m_Father: {fileID: 475536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4049,8 +4051,6 @@ Transform:
   m_Children:
   - {fileID: 414486}
   - {fileID: 447252}
-  - {fileID: 1159950952}
-  - {fileID: 2118484651}
   m_Father: {fileID: 497778}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5469,8 +5469,12 @@ MonoBehaviour:
   three4: {fileID: 8300000, guid: 240fd07aa9c3b8749a6b302842d0b203, type: 3}
   four4: {fileID: 8300000, guid: 01e83426536b07f4bb351f4c2a200cb5, type: 3}
   five4: {fileID: 8300000, guid: 45e68d87b0a1fa444871f84ab0e1403c, type: 3}
+  songUp: 0
+  songDown: 0
   songChanged: 0
   songChangedInTime: 0
+  stations: 
+  index: 0
 --- !u!1 &1159950951
 GameObject:
   m_ObjectHideFlags: 0
@@ -5495,12 +5499,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159950951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.6231036, y: 15.185972, z: -1.7742882}
+  m_LocalPosition: {x: -2.9068966, y: -0.55402756, z: 1.5557117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 475536}
-  m_RootOrder: 2
+  m_Father: {fileID: 414486}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180772411
 GameObject:
@@ -6079,12 +6083,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118484650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.883175, y: 15.915972, z: -2.074286}
+  m_LocalPosition: {x: 3.3531747, y: 0.17597198, z: 1.2557139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 475536}
-  m_RootOrder: 3
+  m_Father: {fileID: 414486}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633929183942110984
 GameObject:
@@ -6386,8 +6390,12 @@ MonoBehaviour:
   three4: {fileID: 8300000, guid: 240fd07aa9c3b8749a6b302842d0b203, type: 3}
   four4: {fileID: 8300000, guid: 01e83426536b07f4bb351f4c2a200cb5, type: 3}
   five4: {fileID: 8300000, guid: 45e68d87b0a1fa444871f84ab0e1403c, type: 3}
+  songUp: 0
+  songDown: 0
   songChanged: 0
   songChangedInTime: 0
+  stations: 
+  index: 0
 --- !u!1 &8448874260067739110
 GameObject:
   m_ObjectHideFlags: 0
