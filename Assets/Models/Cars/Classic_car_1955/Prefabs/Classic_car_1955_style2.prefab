@@ -5408,16 +5408,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8124397839084761647}
   mouseSensitivity: 2
-  minusVolume: {fileID: 0}
-  plusVolume: {fileID: 0}
-  minusReverb: {fileID: 0}
-  plusReverb: {fileID: 0}
-  minusPitch: {fileID: 0}
-  plusPitch: {fileID: 0}
-  lastStation: {fileID: 0}
-  nextStation: {fileID: 0}
-  lastSong: {fileID: 0}
-  nextSong: {fileID: 0}
+  minusVolume: {fileID: 919132148654578990}
+  plusVolume: {fileID: 919132147506922532}
+  minusReverb: {fileID: 919132148391075711}
+  plusReverb: {fileID: 919132147583869659}
+  minusPitch: {fileID: 919132147559891943}
+  plusPitch: {fileID: 919132149030197435}
+  lastStation: {fileID: 919132149273075146}
+  nextStation: {fileID: 919132147747990880}
+  lastSong: {fileID: 919132148620388545}
+  nextSong: {fileID: 919132149519660040}
   collision: {x: 0, y: 0, z: 0}
 --- !u!114 &1180772413
 MonoBehaviour:
