@@ -52,6 +52,7 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         RollWindows();
+        CheckIfDrive();
     }
 
     void GetInputs()
@@ -131,6 +132,16 @@ public class CarController : MonoBehaviour
                 frontLeftWindow.localPosition += new Vector3(0f, .05f);
             }
             
+        }
+    }
+
+    void CheckIfDrive()
+    {
+        if (!GameController.Instance.driver)
+        {
+            gameObject.GetComponent<AutomaticCarDriving>().enabled = false;
+            gameObject.GetComponent<CarController>().enabled = true;
+
         }
     }
 }

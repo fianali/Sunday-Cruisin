@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26229766, g: 0.12691736, b: 0.27576265, a: 1}
+  m_IndirectSpecularColor: {r: 0.29661518, g: 0.15430641, b: 0.2818624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -481,6 +481,11 @@ MonoBehaviour:
   fed: 1
   foodCount: 0
   introOver: 0
+  startCount: 0
+  backseatPromo: 2
+  passengerPromo: 2
+  car: {fileID: 2012876097}
+  rb: {fileID: 2012876102}
 --- !u!4 &457882282
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,6 +1016,22 @@ PrefabInstance:
     - target: {fileID: 467888, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473613571656044458, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+      propertyPath: driveForce
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331811157299193873, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+      propertyPath: m_Drag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331811157299193875, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+      propertyPath: driveForce
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331811157299193875, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+      propertyPath: maxVelocity
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
@@ -1975,6 +1996,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867400586}
   m_CullTransparentMesh: 1
+--- !u!1 &2012876097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 103558, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2012876102 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7331811157299193873, guid: 7a25960f713fe57438d4cbbe9bb24825, type: 3}
+  m_PrefabInstance: {fileID: 976061228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2032765159
 GameObject:
   m_ObjectHideFlags: 0
