@@ -130,11 +130,13 @@ public class GameController : MonoBehaviour
                 if (rand == 1)
                 {
                     likedSong = false;
+                    SoundController.Instance.songChangedInTime = false;
                     StartCoroutine(Music());
                 }
                 else
                 {
                     likedSong = true;
+                    SoundController.Instance.songChangedInTime = false;
                     StartCoroutine(GoodMusic());
                 }
                 checkRequest = false;
@@ -166,7 +168,6 @@ public class GameController : MonoBehaviour
                     goodSongCount = 0;
                     promote = false;
                     demote = false;
-                    checkRequest = true;
                 }
 
             }
@@ -175,6 +176,7 @@ public class GameController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     ActorPositions.Instance.PlayerToShotgun();
+                    checkRequest = true;
                     backseat = false;
                     passenger = true;
                     promote = false;
@@ -198,6 +200,7 @@ public class GameController : MonoBehaviour
             if (driver)
             {
                 ActorPositions.Instance.PlayerToShotgun();
+                checkRequest = true;
                 passenger = true;
                 driver = false;
                 demote = false;
@@ -230,7 +233,10 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(5);
         AnimationTesting.Instance.ThisMusicSucks();
         yield return new WaitForSeconds(10);
-        badSongCount += 1;
+        if (!SoundController.Instance.songChangedInTime)
+        {
+            badSongCount += 1;
+        }  
     } 
 
     IEnumerator GoodMusic() 
@@ -238,7 +244,9 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(5);
         AnimationTesting.Instance.ThisMusicIsAwesomeness();
         yield return new WaitForSeconds(10);
-        goodSongCount += 1;
-
+        if (!SoundController.Instance.songChangedInTime)
+        {
+            goodSongCount += 1;
+        }
     }
 }

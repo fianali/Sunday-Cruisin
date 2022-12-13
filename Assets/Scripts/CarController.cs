@@ -141,8 +141,8 @@ public class CarController : MonoBehaviour
     {
         if (!GameController.Instance.driver)
         {
-            gameObject.GetComponent<AutomaticCarDriving>().enabled = false;
-            gameObject.GetComponent<CarController>().enabled = true;
+            gameObject.GetComponent<AutomaticCarDriving>().enabled = true;
+            gameObject.GetComponent<CarController>().enabled = false;
 
         }
     }
