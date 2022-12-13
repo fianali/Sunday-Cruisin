@@ -79,9 +79,9 @@ public class Chunk : MonoBehaviour
         terrain.detailObjectDistance = 1000;
         terrain.treeBillboardDistance = 5000;
 
-        // biomeMap = biomeGenerator.GenerateBiomes(heightMap, moistureMap);
-        // terrainPainter.PaintTerrain(terrain.terrainData, biomeMap);
-        // terrainScatter.ScatterFoliage(terrain, biomeMap);
+        biomeMap = biomeGenerator.GenerateBiomes(heightMap, moistureMap);
+        terrainPainter.PaintTerrain(terrain.terrainData, biomeMap);
+        terrainScatter.ScatterFoliage(terrain, biomeMap);
         
         chunkLoaded.Invoke();
     }

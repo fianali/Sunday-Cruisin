@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTerrainData: {fileID: 15600000, guid: 587f7452108b19e45819d2b2999857c2, type: 2}
   octaves:
-  - 1.38
+  - 1
   - 8
   - 32
   - 64
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c57eeff68f5b04d839bc6c2b82edc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splatBiomes: 000000000d0000000400000005000000060000000700000008000000090000000a0000000b0000000c000000
 --- !u!114 &1909386825974346712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +133,13 @@ MonoBehaviour:
   scatter: []
   treeCount: 30
   maxOffset: 0.96
+  treeSplats:
+  - trees: 
+  - trees: 
+  - trees: 
+  - trees: 000000000100000002000000
+  - trees: 0300000004000000050000000600000007000000
+  grassBiomes: 070000000a0000000d000000
   grassDensity: 513
   patchDetail: 16
 --- !u!114 &311811538059476027
@@ -206,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738733913152271824}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 256.5, y: 10, z: 256.5}
+  m_LocalPosition: {x: 256.5, y: 45, z: 256.5}
   m_LocalScale: {x: 513, y: 513, z: 513}
   m_ConstrainProportionsScale: 1
   m_Children: []

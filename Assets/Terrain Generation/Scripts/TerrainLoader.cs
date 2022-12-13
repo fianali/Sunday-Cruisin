@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Graphics.Tools.Noise;
 using Graphics.Tools.Noise.Primitive;
 using UnityEngine;

@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847810, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: loadDistance
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2733616821781847811, guid: 7b8933c2bf99d7844aa98c9e13171b34, type: 3}
       propertyPath: m_Name
